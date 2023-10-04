@@ -1,0 +1,33 @@
+.enlace{
+    color: black;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.enlace:hover{
+    color: black;
+}
+.enlace::after{
+    content: '';
+    position: relative;
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: var(--color-principal);
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    transition: all .3s;
+}
+.enlace:hover::after{
+    clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%);
+}
+
+@media (min-width:1500px){
+    .enlace{
+        font-size: 19px;
+    }
+}
+@media (max-width:1000px){
+    .enlace{
+        font-size: 15px;
+    }
+}
