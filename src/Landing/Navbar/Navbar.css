@@ -31,5 +31,6 @@
 .Arkitex{
     color: var(--color-principal);
     margin-left: 20px;
-    font-size: 32px;
+    font-size: 30px;
+    font-weight: 700;
 }
