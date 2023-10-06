@@ -1,14 +1,20 @@
-import { Grid } from '@mui/material';
+import { Grid, Button } from '@mui/material';
 import './Navbar.css';
 import Anchor from './Anchor/Anchor';
+import { Link } from 'react-router-dom';
 
 export default function Navbar(){
 return(
-<>
-{/*Icono de menu para celulares*/}
-<img src='./assets/Frame.svg' style={{width: '32px'}}/>
-<h2>ARKITEX</h2>
-<Grid justifyContent={"center"} display={{xs:"flex",md:"none"}}>
+<div className='navbar'>
+ {/*Icono de menu para celulares*/}
+ <div className="icono">
+
+ <img src='./assets/Frame.svg' style={{width: '72px'}}/>
+          <h2 className='Arkitex'>ARKITEX</h2>
+
+ </div>
+ <Grid justifyContent={"center"} display={{xs:"flex",md:"none"}}>
+        
         </Grid>
         {/*Enlaces de la barra de navegacion*/}
         <Grid className='navegacion' component={"nav"} maxHeight={{md:"200px"}} display={"flex"}
@@ -18,6 +24,9 @@ return(
           <Anchor textoAnchor='Testimonios'></Anchor>
           <Anchor textoAnchor='Acerca de Nosotros'></Anchor>
           <Anchor textoAnchor='Contacto'></Anchor>
-        </Grid>
-</>
+  </Grid>
+  <Link to={'/Login'}>
+    <Button variant='contained'> Iniciar Sesion </Button>
+  </Link>
+</div>
 )}

@@ -18,3 +18,18 @@
 .mostrar{
     max-height: 350px;
 }
+.navbar{
+    display: flex;
+    margin: 25px auto;
+    justify-content: space-between;
+    padding: 0 150px;
+}
+.icono{
+    display: flex;
+} 
+
+.Arkitex{
+    color: var(--color-principal);
+    margin-left: 20px;
+    font-size: 32px;
+}
