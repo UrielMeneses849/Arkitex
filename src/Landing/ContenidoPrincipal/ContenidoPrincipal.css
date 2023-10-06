@@ -23,5 +23,13 @@
 }
 .indexP2, .indexP4{
     color: #888888;
-    max-width: 558px;
+    
+}
+
+.contenidoPrincipal{
+
+    padding-top: 75px;
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
 }
