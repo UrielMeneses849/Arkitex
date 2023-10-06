@@ -26,7 +26,11 @@ return(
           <Anchor textoAnchor='Contacto'></Anchor>
   </Grid>
   <Link to={'/Login'}>
-    <Button variant='contained'> Iniciar Sesion </Button>
+    <Button variant='contained' sx={{backgroundColor: "#FF9500", width: "300px", height: "60px", borderRadius: "20px", fontWeight: "700",
+  '&:hover':{
+    backgroundColor: "#da7110"
+  }
+  }}> Iniciar Sesion </Button>
   </Link>
 </div>
 )}
