@@ -1,0 +1,61 @@
+.opcionRegistro-p{
+    max-width: 180px;
+    font-weight: 700;
+}
+.opcionRegistro-h2{
+    color: #fff;
+    text-align: center;
+    font-weight: 500;
+}
+.opcionRegistro-h3{
+    color: #fff;
+    font-weight: 500;
+}
+
+@media (min-width:300px){
+    .imgTrabajador, .imgEmpleador{
+        width: 150px;
+    }
+}
+@media (min-width:900px){
+    .imgTrabajador, .imgEmpleador{
+        width: 100%;
+    }
+}
+@media (max-width:1700px){
+    .opcionRegistro-p{
+        font-size: 13px;
+        max-width: 180px;
+        font-weight: 700;
+    }
+    .opcionRegistro-h2{
+        font-size: 25px;
+    }
+    .opcionRegistro-h3{
+        font-size: 20px;
+    }
+}
+@media (max-width:1400px){
+    .opcionRegistro-h2{
+        font-size: 17px;
+    }
+    .opcionRegistro-h3{
+        font-size: 15px;
+    }
+    .opcionRegistro-p{
+        font-size: 12px;
+    }
+    .imgTrabajador, .imgEmpleador{
+        max-height: 190px;
+    }
+}
+@media (max-width:900px){
+    .opcionRegistro-p{
+        max-width: none;
+        font-size: 15px;
+        text-align: center;
+    }
+    .imgTrabajador, .imgEmpleador{
+        max-height: 210px;
+    }
+}

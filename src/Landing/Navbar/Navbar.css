@@ -18,15 +18,22 @@
 .mostrar{
     max-height: 350px;
 }
+
 .navbar{
     display: flex;
     margin: 25px auto;
     justify-content: space-between;
     padding: 0 150px;
 }
+@media (min-width:1200px){
+    .navbar{
+        padding: 0 70px;
+    }
+}
 .icono{
     display: flex;
-} 
+    align-items: center;
+}
 
 .Arkitex{
     color: var(--color-principal);

@@ -3,13 +3,14 @@
     margin: 20px auto 15px;
 }
 
- .indexH1{
+.indexH1{
         font-size: 85px;
         margin: 20px auto;
-    }
-@media (min-width:1600px){
+}
+
+@media (max-width:1400px){
     .indexH1{
-        font-size: 80px;
+        font-size: 50px;
     }
 }
 .indexP1, .indexP2, .indexP3{
@@ -17,19 +18,21 @@
 }
 .indexP4{
     font-size: 14px;
+    max-width: 500px;
 }
 .indexP1{
     color: #FF9500;
 }
 .indexP2, .indexP4{
     color: #888888;
-    
 }
 
 .contenidoPrincipal{
-
     padding-top: 75px;
     width: 100%;
     text-align: center;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
