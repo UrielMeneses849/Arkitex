@@ -8,7 +8,7 @@ return(
  {/*Icono de menu para celulares*/}
  <div className="icono">
 
- <img src='./assets/Frame.svg' style={{width: '72px'}}/>
+ <img src='./assets/Frame.svg' style={{width: '60px'}}/>
           <h2 className='Arkitex'>ARKITEX</h2>
 
  </div>
