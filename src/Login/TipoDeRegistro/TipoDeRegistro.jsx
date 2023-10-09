@@ -2,6 +2,7 @@ import Trabajador from "/assets/Trabajador.png";
 import Empleador from "/assets/EMPLEADOR.png";
 import { Button, Grid } from "@mui/material";
 import './TipoRegistro.css';
+import { Link } from "react-router-dom";
 export default function TipoDeRegistro() {
     return (
         <Grid item xs={1} px={{ xs: 0, md: 5, lg: 15, xl: 20 }} mt={{ xs: '1rem', md: '0rem' }} >
@@ -15,7 +16,9 @@ export default function TipoDeRegistro() {
                         alignItems={{ xs: "center", md: 'start' }}>
                         <h3 className="opcionRegistro-h3">Trabajador</h3>
                         <p className="opcionRegistro-p">Regístrate, difunde tu trabajo y aumenta tus ofertas</p>
-                        <Button variant="contained" sx={{backgroundColor:'#fff',color:'#FF9500'}} >Registrarse</Button>
+                        <Link to='/RegistroTrabajador'>
+                            <Button variant="contained" sx={{backgroundColor:'#fff',color:'#FF9500'}} >Registrarse</Button>
+                        </Link>
                     </Grid>
                     <Grid item xs={1} sx={{textAlign:'center'}}>
                         <img src={Trabajador} className="imgEmpleador" />
@@ -28,7 +31,9 @@ export default function TipoDeRegistro() {
                     <Grid item xs={1} display={"flex"} gap={"1rem"} flexDirection={"column"} alignItems={{ xs: "center", md: 'start' }}>
                         <h3 className="opcionRegistro-h3">Empleador</h3>
                         <p className="opcionRegistro-p">Reencuentra a la persona adecuada para realizar tu remodelación</p>
-                        <Button variant="contained" sx={{backgroundColor:'#fff',color:'#FF9500'}} >Registrarse</Button>
+                        <Link to='/RegistroEmpleador'>
+                            <Button variant="contained" sx={{backgroundColor:'#fff',color:'#FF9500'}} >Registrarse</Button>
+                        </Link>
                     </Grid>
                     <Grid item xs={1} display={{md:'none', xs:'block'}} sx={{textAlign:'center'}}>
                         <img src={Empleador} className="imgEmpleador" />

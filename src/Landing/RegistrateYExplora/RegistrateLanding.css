@@ -1,0 +1,17 @@
+.imgEmpleadorLanding{
+    width: 200px;
+}
+.regTitulo h2{
+    font-size: 35px;
+}
+.regTitulo p:first-of-type{
+    font-size: 15px;
+    color: #999999;
+    font-weight: bold;
+}
+.regTitulo p:last-of-type{
+    color: #484848;
+}
+.regTitulo h3{
+    font-size: 28px;
+}

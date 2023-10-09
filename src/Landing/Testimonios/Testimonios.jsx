@@ -1,6 +1,4 @@
 import { Box, Grid, Typography } from '@mui/material'
-import img1 from "/assets/Group.svg";
-import img2 from "/assets/representacion-3d-modelo-casa-removebg-preview 1.svg";
 import stars from "/assets/Group 109.svg";
 import stars2 from "/assets/Group 110.svg";
 import calendario from "/assets/Vector.svg";
@@ -10,12 +8,7 @@ function Testimonios() {
         <>
             {/*Testimonios*/}
             <Box width={'100%'} position={'relative'}>
-                <Box display={'flex'} justifyContent={{ xs: 'center', md: 'space-between' }}
-                    position={'absolute'} zIndex={'1'} width={'100%'}>
-                    <img src={img2} className='img'></img>
-                    <img src={img1} className='img'></img>
-                </Box>
-                <Box bgcolor={'#D9D9D9'} padding={'3rem'} top={{ xs: '20rem', sm: '21rem' }} position={'relative'}>
+                <Box bgcolor={'#D9D9D9'} padding={'3rem'} top={{ xs: '20rem', sm: '21rem' }}>
                     <Typography variant='h2' fontSize={'2.4rem'} fontWeight={'bold'} >
                         Testimonios
                     </Typography>

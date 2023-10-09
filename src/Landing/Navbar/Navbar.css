@@ -25,9 +25,15 @@
     justify-content: space-between;
     padding: 0 150px;
 }
-@media (min-width:1200px){
+@media (max-width:900px){
     .navbar{
-        padding: 0 70px;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+@media (max-width:1400px){
+    .navbar{
+        padding: 0 40px;
     }
 }
 .icono{
@@ -40,4 +46,9 @@
     margin-left: 20px;
     font-size: 30px;
     font-weight: 700;
+}
+@media (max-width:1400px){
+    .Arkitex{
+        font-size: 20px;
+    }
 }

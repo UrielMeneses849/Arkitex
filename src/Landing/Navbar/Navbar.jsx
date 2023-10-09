@@ -21,7 +21,7 @@ export default function Navbar() {
       </Grid>
       {/*Enlaces de la barra de navegacion*/}
       <Grid className='navegacion' component={"nav"} maxHeight={{ md: "200px" }} display={"flex"}
-        flexDirection={{ xs: "column", md: "row" }} gap={"2rem"}>
+        flexDirection={{ xs: "column", md: "row" }} gap={"2rem"} marginBottom={{xs:'1rem',md:'0'}}>
         {/*Estos son otros componentes*/}
         <Anchor textoAnchor='Destacados'></Anchor>
         <Anchor textoAnchor='Testimonios'></Anchor>
