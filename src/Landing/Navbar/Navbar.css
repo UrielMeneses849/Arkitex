@@ -18,19 +18,37 @@
 .mostrar{
     max-height: 350px;
 }
+
 .navbar{
     display: flex;
     margin: 25px auto;
     justify-content: space-between;
     padding: 0 150px;
 }
+@media (max-width:900px){
+    .navbar{
+        flex-direction: column;
+        align-items: center;
+    }
+}
+@media (max-width:1400px){
+    .navbar{
+        padding: 0 40px;
+    }
+}
 .icono{
     display: flex;
-} 
+    align-items: center;
+}
 
 .Arkitex{
     color: var(--color-principal);
     margin-left: 20px;
     font-size: 30px;
     font-weight: 700;
+}
+@media (max-width:1400px){
+    .Arkitex{
+        font-size: 20px;
+    }
 }
