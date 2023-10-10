@@ -2,7 +2,7 @@ import { Grid, Button } from '@mui/material';
 import './Navbar.css';
 import Anchor from './Anchor/Anchor';
 import { Link } from 'react-router-dom';
-import menu2 from '/assets/menu1.svg'
+import menu2 from './assets/menu1.svg'
 
 export default function Navbar() {
   function menu() {
