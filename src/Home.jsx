@@ -26,7 +26,6 @@ export default function Home() {
                     <Route path='/Arkitex' element={<Landing />} />
                     <Route path='/Login' element={<Login />} />
                     <Route path='/RegistroEmpleador' element={<RegistroEmpleador />} />
-                    <Route path='/RegistroTrabajador' element={<RegistroEmpleador2 />} />
                     <Route path='/RegistroTrabajador' element={<RegistroTrabajador />} />
 
                 </Routes>
