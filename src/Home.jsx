@@ -3,7 +3,8 @@ import Landing from "./Landing/Landing"
 import Login from "./Login/Login";
 import RegistroEmpleador from "./RegistroEmpleador/RegistroEmpleador";
 import RegistroTrabajador from "./RegistroTrabajador/RegistroTrabajador";
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { createHashRouter, RouterProvider } from 'react-router-dom'
 import { createTheme } from "@mui/material";
 // import RegistroEmpleador2 from "./RegistroEmpleador/RegistroEmpleador2";
 
@@ -16,21 +17,43 @@ const theme = createTheme({
     }
 });
 
+const router = createHashRouter([
+    {
+        path: '/',
+        element: <Landing />
+    },
+    {
+        path: '/Arkitex/Login',
+        element: <Login />
+    },
+    {
+        path: '/Arkitex/RegistroEmpleador',
+        element: <RegistroEmpleador />
+    },
+    {
+        path: '/Arkitex/RegistroTrabajador',
+        element: <RegistroTrabajador />
+    }
+
+])
+
 export default function Home() {
     return (
         <ThemeProvider theme={theme}>
-            <Router>
+            {/* <Router>
 
                 <Routes>
 
                     <Route path='/Arkitex' element={<Landing />} />
-                    <Route path='/Arkitex/Login' element={<Login />} />
-                    <Route path='/Arkitex/RegistroEmpleador' element={<RegistroEmpleador />} />
-                    <Route path='/Arkitex/RegistroTrabajador' element={<RegistroTrabajador />} />
+                    <Route path='/Login' element={<Login />} />
+                    <Route path='/RegistroEmpleador' element={<RegistroEmpleador />} />
+                    <Route path='/RegistroTrabajador' element={<RegistroTrabajador />} />
 
                 </Routes>
 
-            </Router>
+            </Router> */}
+
+            <RouterProvider router={router} />
         </ThemeProvider>
     )
 }

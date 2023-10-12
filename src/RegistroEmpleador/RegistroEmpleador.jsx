@@ -1,4 +1,4 @@
-import { Box, Button, Grid, InputAdornment, Step, StepConnector, StepContent, StepLabel, Stepper, TextField, stepConnectorClasses, styled } from "@mui/material";
+import { Box, Button, Grid, InputAdornment, Step, StepConnector, StepLabel, Stepper, TextField, stepConnectorClasses, styled } from "@mui/material";
 import * as React from 'react';
 import frame from '/assets/Group 161.png';
 import usuario from '/assets/Group 162.svg';
@@ -13,9 +13,9 @@ import Ubicacion from '/assets/ubicacion.svg';
 import Lapiz2 from '/assets/lapiz2.svg';
 import Img2 from '/assets/img2.svg';
 {/*Personalizacion de conector del step*/ }
-const QontoConnector = styled(StepConnector)(({ theme }) => ({
+const QontoConnector = styled(StepConnector)(() => ({
     [`& .${stepConnectorClasses.line}`]: {
-        borderColor: theme.palette.mode === 'dark' ? theme.palette.grey[800] : '#FF9500',
+        borderColor: '#FF9500',
         borderTopWidth: 3,
         borderRadius: 1,
         marginLeft: '13px',
