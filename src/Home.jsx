@@ -5,6 +5,7 @@ import RegistroEmpleador from "./RegistroEmpleador/RegistroEmpleador";
 import RegistroTrabajador from "./RegistroTrabajador/RegistroTrabajador";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { createTheme } from "@mui/material";
+// import RegistroEmpleador2 from "./RegistroEmpleador/RegistroEmpleador2";
 
 const theme = createTheme({
     palette: {
