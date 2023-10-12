@@ -5,6 +5,7 @@ import RegistroEmpleador from "./RegistroEmpleador/RegistroEmpleador";
 import RegistroTrabajador from "./RegistroTrabajador/RegistroTrabajador";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { createTheme } from "@mui/material";
+import RegistroEmpleador2 from "./RegistroEmpleador/RegistroEmpleador2";
 
 const theme = createTheme({
     palette: {
@@ -25,6 +26,7 @@ export default function Home() {
                     <Route path='/' element={<Landing />} />
                     <Route path='/Login' element={<Login />} />
                     <Route path='/RegistroEmpleador' element={<RegistroEmpleador />} />
+                    <Route path='/RegistroTrabajador' element={<RegistroEmpleador2 />} />
                     <Route path='/RegistroTrabajador' element={<RegistroTrabajador />} />
 
                 </Routes>
