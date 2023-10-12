@@ -2,7 +2,7 @@ import { Grid, Button } from '@mui/material';
 import './Navbar.css';
 import Anchor from './Anchor/Anchor';
 import { Link } from 'react-router-dom';
-import menu2 from '/assets/menu-svgrepo-com.svg'
+
 
 export default function Navbar() {
   function menu() {
@@ -13,11 +13,11 @@ export default function Navbar() {
     <div className='navbar'>
       {/*Icono de menu para celulares*/}
       <div className="icono">
-        <img src='./assets/Frame.svg' style={{ width: '72px' }} />
+        <img src='./assets/Frame.svg' style={{ width: '60px' }} />
         <h2 className='Arkitex'>ARKITEX</h2>
       </div>
       <Grid justifyContent={"center"} display={{ xs: "flex", md: "none" }}>
-        <img src={menu2} className='menu' onClick={menu}></img>
+        <img src={'/assets/menu1.svg'} className='menu' onClick={menu}></img>
       </Grid>
       {/*Enlaces de la barra de navegacion*/}
       <Grid className='navegacion' component={"nav"} maxHeight={{ md: "200px" }} display={"flex"}

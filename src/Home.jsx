@@ -23,7 +23,7 @@ export default function Home() {
 
                 <Routes>
 
-                    <Route path='/' element={<Landing />} />
+                    <Route path='/Arkitex' element={<Landing />} />
                     <Route path='/Login' element={<Login />} />
                     <Route path='/RegistroEmpleador' element={<RegistroEmpleador />} />
                     <Route path='/RegistroTrabajador' element={<RegistroEmpleador2 />} />

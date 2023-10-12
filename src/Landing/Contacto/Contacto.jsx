@@ -8,14 +8,14 @@ export default function Contacto() {
             <Box backgroundColor='black' color='white' display='flex' flexDirection='column' justifyContent='space-around'
             height='200px' padding='3rem'>
                 <Box display='flex' alignItems='center' gap='1rem'>
-                    <img src={img}></img>
-                    <p>Arkitex S.A de C.V</p>
+                    <img src={img} style={{width: "32px"}}></img>
+                    <p style={{color: "#fafafa", fontWeight: "700"}}>Arkitex S.A de C.V</p>
                 </Box>
                 <Box margin='auto'>
                     <img src={redes}></img>
                 </Box>
                 <Box margin='auto'>
-                    <p>arkitex@gmail.com   |   5587974638</p>
+                    <p style={{color: "#fafafa", fontWeight: "600", fontSize: "24px"}}>arkitex@gmail.com   |   5587974638</p>
                 </Box>
             </Box>
         </>

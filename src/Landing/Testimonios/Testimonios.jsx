@@ -13,10 +13,10 @@ function Testimonios() {
                         Testimonios
                     </Typography>
                     <Grid container columns={{ xs: 1, md: 3 }} marginTop={'1.5rem'} gap={'4rem'} flexWrap={'nowrap'}
-                        flexDirection={{ xs: 'column', md: 'row' }}>
-                        <Grid item xs={1} bgcolor={'#FAFAFA'} padding={'2rem'} boxShadow={"4px 4px 4px #00000040"}
-                            borderRadius={'5px'} height={'420px'} display={'flex'} flexDirection={'column'} justifyContent={'space-between'}>
-                            <Box>
+                        flexDirection={{ xs: 'column', md: 'row' }} >
+                        <Grid item xs={1} bgcolor={'#FAFAFA'} padding={'2rem'} boxShadow={"4px 7px 17px 0px rgba(0, 0, 0, 0.10), 16px 26px 31px 0px rgba(0, 0, 0, 0.09), 36px 59px 42px 0px rgba(0, 0, 0, 0.05), 64px 105px 49px 0px rgba(0, 0, 0, 0.01), 101px 164px 54px 0px rgba(0, 0, 0, 0.00);"} 
+                            borderRadius={'5px'} height={'420px'} display={'flex'} flexDirection={'column'} justifyContent={'space-between'} >
+                            <Box >
                                 <Typography variant='body1' fontWeight={'bold'} fontSize={'1.2rem'}>Luis Sánchez</Typography>
                                 <img src={stars} className='estrellas'></img>
                             </Box>
@@ -28,7 +28,7 @@ function Testimonios() {
                                 <Typography color={'#888888'}>Hace 1 mes</Typography>
                             </Box>
                         </Grid>
-                        <Grid item xs={1} bgcolor={'#FAFAFA'} padding={'1rem'} boxShadow={"4px 4px 4px #00000040"}
+                        <Grid item xs={1} bgcolor={'#FAFAFA'} padding={'1rem'} boxShadow={"4px 7px 17px 0px rgba(0, 0, 0, 0.10), 16px 26px 31px 0px rgba(0, 0, 0, 0.09), 36px 59px 42px 0px rgba(0, 0, 0, 0.05), 64px 105px 49px 0px rgba(0, 0, 0, 0.01), 101px 164px 54px 0px rgba(0, 0, 0, 0.00)"}
                             borderRadius={'5px'} height={'420px'} display={'flex'} flexDirection={'column'} justifyContent={'space-between'}>
                             <Box>
                                 <Typography variant='body1' fontWeight={'bold'} fontSize={'1.2rem'}>Manuel Sánchez</Typography>
@@ -42,7 +42,7 @@ function Testimonios() {
                                 <Typography color={'#888888'}>Hace 2 semanas</Typography>
                             </Box>
                         </Grid>
-                        <Grid item xs={1} bgcolor={'#FAFAFA'} padding={'1rem'} boxShadow={"4px 4px 4px #00000040"}
+                        <Grid item xs={1} bgcolor={'#FAFAFA'} padding={'1rem'} boxShadow={"4px 7px 17px 0px rgba(0, 0, 0, 0.10), 16px 26px 31px 0px rgba(0, 0, 0, 0.09), 36px 59px 42px 0px rgba(0, 0, 0, 0.05), 64px 105px 49px 0px rgba(0, 0, 0, 0.01), 101px 164px 54px 0px rgba(0, 0, 0, 0.00)"}
                             borderRadius={'5px'} height={'420px'} display={'flex'} flexDirection={'column'} justifyContent={'space-between'}>
                             <Box>
                                 <Typography variant='body1' fontWeight={'bold'} fontSize={'1.2rem'}>Uriel Meneses</Typography>

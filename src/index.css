@@ -2,8 +2,10 @@
 Agregada al body linea 38
 */
 
-:root {
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,700&family=Poppins:wght@400;500;600;700;800&display=swap');
 
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
   color-scheme: light dark;
@@ -27,3 +29,41 @@ body {
   margin: 0;
 }
 
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: black;
+    background-color: #ffffff;
+  }
+
+}
+/*Nuevos estilos*/
+@media(min-width:899px){
+  #root{
+    height: 100vh;
+  }
+}
+@media (max-width:900px){
+  #root{
+    height: 100%;
+  }
+}
+p,h1,h2,h3,h4{
+  margin: 0;
+  padding: 0;
+}
+img{
+  width: 100%;
+}
+.indexH1,  .login__h3, .login, .indexP3{
+  color: #000000 !important;
+}
+.login__h2{
+  color: #FF9500;
+}
