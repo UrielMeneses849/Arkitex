@@ -4,6 +4,7 @@ import img2 from "/assets/representacion-3d-modelo-casa-removebg-preview 1.svg";
 import Trabajador from "/assets/Trabajador.png";
 import Empleador from "/assets/EMPLEADOR.png";
 import './RegistrateLanding.css';
+import { Link } from 'react-router-dom';
 function RegistrateLanding() {
     return (
         <>
@@ -24,7 +25,9 @@ function RegistrateLanding() {
                         <p>Difunde tu trabajo y encuentra ofertas laborales</p>
                     </Box>
                     <img src={Empleador} className="imgEmpleadorLanding"></img>
+                    <Link to='/Arkitex/RegistroEmpleador'>
                     <Button variant="contained" sx={{margin:'3rem 0', borderRadius:'25px',color:'#fff',padding:'0.8rem 3rem'}}>Registrarme</Button>
+                    </Link>
                 </Grid>
                 <Grid item xs={1} sx={{background:'#F1C27B',display:'flex',flexDirection:'column',
                 alignItems:'center', justifyContent:'space-between'}} padding='2rem 3rem'>
@@ -33,7 +36,9 @@ function RegistrateLanding() {
                         <p>Encuentra a alguien que realice el trabajo que buscas</p>
                     </Box>
                     <img src={Trabajador} className="imgEmpleadorLanding"></img>
+                    <Link to='/Arkitex/RegistroTrabajador'>
                     <Button variant="contained" sx={{margin:'3rem 0', borderRadius:'25px',color:'#fff',padding:'0.8rem 3rem'}}>Registrarme</Button>
+                    </Link>
                 </Grid>
             </Grid>
         </>

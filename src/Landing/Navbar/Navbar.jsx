@@ -28,7 +28,7 @@ export default function Navbar() {
         <Anchor textoAnchor='Acerca de Nosotros'></Anchor>
         <Anchor textoAnchor='Contacto'></Anchor>
       </Grid>
-      <Link to={'/Login'}>
+      <Link to={'/Arkitex/Login'}>
         <Button variant='contained' sx={{
           width: {xl:"300px"}, height: {xl:"60px",xs:'auto'}, borderRadius: "25px", fontWeight: "700",
           '&:hover': {
