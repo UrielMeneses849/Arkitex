@@ -6,6 +6,7 @@ import RegistroTrabajador from "./RegistroTrabajador/RegistroTrabajador";
 // import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { createHashRouter, RouterProvider } from 'react-router-dom'
 import { createTheme } from "@mui/material";
+import { AppProvider } from './RegistroTrabajador/AppContext';
 // import RegistroEmpleador2 from "./RegistroEmpleador/RegistroEmpleador2";
 
 const theme = createTheme({
