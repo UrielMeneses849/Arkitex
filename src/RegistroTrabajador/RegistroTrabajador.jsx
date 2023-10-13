@@ -1,233 +1,36 @@
-import * as React from 'react';
+
 import Box from '@mui/material/Box';
-import Stepper from '@mui/material/Stepper';
-import Step from '@mui/material/Step';
-import StepLabel from '@mui/material/StepLabel';
-import StepContent from '@mui/material/StepContent';
-import Button from '@mui/material/Button';
-import Paper from '@mui/material/Paper';
-import Typography from '@mui/material/Typography';
-import { Grid, InputAdornment, StepConnector, TextField, stepConnectorClasses, styled } from '@mui/material';
+
+import { Grid } from '@mui/material';
 import frame from '/assets/Group 161.png';
-import usuario from '/assets/Group 162.svg';
-import localizacion from '/assets/Group 126.svg';
-import lapiz from '/assets/Group 158.svg';
-import img from '/assets/Group 157.svg';
-import comprobacion from '/assets/comprobacion.svg';
-import usuarioForm from '/assets/UsuarioForm.svg';
-import Correo from '/assets/CorreoForm.svg';
-import Telefono from '/assets/TelefonoForm.svg';
-import Ubicacion from '/assets/ubicacion.svg';
-import Lapiz2 from '/assets/lapiz2.svg';
-import Img2 from '/assets/img2.svg';
+
+
 import './RegistroTrabajador.css'
 
 {/*Iconos del step*/ }
-const noSeleccionado = [
-  {
-    label: <img src={usuario}></img>
-  },
-  {
-    label: <img src={localizacion}></img>
-  },
-  {
-    label: <img src={lapiz}></img>,
-  },
-  {
-    label: <img src={img}></img>,
-  },
-];
 
-const seleccionado = [
-  {
-    label: <img src={usuario}></img>
-  },
-  {
-    label: <img src={Ubicacion}></img>
-  },
-  {
-    label: <img src={Lapiz2}></img>
-  },
-  {
-    label: <img src={Img2}></img>
-  }
-];
+
+
 {/*Personalizacion de los iconos*/ }
-const QontoStepIconRoot = styled('div')(({ theme, ownerState }) => ({
-  color: theme.palette.mode === 'dark' ? theme.palette.grey[700] : '#eaeaf0',
-  display: 'flex',
-  height: 22,
-  alignItems: 'center',
-  ...(ownerState.active && {
-    color: '#784af4',
-  }),
-  '& .QontoStepIcon-completedIcon': {
-    color: '#784af4',
-    zIndex: 1,
-    fontSize: 18,
-  },
-  '& .QontoStepIcon-circle': {
-    width: 8,
-    height: 8,
-    borderRadius: '50%',
-    backgroundColor: 'currentColor',
-  },
-}));
+
 {/*Cambio de iconos al estar activos y al finalizar*/ }
-function QontoStepIcon(props) {
-  const { active, completed, index } = props;
 
-  return (
-    <QontoStepIconRoot ownerState={{ active }}>
-      {completed ? (
-        <img src={comprobacion}></img>
-      ) : (
-        active ? (
-          seleccionado[index].label
-        ) : (
-          noSeleccionado[index].label
-        )
-      )}
-    </QontoStepIconRoot>
-  );
-}
-const steps = [
-  {
-    label: 'Select campaign settings',
-    description:
-    <form style={{ display: 'flex', flexDirection: 'column', gap: '1rem', }}>
-      <TextField aria-label='#FF9500' id="nombreEmpleado" label="Nombre(s)" variant="standard" type='text'
-        sx={{ width: '90%' }} name="nombres" InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">
-              <img src={usuarioForm} style={{ width: '1.2rem', margin: '0.5rem 0' }}></img>
-            </InputAdornment>
-          ),
-        }} />
-      <TextField id="apellidosEmpleado" label="Apellidos" variant="standard" type='text'
-        name="apellidos"
-        sx={{ width: '90%', color: 'red' }} InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">
-              <img src={usuarioForm} style={{ width: '1.2rem', margin: '0.5rem 0' }}></img>
-            </InputAdornment>
-          ),
-        }} />
-      <TextField label="Correo" variant="standard" type='mail'
-        name="correo"
-        sx={{ width: '90%', color: 'red' }} InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">
-              <img src={Correo} style={{ width: '1.5rem', "&:hover": { backgroundColor: 'red' } }}></img>
-            </InputAdornment>
-          ),
-        }} />
-      <TextField label="Teléfono de contacto" variant="standard" type='tel'
-        name="telefono"
-        sx={{ width: '90%', color: 'red' }} InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">
-              <img src={Telefono} style={{ width: '1.5rem', "&:hover": { backgroundColor: 'red' } }}></img>
-            </InputAdornment>
-          ),
-        }} />
-    </form>,
-    icono: <img src={usuario}></img>
-  },
-  {
-    label: 'Create an ad group',
-    description:
-      'An ad group contains one or more ads which target a shared set of keywords.',
-    icono: <img src={Ubicacion}></img>
-  },
-  {
-    label: 'Create an ad',
-    description: `Try out different ad text to see what brings in the most customers,
-              and learn how to enhance your ads using features like ad extensions.
-              If you run into any problems with your ads, find out how to tell if
-              they're running and how to resolve approval issues.`,
-    icono: <img src={Lapiz2}></img>
-  },
-  {
-    label: 'Create an ad',
-    description: `Try out different ad text to see what brings in the most customers,
-              and learn how to enhance your ads using features like ad extensions.
-              If you run into any problems with your ads, find out how to tell if
-              they're running and how to resolve approval issues.`,
-    icono: <img src={Img2}></img>
-  },
-];
+
 export default function RegistroTrabajador() {
-  const [activeStep, setActiveStep] = React.useState(0);
+ 
 
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
-
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
-
-  const handleReset = () => {
-    setActiveStep(0);
-  };
+ 
   return (
-    <Box bgcolor={"#DEF1FF"} component={'main'} padding={'3rem 1rem'} height='100vh' sx={{ boxSizing: 'border-box' }}>
-      <Grid container columns={2} height='100%' bgcolor='#F0F0F0'>
+    <Box bgcolor={"#fafafa"} component={'main'} padding={'3rem 3rem'} height='100vh' sx={{ boxSizing: 'border-box' }}>
+      <Grid container columns={2} height='100%' bgcolor='#F0F0F0' borderRadius={"20px"} boxShadow={" 4px 7px 17px 0px rgba(0, 0, 0, 0.10), 16px 26px 31px 0px rgba(0, 0, 0, 0.09), 36px 59px 42px 0px rgba(0, 0, 0, 0.05), 64px 105px 49px 0px rgba(0, 0, 0, 0.01), 101px 164px 54px 0px rgba(0, 0, 0, 0.00);"}>
         <Grid item xs={1} height='100%' width='50%'>
           <img src={frame} alt='frame' style={{ maxHeight: '100%', minWidth: '100%' }}></img>
         </Grid>
         <Grid item component={'div'} xs={1} width='50%' height='100%' padding='1rem 0'
           display='flex' flexDirection='column'>
-          <h1 style={{ textAlign: 'center', fontWeight: '500', fontSize:'30px' }}>Ingresa tus datos personales</h1>
+          <h1 style={{ textAlign: 'center', fontWeight: '700', fontSize:'40px', color: "#121212", margin: "30px auto"}}>Ingresa tus datos personales</h1>
 
-          <Box sx={{ maxWidth: 500}}>
-            <Stepper activeStep={activeStep} orientation="vertical" sx={{height:'100px'}}>
-              {steps.map((step, index) => (
-                <Step key={step.label}>
-                  <StepLabel
-                    optional={
-                      index === 2 ? (
-                        <Typography variant="caption">Last step</Typography>
-                      ) : null
-                    }
-                    icon={step.icono}
-                  >
-                    {step.label}
-                  </StepLabel>
-                  <StepContent>
-                    <Typography>{step.description}</Typography>
-                    <Box sx={{ mb: 2 }}>
-                      <div>
-                        <Button
-                          variant="contained"
-                          onClick={handleNext}
-                          sx={{ mt: 1, mr: 1 }}
-                        >
-                          {index === steps.length - 1 ? 'Finish' : 'Continue'}
-                        </Button>
-                        <Button
-                          disabled={index === 0}
-                          onClick={handleBack}
-                          sx={{ mt: 1, mr: 1 }}
-                        >
-                          Back
-                        </Button>
-                      </div>
-                    </Box>
-                  </StepContent>
-                </Step>
-              ))}
-            </Stepper>
-            {activeStep === steps.length && (
-              <Paper square elevation={0} sx={{ p: 3 }}>
-                <Typography>All steps completed - you&apos;re finished</Typography>
-                <Button onClick={handleReset} sx={{ mt: 1, mr: 1 }}>
-                  Reset
-                </Button>
-              </Paper>
-            )}
-          </Box>
+         
 
         </Grid>
       </Grid>
