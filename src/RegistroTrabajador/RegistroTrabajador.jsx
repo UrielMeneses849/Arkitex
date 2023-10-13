@@ -25,31 +25,31 @@ import './RegistroTrabajador.css'
 {/*Iconos del step*/ }
 const noSeleccionado = [
   {
-      label: <img src={usuario}></img>
+    label: <img src={usuario}></img>
   },
   {
-      label: <img src={localizacion}></img>
+    label: <img src={localizacion}></img>
   },
   {
-      label: <img src={lapiz}></img>,
+    label: <img src={lapiz}></img>,
   },
   {
-      label: <img src={img}></img>,
+    label: <img src={img}></img>,
   },
 ];
 
 const seleccionado = [
   {
-      label: <img src={usuario}></img>
+    label: <img src={usuario}></img>
   },
   {
-      label: <img src={Ubicacion}></img>
+    label: <img src={Ubicacion}></img>
   },
   {
-      label: <img src={Lapiz2}></img>
+    label: <img src={Lapiz2}></img>
   },
   {
-      label: <img src={Img2}></img>
+    label: <img src={Img2}></img>
   }
 ];
 {/*Personalizacion de los iconos*/ }
@@ -59,18 +59,18 @@ const QontoStepIconRoot = styled('div')(({ theme, ownerState }) => ({
   height: 22,
   alignItems: 'center',
   ...(ownerState.active && {
-      color: '#784af4',
+    color: '#784af4',
   }),
   '& .QontoStepIcon-completedIcon': {
-      color: '#784af4',
-      zIndex: 1,
-      fontSize: 18,
+    color: '#784af4',
+    zIndex: 1,
+    fontSize: 18,
   },
   '& .QontoStepIcon-circle': {
-      width: 8,
-      height: 8,
-      borderRadius: '50%',
-      backgroundColor: 'currentColor',
+    width: 8,
+    height: 8,
+    borderRadius: '50%',
+    backgroundColor: 'currentColor',
   },
 }));
 {/*Cambio de iconos al estar activos y al finalizar*/ }
@@ -78,30 +78,67 @@ function QontoStepIcon(props) {
   const { active, completed, index } = props;
 
   return (
-      <QontoStepIconRoot ownerState={{ active }}>
-          {completed ? (
-              <img src={comprobacion}></img>
-          ) : (
-              active ? (
-                  seleccionado[index].label
-              ) : (
-                  noSeleccionado[index].label
-              )
-          )}
-      </QontoStepIconRoot>
+    <QontoStepIconRoot ownerState={{ active }}>
+      {completed ? (
+        <img src={comprobacion}></img>
+      ) : (
+        active ? (
+          seleccionado[index].label
+        ) : (
+          noSeleccionado[index].label
+        )
+      )}
+    </QontoStepIconRoot>
   );
 }
 const steps = [
   {
     label: 'Select campaign settings',
-    description: `For each ad campaign that you create, you can control how much
-              you're willing to spend on clicks and conversions, which networks
-              and geographical locations you want your ads to show on, and more.`,
+    description:
+    <form style={{ display: 'flex', flexDirection: 'column', gap: '1rem', }}>
+      <TextField aria-label='#FF9500' id="nombreEmpleado" label="Nombre(s)" variant="standard" type='text'
+        sx={{ width: '90%' }} name="nombres" InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <img src={usuarioForm} style={{ width: '1.2rem', margin: '0.5rem 0' }}></img>
+            </InputAdornment>
+          ),
+        }} />
+      <TextField id="apellidosEmpleado" label="Apellidos" variant="standard" type='text'
+        name="apellidos"
+        sx={{ width: '90%', color: 'red' }} InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <img src={usuarioForm} style={{ width: '1.2rem', margin: '0.5rem 0' }}></img>
+            </InputAdornment>
+          ),
+        }} />
+      <TextField label="Correo" variant="standard" type='mail'
+        name="correo"
+        sx={{ width: '90%', color: 'red' }} InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <img src={Correo} style={{ width: '1.5rem', "&:hover": { backgroundColor: 'red' } }}></img>
+            </InputAdornment>
+          ),
+        }} />
+      <TextField label="Teléfono de contacto" variant="standard" type='tel'
+        name="telefono"
+        sx={{ width: '90%', color: 'red' }} InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <img src={Telefono} style={{ width: '1.5rem', "&:hover": { backgroundColor: 'red' } }}></img>
+            </InputAdornment>
+          ),
+        }} />
+    </form>,
+    icono: <img src={usuario}></img>
   },
   {
     label: 'Create an ad group',
     description:
       'An ad group contains one or more ads which target a shared set of keywords.',
+    icono: <img src={Ubicacion}></img>
   },
   {
     label: 'Create an ad',
@@ -109,6 +146,15 @@ const steps = [
               and learn how to enhance your ads using features like ad extensions.
               If you run into any problems with your ads, find out how to tell if
               they're running and how to resolve approval issues.`,
+    icono: <img src={Lapiz2}></img>
+  },
+  {
+    label: 'Create an ad',
+    description: `Try out different ad text to see what brings in the most customers,
+              and learn how to enhance your ads using features like ad extensions.
+              If you run into any problems with your ads, find out how to tell if
+              they're running and how to resolve approval issues.`,
+    icono: <img src={Img2}></img>
   },
 ];
 export default function RegistroTrabajador() {
@@ -132,11 +178,11 @@ export default function RegistroTrabajador() {
           <img src={frame} alt='frame' style={{ maxHeight: '100%', minWidth: '100%' }}></img>
         </Grid>
         <Grid item component={'div'} xs={1} width='50%' height='100%' padding='1rem 0'
-          display='flex' flexDirection='column' justifyContent='center'>
-          <h1 style={{ textAlign: 'center', fontWeight: '500' }}>Ingresa tus datos personales</h1>
+          display='flex' flexDirection='column'>
+          <h1 style={{ textAlign: 'center', fontWeight: '500', fontSize:'30px' }}>Ingresa tus datos personales</h1>
 
-          <Box sx={{ maxWidth: 400 }}>
-            <Stepper activeStep={activeStep} orientation="vertical">
+          <Box sx={{ maxWidth: 500}}>
+            <Stepper activeStep={activeStep} orientation="vertical" sx={{height:'100px'}}>
               {steps.map((step, index) => (
                 <Step key={step.label}>
                   <StepLabel
@@ -145,6 +191,7 @@ export default function RegistroTrabajador() {
                         <Typography variant="caption">Last step</Typography>
                       ) : null
                     }
+                    icon={step.icono}
                   >
                     {step.label}
                   </StepLabel>
