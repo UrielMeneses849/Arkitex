@@ -34,7 +34,6 @@ const router = createHashRouter([
         path: '/Arkitex/RegistroTrabajador',
         element: <RegistroTrabajador />
     }
-
 ])
 
 export default function Home() {

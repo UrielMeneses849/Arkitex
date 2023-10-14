@@ -1,9 +1,10 @@
 
 .css-14yr603-MuiStepContent-root{
-    border-left: 5px solid #FF9500 !important;
+    border-left: 5px dotted #FF9500 !important;
 }
 .css-8t49rw-MuiStepConnector-line{
     border-color: #FF9500 !important;
     border-left-width: 5px !important;
-    
+    border-style: dotted;
+    border-bottom: none;
 }

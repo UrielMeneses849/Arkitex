@@ -16,7 +16,7 @@ export default function TipoDeRegistro() {
                         alignItems={{ xs: "center", md: 'start' }}>
                         <h3 className="opcionRegistro-h3">Trabajador</h3>
                         <p className="opcionRegistro-p">Regístrate, sube y difunde tu trabajo y aumenta tus ofertas</p>
-                        <Link to='/Arkitex/RegistroEmpleador'>
+                        <Link to='/Arkitex/RegistroTrabajador'>
                             <Button variant="contained" sx={{backgroundColor:'#fff',color:'#FF9500', '&:hover': {
                                 backgroundColor:'#be7309',color:'#FFF'
                             }}} >Registrarse</Button>
@@ -33,7 +33,7 @@ export default function TipoDeRegistro() {
                     <Grid className="textosEmpl"item xs={1} display={"flex"} gap={"1rem"} flexDirection={"column"} alignItems={{ xs: "end", md: 'start' }} >
                         <h3 className="opcionRegistro-h3">Empleador</h3>
                         <p className="opcionRegistro-p">Reencuentra a la persona adecuada para realizar tu remodelación</p>
-                        <Link to='/Arkitex/RegistroTrabajador'>
+                        <Link to='/Arkitex/RegistroEmpleador'>
                             <Button variant="contained" sx={{backgroundColor:'#fff',color:'#FF9500', '&:hover': {
                                 backgroundColor:'#be7309',color:'#FFF'
                             }}} >Registrarse</Button>
