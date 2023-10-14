@@ -21,7 +21,7 @@
 
 .navbar{
     display: flex;
-    margin: 25px auto;
+    margin: 25px auto 0;
     justify-content: space-between;
     padding: 0 150px;
 }

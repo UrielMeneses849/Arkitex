@@ -1,4 +1,14 @@
 .img{
+    max-width: 600px;
+}
+.img:first-child{
+    margin-left: 5rem;
+}
+.img:last-child{
+    margin-right: 5rem;
+}
+@media screen and (max-width:1366px){
+.img{
     max-width: 400px;
 }
 .img:first-child{
@@ -7,7 +17,8 @@
 .img:last-child{
     margin-right: 1.5rem;
 }
-@media (max-width:900px){
+}
+@media screen and (max-width:900px){
     .img:last-child{
         display: none;
     }

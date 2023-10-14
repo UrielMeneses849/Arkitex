@@ -12,22 +12,22 @@ body{
     font-weight: bold;
 }
 
-@media (max-width:1499){
+
     .login__h2{
-        font-size: 30px;
+        font-size: 40px;
     }
     .login__h3{
-        font-size: 20px;
-        color: #FF9500;
+        font-size: 25px;
+        color: #121212;
     }
-}
-@media (min-width:1500px){
+
+@media screen and (max-width:1500px){
     .login__h2{
         font-size: 40px;
     }
     .login__h3{
         font-size: 30px;
-        color: #FF9500;
+        color: #121212;
     }
 }
 .hr{

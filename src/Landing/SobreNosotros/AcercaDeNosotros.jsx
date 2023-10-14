@@ -11,7 +11,7 @@ export default function AcercaDeNosotros() {
                     <img src={img} style={{width:'100%'}}></img>
                 </Grid>
                 <Grid item margin='auto' width={{md:'50%',xs:'auto'}}>
-                    <p style={{fontSize:'24px'}}>&quot;En Arkitex estamos comprometidos con la creación de hogares sólidos, funcionales y hermosos. Desde nuestros modestos comienzos, nos hemos dedicado a brindar soluciones excepcionales en el ámbito de la construcción doméstica. Nuestro equipo de expertos altamente calificados y apasionados comparte una visión común: transformar tus sueños en una realidad tangible&quot;</p>
+                    <p style={{fontSize:'24px', textAlign: "justify"}}>&quot;En Arkitex estamos comprometidos con la creación de hogares sólidos, funcionales y hermosos. Desde nuestros modestos comienzos, nos hemos dedicado a brindar soluciones excepcionales en el ámbito de la construcción doméstica. Nuestro equipo de expertos altamente calificados y apasionados comparte una visión común: transformar tus sueños en una realidad tangible&quot;</p>
                 </Grid>
             </Grid>
         </Box>

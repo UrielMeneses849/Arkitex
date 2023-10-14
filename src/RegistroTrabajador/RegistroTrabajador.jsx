@@ -1,4 +1,4 @@
-import * as React from 'react';
+
 import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
@@ -24,6 +24,7 @@ import Alcaldia from '/assets/alcaldia.svg';
 import Distancia from '/assets/distancia.svg';
 import './RegistroTrabajador.css';
 import Password from '/assets/password.svg';
+import React, { useState } from 'react';
 
 
 const QontoConnector = styled(StepConnector)(() => ({
@@ -210,7 +211,7 @@ const steps2 = [
 ];
 
 export default function RegistroTrabajador() {
-  const [activeStep, setActiveStep] = React.useState(0);
+  const [activeStep, setActiveStep] = useState(0);
 
 
   const handleNext = () => {

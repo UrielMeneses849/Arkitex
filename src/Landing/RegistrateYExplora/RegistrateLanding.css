@@ -1,5 +1,5 @@
 .imgEmpleadorLanding{
-    width: 200px;
+    width: 350px;
 }
 .regTitulo h2{
     font-size: 35px;
@@ -14,4 +14,12 @@
 }
 .regTitulo h3{
     font-size: 28px;
+}
+.xd{
+    height: 800px;
+}
+@media screen and (max-width: 1200px){
+    .imgEmpleadorLanding{
+        width: 200px;
+    }
 }

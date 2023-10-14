@@ -1,5 +1,5 @@
-import Trabajador from "/assets/Trabajador.png";
-import Empleador from "/assets/EMPLEADOR.png";
+import Trabajador from "/assets/Trabajador.svg";
+import Empleador from "/assets/EMPLEADOR.svg";
 import { Button, Grid } from "@mui/material";
 import './TipoRegistro.css';
 import { Link } from "react-router-dom";
