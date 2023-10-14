@@ -28,7 +28,7 @@ export default function IniciarSesion() {
                 </Box>
                 <Button variant="contained" sx={{borderRadius:'30px', padding:'1rem 3rem', color:'#fff'}}>Iniciar Sesión</Button>
                 <hr className="hr"/>
-                <p>¿Solo quieres dar un vistazo?</p>
+                <p style={{marginTop: "35px"}}>¿Solo quieres dar un vistazo?</p>
                 <Button variant="contained" sx={{borderRadius:'30px', padding:'1rem 3rem', color:'#fff'}}>Visitar Sitio</Button>
                 </div>
             </Grid>

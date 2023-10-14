@@ -1,5 +1,5 @@
-import Trabajador from "/assets/Trabajador.png";
-import Empleador from "/assets/EMPLEADOR.png";
+import Trabajador from "/assets/Trabajador.svg";
+import Empleador from "/assets/EMPLEADOR.svg";
 import { Button, Grid } from "@mui/material";
 import './TipoRegistro.css';
 import { Link } from "react-router-dom";
@@ -16,7 +16,7 @@ export default function TipoDeRegistro() {
                         alignItems={{ xs: "center", md: 'start' }}>
                         <h3 className="opcionRegistro-h3">Trabajador</h3>
                         <p className="opcionRegistro-p">Regístrate, difunde tu trabajo y aumenta tus ofertas</p>
-                        <Link to='/Arkitex/RegistroTrabajador'>
+                        <Link to='/Arkitex/RegistroEmpleador'>
                             <Button variant="contained" sx={{backgroundColor:'#fff',color:'#FF9500'}} >Registrarse</Button>
                         </Link>
                     </Grid>
@@ -31,7 +31,7 @@ export default function TipoDeRegistro() {
                     <Grid item xs={1} display={"flex"} gap={"1rem"} flexDirection={"column"} alignItems={{ xs: "center", md: 'start' }}>
                         <h3 className="opcionRegistro-h3">Empleador</h3>
                         <p className="opcionRegistro-p">Reencuentra a la persona adecuada para realizar tu remodelación</p>
-                        <Link to='/Arkitex/RegistroEmpleador'>
+                        <Link to='/Arkitex/RegistroTrabajador'>
                             <Button variant="contained" sx={{backgroundColor:'#fff',color:'#FF9500'}} >Registrarse</Button>
                         </Link>
                     </Grid>

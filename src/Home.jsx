@@ -23,7 +23,7 @@ const router = createHashRouter([
         element: <Landing />
     },
     {
-        path: '/Arkitex/Login',
+        path: '/Login',
         element: <Login />
     },
     {
