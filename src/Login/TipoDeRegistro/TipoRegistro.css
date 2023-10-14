@@ -6,14 +6,24 @@
     color: #fff;
     text-align: center;
     font-weight: 500;
-    font-size: 32px;
+    font-size: 42px;
+    margin: 20px auto 0;
 }
 .opcionRegistro-h3{
     color: #fff;
     font-weight: 500;
+    font-size: 26px;
 }
-
-
+.opcionRegistro-p{
+    font-size: 13px;
+    margin-bottom: 20px ;
+    font-weight: 700;
+    text-align: justify;
+}
+.textosEmpl{
+    padding-left: 25px;
+    display: flex;
+}
 
 @media screen and (max-width:1700px){
     .opcionRegistro-p{
