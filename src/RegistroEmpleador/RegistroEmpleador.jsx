@@ -55,10 +55,10 @@ const handleChangeConstruccion = (event) => {
                     <StepLabel>Area de trabajo </StepLabel>
                 </Step>
                 <Step>
-                    <StepLabel>Escoge</StepLabel>
+                    <StepLabel>Detalles</StepLabel>
                 </Step>
                 <Step>
-                    <StepLabel>Escoge </StepLabel>
+                    <StepLabel>Informacion Personal </StepLabel>
                 </Step>
           </Stepper>
             {/* Contenido de cada paso */}
