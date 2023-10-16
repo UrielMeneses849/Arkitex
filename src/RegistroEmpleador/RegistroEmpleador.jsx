@@ -5,6 +5,7 @@ import frame from '/assets/Group 161.png';
 import { useState } from 'react';
 // Componentes del formulario de registro
 import EscogerTrabajo from './EscogerTrabajo';
+import AreaTrabajo from './AreaTrabajo';
 
 // --------------------------------------------------------Funcion principal----------------------------------------------------------------------------------------------------------------------
 export default function RegistroTrabajador() {
@@ -20,6 +21,11 @@ const previousStep = () => {
     if(activeStep !== 0) 
         setActiveStep(currentStep => currentStep - 1);
 }
+
+const [valorConstruccion, setValorConstruccion] = useState('Construccion');
+const handleChangeConstruccion = (event) => {
+    setValorConstruccion(event.target.value);
+  };
 
   return (
     // Contenedor principal
@@ -46,7 +52,7 @@ const previousStep = () => {
                     <StepLabel>Elige</StepLabel>
                 </Step>
                 <Step>
-                    <StepLabel>Escoge </StepLabel>
+                    <StepLabel>Area de trabajo </StepLabel>
                 </Step>
                 <Step>
                     <StepLabel>Escoge</StepLabel>
@@ -58,8 +64,8 @@ const previousStep = () => {
             {/* Contenido de cada paso */}
         <Box margin={"30px auto"} style={{ height: "85%"}}>
 
-          {activeStep == 0 && <EscogerTrabajo />}
-          {activeStep == 1 && <h2>Hola2</h2>}
+          {activeStep == 0 && <EscogerTrabajo valorConstruccion={valorConstruccion} handleChangeConstruccion={handleChangeConstruccion}/>}
+          {activeStep == 1 && <AreaTrabajo valorConstruccion={valorConstruccion}/>}
           {activeStep == 2 && <h2>Hola3</h2>}
           {activeStep == 3 && <h2>Hola4</h2>}
           

@@ -1,23 +1,20 @@
+/* eslint-disable react/prop-types */
 import { Grid, Radio, RadioGroup } from "@mui/material";
 import construccion from '/assets/Construccion.svg';
 import remodelacion from '/assets/Remodelacion.svg';
-import { useState } from "react";
+// import { useState } from "react";
 
 // fUNCION PRINCIPAL
-export default function EscogerTrabajo(){
+export default function EscogerTrabajo(props){
 // Variable para enviar al backend
-    const [valorConstruccion, setValorConstruccion] = useState('Construccion');
-    const handleChangeConstruccion = (event) => {
-        setValorConstruccion(event.target.value);
-        console.log(valorConstruccion);
-      };
+    
       
 
 return(
 
 
 
-<RadioGroup row aria-label="ESCOGE" value={valorConstruccion} onChange={handleChangeConstruccion} width={"100%"}>
+<RadioGroup row aria-label="ESCOGE" value={props.valorConstruccion} onChange={props.handleChangeConstruccion} width={"100%"}>
 <Grid container columns={2} bgcolor='#552525' >
 
     <Grid item xs={1} bgcolor='#F1C27B' display={"flex"} flexDirection={"column"} sx={{width: "50%", height: "100%"}}>
