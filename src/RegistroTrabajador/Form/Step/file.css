@@ -1,0 +1,40 @@
+.field-group{
+    width:auto;
+}
+
+.file-field{
+    display: none;
+}
+.file-label{
+    padding: 100px 100px;
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #FF9500;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+.file-label i{
+    margin-right: 5px;
+}
+.file-field:focus + .file-label,
+.file-label:hover{
+    color: #FF9500;
+}
+
+.file-label.border{
+    border: 3px dotted #FF9500
+}
+.file-field:focus + .file-label.border,
+.file-label.border:hover{
+    border-color: #FF9900;
+}
+
+.file-label.background{
+    background-color: #229144;
+    color: #fff;
+}
+.file-field:focus + .file-label.background,
+.file-label.background:hover{
+    background: #0ac744;
+    color: #fff;
+}
