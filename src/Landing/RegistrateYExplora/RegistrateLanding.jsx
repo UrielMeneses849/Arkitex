@@ -25,7 +25,7 @@ function RegistrateLanding() {
                         <p>Difunde tu trabajo y encuentra ofertas laborales</p>
                     </Box>
                     <img src={Empleador} className="imgEmpleadorLanding"></img>
-                    <Link to='/Arkitex/RegistroTrabajador'>
+                    <Link to='/Arkitex/RegistroEmpleador'>
                     <Button variant="contained" sx={{margin:'3rem 0', borderRadius:'25px',color:'#fff',padding:'0.8rem 3rem'}}>Registrarme</Button>
                     </Link>
                 </Grid>
@@ -36,7 +36,7 @@ function RegistrateLanding() {
                         <p>Encuentra a alguien que realice el trabajo que buscas</p>
                     </Box>
                     <img src={Trabajador} className="imgEmpleadorLanding"></img>
-                    <Link to='/Arkitex/RegistroEmpleador'>
+                    <Link to='/Arkitex/RegistroTrabajador'>
                     <Button variant="contained" sx={{margin:'3rem 0', borderRadius:'25px',color:'#fff',padding:'0.8rem 3rem'}}>Registrarme</Button>
                     </Link>
                 </Grid>

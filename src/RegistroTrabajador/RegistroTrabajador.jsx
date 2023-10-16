@@ -1,13 +1,14 @@
+/* eslint-disable react/prop-types */
 
 import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
-import StepContent from '@mui/material/StepContent';
+// import StepContent from '@mui/material/StepContent';
 import Button from '@mui/material/Button';
-import Paper from '@mui/material/Paper';
-import Typography from '@mui/material/Typography';
-import { Checkbox, FormControlLabel, FormGroup, Grid, Input, InputAdornment, Slider, StepConnector, TextField, stepConnectorClasses, styled } from '@mui/material';
+// import Paper from '@mui/material/Paper';
+// import Typography from '@mui/material/Typography';
+import { Checkbox, FormControlLabel, Grid, InputAdornment, Slider, StepConnector, TextField, stepConnectorClasses, styled } from '@mui/material';
 import frame from '/assets/Group 161.png';
 import usuario from '/assets/Group 162.svg';
 import localizacion from '/assets/Group 126.svg';
@@ -48,3 +49,4 @@ export default function RegistroTrabajador() {
     </Box>
   )
 }
+
