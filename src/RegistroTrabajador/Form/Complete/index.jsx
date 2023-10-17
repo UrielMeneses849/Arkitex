@@ -6,7 +6,7 @@ const Img = styled.img`
   width: 70%;
 `;
 
-const Complete = () => {
+const Complete = (nombre) => {
   return (
     <Box
       sx={{
@@ -16,7 +16,7 @@ const Complete = () => {
         flexDirection: "column",
       }}
     >
-      <Typography variant="h4">!Gracias por tu registro¡</Typography>
+      <Typography variant="h4">!Gracias por tu registro¡ <br/><br/> {nombre.nombre}</Typography>
     </Box>
   );
 };

@@ -17,3 +17,12 @@ export function validarPassword(password) {
     return false;
   }
 }
+
+export function validarDelegacion(delegacion){
+  const length = delegacion.length;
+  if (length >= 3 && length < 20) {
+    return true;
+  } else {
+    return false;
+  }
+}

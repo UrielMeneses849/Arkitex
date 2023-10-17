@@ -12,7 +12,7 @@ import Distancia from '/assets/distancia.svg';
 import Password from '/assets/password.svg';
 const Step = ({ data, step, pasos }) => {
 
-  const { inputs, buttonText, onSubmit } = data;
+  const { inputs, buttonText, verificacion ,onSubmit, previousStep } = data;
   // Manejo de input file
   const inputFileRef = useRef(null);
   // Función para abrir el input file cuando se haga clic en el label
@@ -151,7 +151,7 @@ const Step = ({ data, step, pasos }) => {
         ) :
           step === 2 ? (
             <>
-              <legend style={{ textAlign: 'start', fontSize: '15px', color: '#888', margin: '0' }}>A que te dedicas</legend>
+              <legend style={{ textAlign: 'start', fontSize: '15px', color: '#888', margin: '0' }}>A que te dedicas (opcional)</legend>
               <div>
                 <h2 style={{ fontSize: '20px', fontWeight: 'bold' }}>Construcción</h2>
                 <div style={{ display: 'flex' }}>
@@ -187,7 +187,7 @@ const Step = ({ data, step, pasos }) => {
           ) :
             (
               <>
-                <legend style={{ textAlign: 'center', fontSize: '15px', color: '#888', marginTop: '1rem' }}>A que te dedicas</legend>
+                <legend style={{ textAlign: 'center', fontSize: '15px', color: '#888', marginTop: '1rem' }}>Completa tu información</legend>
                 <div className="field-group" style={{ minHeight: '300px', borderRadius: '25px', margin: '0 3rem',display:'flex',alignItems:'center' }}>
                   <input ref={inputFileRef} type='file' className="file-field" id='file' accept='.jpg, .png' onChange={(e) => inputs[0].onChange(e, 0, step, inputs[0].validator, pasos)}></input>
                   <label onClick={handleLabelClick} form="file" className="file-label border">
@@ -198,9 +198,12 @@ const Step = ({ data, step, pasos }) => {
               </>
             )
       }
-      <Button variant="contained" type="submit">
-        {buttonText}
-      </Button>
+      <Box sx={{display:'flex',gap:'1rem'}}>
+        <Button variant='outlined' onClick={(e) => previousStep(e,step)} sx={{display:step===0?'none':'flex'}}> Atras </Button>
+        <Button variant="contained" type="submit" sx={{color:'#fff',padding:'0.6rem 2rem'}} disabled={verificacion(step,data)}>
+          {buttonText}
+        </Button>
+      </Box>
     </Box>
   );
 };
