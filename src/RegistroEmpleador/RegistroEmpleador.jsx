@@ -26,7 +26,11 @@ const [valorConstruccion, setValorConstruccion] = useState('Construccion');
 const handleChangeConstruccion = (event) => {
     setValorConstruccion(event.target.value);
   };
+// ------------------------------------------------------Funciones de Manuel para Firebase
 
+
+
+// ------------------------------------------------------Funciones de Manuel para Firebase
   return (
     // Contenedor principal
     <Box bgcolor={"#fafafa"} component={'main'} padding={'2rem 1rem'} height='100vh' sx={{ boxSizing: 'border-box' }}>
