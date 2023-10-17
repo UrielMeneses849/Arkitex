@@ -5,14 +5,9 @@ import localizacion from '/assets/Group 126.svg';
 import lapiz from '/assets/Group 158.svg';
 import img from '/assets/Group 157.svg';
 import comprobacion from '/assets/comprobacion.svg';
-import usuarioForm from '/assets/UsuarioForm.svg';
-import Correo from '/assets/CorreoForm.svg';
-import Telefono from '/assets/TelefonoForm.svg';
 import Ubicacion from '/assets/ubicacion.svg';
 import Lapiz2 from '/assets/lapiz2.svg';
 import Img2 from '/assets/img2.svg';
-import Alcaldia from '/assets/alcaldia.svg';
-import Distancia from '/assets/distancia.svg';
 const QontoConnector = styled(StepConnector)(() => ({
   [`& .${stepConnectorClasses.line}`]: {
     borderColor: '#FF9500',
@@ -61,7 +56,7 @@ const seleccionado = [
 
 {/*Logica de los iconos*/ }
 function QontoStepIcon(props) {
-  const { active, completed, className, index } = props;
+  const { active, completed, index } = props;
 
   return (
     <>

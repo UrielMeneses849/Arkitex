@@ -10,7 +10,6 @@ export default function IniciarSesion() {
                 <div className="login">
                     <h2 className="login__h2" style={{color:'#FF9500'}}>Bienvenido a Arkitex</h2>
                     <h3 className="login__h3">Iniciar Sesion</h3>
-                
                 <Box
                 component="form"
                 sx={{
@@ -28,7 +27,7 @@ export default function IniciarSesion() {
                 </Box>
                 <Button variant="contained" sx={{borderRadius:'30px', padding:'1rem 3rem', color:'#fff'}}>Iniciar Sesión</Button>
                 <hr className="hr"/>
-                <p style={{marginTop: "35px"}}>¿Solo quieres dar un vistazo?</p>
+                <p className="soloDarUnVistazo">¿Solo quieres dar un vistazo?</p>
                 <Button variant="contained" sx={{borderRadius:'30px', padding:'1rem 3rem', color:'#fff'}}>Visitar Sitio</Button>
                 </div>
             </Grid>
