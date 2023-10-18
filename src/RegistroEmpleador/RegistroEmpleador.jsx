@@ -6,6 +6,8 @@ import { useState } from 'react';
 // Componentes del formulario de registro
 import EscogerTrabajo from './EscogerTrabajo';
 import AreaTrabajo from './AreaTrabajo';
+import DetallesTrabajo from './DetallesTrabajo';
+import CompletaInformacion from './CompletaInformacion';
 
 // --------------------------------------------------------Funcion principal----------------------------------------------------------------------------------------------------------------------
 export default function RegistroTrabajador() {
@@ -25,6 +27,7 @@ const previousStep = () => {
 const [valorConstruccion, setValorConstruccion] = useState('Construccion');
 const handleChangeConstruccion = (event) => {
     setValorConstruccion(event.target.value);
+    console.log(valorConstruccion);
   };
 // ------------------------------------------------------Funciones de Manuel para Firebase
 
@@ -45,7 +48,7 @@ const handleChangeConstruccion = (event) => {
     {/* Textos de ayuda dependiendo del paso en el que este */}
           {activeStep === 0 && <h4 style={{color: "#888888"}}>Escoge que tipo de trabajo necesitas</h4>}
           {activeStep === 1 && <h4 style={{color: "#888888"}}>¿Que area se va a trabajar?</h4> }
-          {activeStep === 2 && <h4 style={{color: "#888888"}}>Texto 3</h4> }
+          {activeStep === 2 && <h4 style={{color: "#888888"}}>Detalles del trabajo a realizar</h4> }
           {activeStep === 3 && <h4 style={{color: "#888888"}}>Texto 4</h4> }  
 
 
@@ -70,8 +73,8 @@ const handleChangeConstruccion = (event) => {
 
           {activeStep == 0 && <EscogerTrabajo valorConstruccion={valorConstruccion} handleChangeConstruccion={handleChangeConstruccion}/>}
           {activeStep == 1 && <AreaTrabajo valorConstruccion={valorConstruccion}/>}
-          {activeStep == 2 && <h2>Hola3</h2>}
-          {activeStep == 3 && <h2>Hola4</h2>}
+          {activeStep == 2 && <DetallesTrabajo />}
+          {activeStep == 3 && <CompletaInformacion />}
           
         </Box>
           <Box display={"flex"} justifyContent={"space-around"} margin={"10px auto 0"}>

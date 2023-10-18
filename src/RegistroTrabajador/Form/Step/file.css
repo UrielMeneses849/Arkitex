@@ -5,14 +5,6 @@
 .file-field{
     display: none;
 }
-.file-label{
-    padding: 100px 100px;
-    font-size: 1.4em;
-    font-weight: bold;
-    color: #FF9500;
-    cursor: pointer;
-    transition: 0.3s ease;
-}
 .file-label i{
     margin-right: 5px;
 }
@@ -21,7 +13,18 @@
     color: #FF9500;
 }
 
+.file-label{
+    padding: 70px 100px;
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #FF9500;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
 .file-label.border{
+    border: 3px dotted #FF9500
+}
+.file-border2{
     border: 3px dotted #FF9500
 }
 .file-field:focus + .file-label.border,
@@ -37,4 +40,18 @@
 .file-label.background:hover{
     background: #0ac744;
     color: #fff;
+}
+
+.file-label2{
+    padding: 0 20px;
+    font-size: 1em;
+    width: 80%;
+    height: 420px;
+    color: #121212;
+    cursor:text;
+    text-align:right;
+
+}
+.file-label2.border2{
+    border: 3px dotted #FF9500
 }

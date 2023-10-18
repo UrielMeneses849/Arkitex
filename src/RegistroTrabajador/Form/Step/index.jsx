@@ -16,9 +16,9 @@ const Step = ({ data, step, pasos }) => {
   // Manejo de input file
   const inputFileRef = useRef(null);
   // Función para abrir el input file cuando se haga clic en el label
-  const handleLabelClick = () => {
-    inputFileRef.current.click();
-  };
+    const handleLabelClick = () => {
+      inputFileRef.current.click();
+    };
 
   // const counterData = useContext(CounterContext);
   // console.log(inputs.type)
@@ -186,6 +186,7 @@ const Step = ({ data, step, pasos }) => {
             </>
           ) :
             (
+              // Input de imagen
               <>
                 <legend style={{ textAlign: 'center', fontSize: '15px', color: '#888', marginTop: '1rem' }}>Completa tu información</legend>
                 <div className="field-group" style={{ minHeight: '300px', borderRadius: '25px', margin: '0 3rem',display:'flex',alignItems:'center' }}>

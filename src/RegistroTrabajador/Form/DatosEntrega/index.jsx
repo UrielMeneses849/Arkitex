@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+/* eslint-disable react/prop-types */
+import { useState } from "react";
 import { TextField, Button, Box } from "@mui/material";
 import { validarInput } from "./validaciones";
 

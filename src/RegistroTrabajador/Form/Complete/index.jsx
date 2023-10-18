@@ -1,10 +1,8 @@
-import React from "react";
-import styled from "@emotion/styled";
+
+
 import { Box, Typography } from "@mui/material";
 
-const Img = styled.img`
-  width: 70%;
-`;
+
 
 const Complete = (nombre) => {
   return (
