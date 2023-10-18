@@ -7,6 +7,8 @@ import DatosEntrega from "./DatosEntrega";
 import Complete from "./Complete";
 import Stepper from "../Stepper";
 import Step from "./Step";
+import db from '../../Firebase/credenciales'
+import { addDoc,collection } from "firebase/firestore";
 
 //Validaciones
 import { validarDelegacion, validarEmail, validarPassword } from "./DatosUsuario/validaciones";
@@ -54,13 +56,50 @@ const Form = () => {
           });
         }
       }
+      
       console.log(datos);
     }
+    console.log(db);
+    db.collection("cities").doc("LA").set({
+      name: "Los Angeles",
+      state: "CA",
+      country: "USA"
+    })
+    .then(() => {
+      console.log("Document successfully written!");
+    })
+    .catch((error) => {
+      console.error("Error writing document: ", error);
+    });
   };
+  //-------------------------------------------------
+  /*function addDoc(){
+
+    db.collection("Contact").add({
+      name:datos[0],
+      apellido:datos[1],
+      correo:datos[2],
+      telefono:datos[3],
+      delegacion:datos[4],
+      distancia:datos[5],
+      password:datos[6],
+      tipodetrabajo:datos[7]+', '+datos[8],
+    }).then((docRef)=>{
+      const docId = docRef.id;
+      console.log(docId);
+
+    }).catch((err)=>{
+      console.log("Error"+err.message);
+    })
+  }*/
+  // Add a new document in collection "cities"
+
+  //-------------------------------------------------
 
   const handleChange = (element, position, currentStep, validator, pasos) => {
     let value = true;
     let valid;
+
     if (currentStep === 2) {
       if (element.target.value) {
         value = element.target.name;
