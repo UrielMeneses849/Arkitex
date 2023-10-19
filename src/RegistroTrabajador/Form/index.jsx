@@ -8,8 +8,6 @@ import Complete from "./Complete";
 import Stepper from "../Stepper";
 import Step from "./Step";
 import db from '../../Firebase/credenciales'
-import { addDoc,collection } from "firebase/firestore";
-
 //Validaciones
 import { validarDelegacion, validarEmail, validarPassword } from "./DatosUsuario/validaciones";
 import {
@@ -17,7 +15,9 @@ import {
   validarApellidos,
   validarTelefono,
 } from "./DatosPersonales/validaciones";
+import { addDoc, collection } from "@firebase/firestore";
 const Form = () => {
+  console.log(db);
   const [step, setStep] = useState(0);
   const [datos] = useState([])
   const previousStep = (e,step) => {
@@ -56,21 +56,21 @@ const Form = () => {
           });
         }
       }
-      
+      const enviar = collection(db,'prueba');
+      addDoc(enviar,{nombre:datos[0], apellidos:datos[1],correo:datos[2],telefono:datos[3],municipio:datos[4],distancia:datos[5],password:datos[6],tipoDeTrabajo:datos[7]+', '+datos[8]});
       console.log(datos);
     }
-    console.log(db);
-    db.collection("cities").doc("LA").set({
-      name: "Los Angeles",
-      state: "CA",
-      country: "USA"
-    })
-    .then(() => {
-      console.log("Document successfully written!");
-    })
-    .catch((error) => {
-      console.error("Error writing document: ", error);
-    });
+    // db.collection("cities").doc("LA").set({
+    //   name: "Los Angeles",
+    //   state: "CA",
+    //   country: "USA"
+    // })
+    // .then(() => {
+    //   console.log("Document successfully written!");
+    // })
+    // .catch((error) => {
+    //   console.error("Error writing document: ", error);
+    // });
   };
   //-------------------------------------------------
   /*function addDoc(){
