@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import Box from '@mui/material/Box';
-import {  Button, Grid, Step, StepLabel, Stepper,} from '@mui/material';
+import {  Button, Grid, Step, StepConnector, StepLabel, Stepper, stepConnectorClasses,styled} from '@mui/material';
 import frame from '/assets/Group 161.png';
 import { useState } from 'react';
 // Componentes del formulario de registro
@@ -8,14 +8,89 @@ import EscogerTrabajo from './EscogerTrabajo';
 import AreaTrabajo from './AreaTrabajo';
 import DetallesTrabajo from './DetallesTrabajo';
 import CompletaInformacion from './CompletaInformacion';
+import Complete from './Complete';
+//Iconos
+import usuario from '/assets/Group 162.svg';
+import localizacion from '/assets/Group 126.svg';
+import lapiz from '/assets/Group 158.svg';
+import img from '/assets/Group 157.svg';
+import comprobacion from '/assets/comprobacion.svg';
+import Ubicacion from '/assets/ubicacion.svg';
+import Lapiz2 from '/assets/lapiz2.svg';
+import Img2 from '/assets/img2.svg';
+import { Link } from 'react-router-dom';
+//Personalizacion del stepper
+const QontoConnector = styled(StepConnector)(() => ({
+  [`& .${stepConnectorClasses.line}`]: {
+    borderColor: '#FF9500',
+    borderTopWidth: 2,
+    borderRadius: 1,
+    // borderStyle: 'dotted',
+    // borderBottom: 'none',
+    // borderLeft: 'none',
+    // borderRight: 'none',
+    // backgroundSize: '10px 3x',
+    // backgroundRepeat: 'repeat-x',
+    // backgroundImage: 'linear-gradient(to right, black 33%, rgba(255,255,255,0) 0%)'
 
+  },
+}));
+{/*Iconos activos e inactivos*/ }
+const img10 = [
+  {
+    label: <img src={usuario} style={{ width: '35px' }}></img>
+  },
+  {
+    label: <img src={localizacion} style={{ width: '35px' }}></img>
+  },
+  {
+    label: <img src={lapiz} style={{ width: '35px' }}></img>,
+  },
+  {
+    label: <img src={img} style={{ width: '35px' }}></img>,
+  },
+];
+
+const seleccionado = [
+  {
+    label: <img src={usuario} style={{ width: '35px' }}></img>
+  },
+  {
+    label: <img src={Ubicacion} style={{ width: '35px' }}></img>
+  },
+  {
+    label: <img src={Lapiz2} style={{ width: '35px' }}></img>
+  },
+  {
+    label: <img src={Img2} style={{ width: '35px' }}></img>
+  }
+];
+
+{/*Logica de los iconos*/ }
+function QontoStepIcon(props) {
+  const { active, completed, index } = props;
+
+  return (
+    <>
+      {completed ? (
+        <img src={comprobacion} style={{ width: '35px' }}></img>
+      ) : (
+        active ? (
+          seleccionado[index].label
+        ) : (
+          img10[index].label
+        )
+      )}
+    </>
+  );
+}
 // --------------------------------------------------------Funcion principal----------------------------------------------------------------------------------------------------------------------
 export default function RegistroTrabajador() {
 //  Estado que almaceba la posicion del stepper
 const [activeStep, setActiveStep] = useState(0);
 // Funcion para avanzar de paso
 const nextStep = () => {
-    if(activeStep < 3) 
+    if(activeStep < 4) 
         setActiveStep(currentStep => currentStep + 1);
 }
 // Funcion para retroceder de paso
@@ -54,18 +129,26 @@ const handleChangeConstruccion = (event) => {
 
           <Box sx={{ width: '100%', marginTop: '2rem' }} margin='0'>
            
-          <Stepper activeStep={activeStep}>
+          <Stepper activeStep={activeStep} connector={<QontoConnector/>}>
                 <Step>
-                    <StepLabel>Elige</StepLabel>
+                    <StepLabel StepIconComponent={(stepProps) => (
+                      <QontoStepIcon {...stepProps} index={0} />
+                    )}>Elige</StepLabel>
                 </Step>
                 <Step>
-                    <StepLabel>Area de trabajo </StepLabel>
+                    <StepLabel StepIconComponent={(stepProps) => (
+                      <QontoStepIcon {...stepProps} index={1} />
+                    )}>Area de trabajo </StepLabel>
                 </Step>
                 <Step>
-                    <StepLabel>Detalles</StepLabel>
+                    <StepLabel StepIconComponent={(stepProps) => (
+                      <QontoStepIcon {...stepProps} index={2} />
+                    )}>Detalles</StepLabel>
                 </Step>
                 <Step>
-                    <StepLabel>Informacion Personal </StepLabel>
+                    <StepLabel StepIconComponent={(stepProps) => (
+                      <QontoStepIcon {...stepProps} index={3} />
+                    )}>Informacion Personal </StepLabel>
                 </Step>
           </Stepper>
             {/* Contenido de cada paso */}
@@ -75,13 +158,19 @@ const handleChangeConstruccion = (event) => {
           {activeStep == 1 && <AreaTrabajo valorConstruccion={valorConstruccion}/>}
           {activeStep == 2 && <DetallesTrabajo />}
           {activeStep == 3 && <CompletaInformacion />}
+          {activeStep == 4 && <Complete />}
           
         </Box>
           <Box display={"flex"} justifyContent={"space-around"} margin={"10px auto 0"}>
           {/* Botones de pasos */}
-            <Button variant='outlined' onClick={() => previousStep()}> Atras </Button>
-            <Button variant='contained' onClick={() => nextStep()}> {activeStep === 3 ? "Terminar" : "Siguiente"} </Button>
+            { activeStep < 4 && <Button variant='outlined' onClick={() => previousStep()}> Atras </Button>}
+            {activeStep < 4 && <Button variant='contained' onClick={() => nextStep()}> {activeStep === 3 ? "Terminar" : "Siguiente"} </Button>}
           </Box>
+          { activeStep == 4 &&      
+          <Link to="/Inicio">
+          <Button variant='contained'> Ir al inicio</Button>
+          </Link>   
+          }
           </Box>
         </Grid>
       </Grid>

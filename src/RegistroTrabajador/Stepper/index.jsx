@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 
 import { Box, Stepper, Step, StepLabel, styled, StepConnector, stepConnectorClasses } from "@mui/material";
 import usuario from '/assets/Group 162.svg';
@@ -61,7 +62,7 @@ const seleccionado = [
 
 {/*Logica de los iconos*/ }
 function QontoStepIcon(props) {
-  const { active, completed, className, index } = props;
+  const { active, completed, index } = props;
 
   return (
     <>

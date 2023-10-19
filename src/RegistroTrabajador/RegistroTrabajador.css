@@ -8,3 +8,13 @@
     border-style: dotted;
     border-bottom: none;
 }
+.css-mpulit{
+    text-align: start;
+}
+.frame{
+    background-image: url('/assets/Group 161.png');
+    background-size: cover;
+    background-position: center center;
+    border-radius: 20px 0 0 20px; /* Radio superior izquierdo e inferior izquierdo */
+
+}

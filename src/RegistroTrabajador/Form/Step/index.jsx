@@ -1,7 +1,5 @@
-import React, { useState, useContext, useRef } from "react";
+import { useRef } from "react";
 import { TextField, Button, Box, InputAdornment, Slider, FormControlLabel, Checkbox } from "@mui/material";
-import { CounterContext } from "../../Context";
-import useAuth from "../../Hooks/useAuth";
 import './file.css';
 //Iconos
 import usuarioForm from '/assets/UsuarioForm.svg';

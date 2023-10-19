@@ -2,6 +2,7 @@ import { Grid } from '@mui/material';
 import './Login.css';
 import IniciarSesion from './IniciarSesion/IniciarSesion';
 import TipoDeRegistro from './TipoDeRegistro/TipoDeRegistro';
+import { Link } from 'react-router-dom';
 export default function Login(){
 return(
 <>
