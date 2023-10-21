@@ -1,0 +1,37 @@
+.tituloTrabajador{
+    font-size: 55px;
+}
+.apartamento{
+    width: 180px;
+}
+@media (max-width:1200px){
+    .tituloTrabajador{
+        font-size: 40px;
+    }
+}
+@media (max-width:900px){
+    .linea{
+
+    }
+    .tituloTrabajador{
+        font-size: 30px;
+    }
+    
+}
+@media (max-width:600px){
+    .tituloTrabajador{
+        font-size: 20px;
+    }
+    .apartamento{
+        width: 140px;
+    }
+}
+
+@media (max-width:510px){
+    .tituloTrabajador{
+        font-size: 15px;
+    }
+    .apartamento{
+        width: 120px;
+    }
+}

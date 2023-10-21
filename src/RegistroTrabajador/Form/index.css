@@ -1,0 +1,8 @@
+.volver{
+    display: none;
+}
+@media (max-width:600px){
+    .volver{
+        display: block;
+    }
+}

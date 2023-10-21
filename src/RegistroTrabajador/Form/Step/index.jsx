@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { TextField, Button, Box, InputAdornment, Slider, FormControlLabel, Checkbox } from "@mui/material";
+import { TextField, Button, Box, InputAdornment, Slider, FormControlLabel, Checkbox, Link, useMediaQuery } from "@mui/material";
 import './file.css';
 //Iconos
 import usuarioForm from '/assets/UsuarioForm.svg';
@@ -18,10 +18,10 @@ const Step = ({ data, step, pasos }) => {
     inputFileRef.current.click();
   };
 
-  // const counterData = useContext(CounterContext);
-  // console.log(inputs.type)
-  // const access = useAuth("counterData.user.jwt");
-  // console.log(access);
+
+  const isSmallScreen = useMediaQuery('(max-width: 600px)');
+const sliderWidth = isSmallScreen ? '200px' : '350px';
+
   return (
     <Box
       component="form"
@@ -128,10 +128,15 @@ const Step = ({ data, step, pasos }) => {
             <p>Distancia máxima a transladarte en KM</p>
             <div style={{ display: 'flex', gap: '1rem' }}>
               <img src={Distancia} style={{ width: '30px' }}></img>
-              <Slider id='distancia' defaultValue={50} aria-label="Default" valueLabelDisplay="auto" sx={{ minWidth: '400px' }} 
-                margin="dense"
-              onChange={(e) => inputs[1].onChange(e, 1, step, inputs[1].validator, pasos)}
-              />
+              <Slider
+    id='distancia'
+    defaultValue={50}
+    aria-label="Default"
+    valueLabelDisplay="auto"
+    sx={{ minWidth: sliderWidth }}
+    margin="dense"
+    onChange={(e) => inputs[1].onChange(e, 1, step, inputs[1].validator, pasos)}
+  />
             </div>
             <TextField aria-label='#FF9500' id="password" label="Contraseña" variant="standard" type='password'
               sx={{ width: '90%' }} name="password" InputProps={{
@@ -152,7 +157,7 @@ const Step = ({ data, step, pasos }) => {
               <legend style={{ textAlign: 'start', fontSize: '15px', color: '#888', margin: '0' }}>A que te dedicas (opcional)</legend>
               <div>
                 <h2 style={{ fontSize: '20px', fontWeight: 'bold' }}>Construcción</h2>
-                <div style={{ display: 'flex' }}>
+                <div style={{ display: 'flex'}}>
                   <FormControlLabel control={<Checkbox onChange={(e) => inputs[0].onChange(e, 0, step, inputs[0].validator, pasos)} name="Colado y Loza"/>} label="Colado y Loza" />
                   <FormControlLabel control={<Checkbox onChange={(e) => inputs[1].onChange(e, 1, step, inputs[1].validator, pasos)}  name="Tercer Piso"/>} label="Tercer Piso" />
                   <FormControlLabel control={<Checkbox onChange={(e) => inputs[2].onChange(e, 2, step, inputs[2].validator, pasos)} name="Construcción Cocina"/>} label="Construcción Cocina " />
@@ -198,9 +203,11 @@ const Step = ({ data, step, pasos }) => {
       }
       <Box sx={{display:'flex',gap:'1rem'}}>
         <Button variant='outlined' onClick={(e) => previousStep(e,step)} sx={{display:step===0?'none':'flex'}}> Atras </Button>
+        <Link to={step===3? '/Arkitex/InicioTrabajador':''}>
         <Button variant="contained" type="submit" sx={{color:'#fff',padding:'0.6rem 2rem'}} disabled={verificacion(step,data)}>
           {buttonText}
         </Button>
+        </Link>
       </Box>
     </Box>
   );

@@ -3,6 +3,7 @@ import Landing from "./Landing/Landing"
 import Login from "./Login/Login";
 import RegistroEmpleador from "./RegistroEmpleador/RegistroEmpleador";
 import RegistroTrabajador from "./RegistroTrabajador/RegistroTrabajador";
+import InicioTrabajador from "./InicioTrabajador/InicioTrabajador";
 // import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { createHashRouter, RouterProvider } from 'react-router-dom'
 import { createTheme } from "@mui/material";
@@ -33,6 +34,10 @@ const router = createHashRouter([
     {
         path: '/Arkitex/RegistroTrabajador',
         element: <RegistroTrabajador />
+    },
+    {
+        path: '/Arkitex/InicioTrabajador',
+        element:<InicioTrabajador/>
     }
 ])
 

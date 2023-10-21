@@ -1,0 +1,25 @@
+.filtros{
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+    margin-top: 1rem;
+    width: 100%;
+    flex-wrap: wrap;
+}
+.filtros li{
+    list-style: none;
+    color:#767474;
+    transition: .2s ease;
+    position: relative;
+}
+.filtros li:hover{
+    color: black;
+    cursor: pointer;
+    font-weight: bold;
+}
+.filtros li:hover::after{
+    content: '.';
+    display: block;
+    font-size: 3rem;
+    line-height: 0;
+}

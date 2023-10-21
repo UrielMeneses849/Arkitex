@@ -7,7 +7,9 @@ import DatosEntrega from "./DatosEntrega";
 import Complete from "./Complete";
 import Stepper from "../Stepper";
 import Step from "./Step";
-import db from '../../Firebase/credenciales'
+import db from '../../Firebase/credenciales';
+import back from '/assets/backsvg 1.svg';
+import './index.css';
 //Validaciones
 import { validarDelegacion, validarEmail, validarPassword } from "./DatosUsuario/validaciones";
 import {
@@ -16,8 +18,10 @@ import {
   validarTelefono,
 } from "./DatosPersonales/validaciones";
 import { addDoc, collection } from "@firebase/firestore";
+import { Link } from "react-router-dom";
 const Form = () => {
-  console.log(db);
+  const [construccion] = useState([]);
+  const [remodelacion] = useState([]);
   const [step, setStep] = useState(0);
   const [datos] = useState([])
   const previousStep = (e,step) => {
@@ -56,45 +60,16 @@ const Form = () => {
           });
         }
       }
-      const enviar = collection(db,'prueba');
-      addDoc(enviar,{nombre:datos[0], apellidos:datos[1],correo:datos[2],telefono:datos[3],municipio:datos[4],distancia:datos[5],password:datos[6],tipoDeTrabajo:datos[7]+', '+datos[8]});
-      console.log(datos);
+      const enviar = collection(db,'prueba2');
+      const construct = construccion.join(', ');
+      const remo = remodelacion.join(', ');
+      console.log(construct);
+      addDoc(enviar,{nombre:datos[0], apellidos:datos[1],correo:datos[2],telefono:datos[3],municipio:datos[4],
+        distancia:datos[5],password:datos[6],construccion:construct,remodelacion:remo});
     }
-    // db.collection("cities").doc("LA").set({
-    //   name: "Los Angeles",
-    //   state: "CA",
-    //   country: "USA"
-    // })
-    // .then(() => {
-    //   console.log("Document successfully written!");
-    // })
-    // .catch((error) => {
-    //   console.error("Error writing document: ", error);
-    // });
+
   };
-  //-------------------------------------------------
-  /*function addDoc(){
 
-    db.collection("Contact").add({
-      name:datos[0],
-      apellido:datos[1],
-      correo:datos[2],
-      telefono:datos[3],
-      delegacion:datos[4],
-      distancia:datos[5],
-      password:datos[6],
-      tipodetrabajo:datos[7]+', '+datos[8],
-    }).then((docRef)=>{
-      const docId = docRef.id;
-      console.log(docId);
-
-    }).catch((err)=>{
-      console.log("Error"+err.message);
-    })
-  }*/
-  // Add a new document in collection "cities"
-
-  //-------------------------------------------------
 
   const handleChange = (element, position, currentStep, validator, pasos) => {
     let value = true;
@@ -103,6 +78,11 @@ const Form = () => {
     if (currentStep === 2) {
       if (element.target.value) {
         value = element.target.name;
+        if(position >= 9){
+          remodelacion.push(value);
+        }else{
+          construccion.push(value);
+        }
       }
     } else if (currentStep === 3) {
       if (element.target.files[0]) {
@@ -324,10 +304,15 @@ const Form = () => {
       }}
     >
       <FormSpace>
+      <Box display='flex' alignItems='center'>
+      <Link to='/Login' sx={{ textAlign: 'start' }}>
+            <img className="volver" src={back} style={{ width: '50px'}}></img>
+          </Link>
         {step === 0 && <h1 style={{ textAlign: 'center', fontWeight: '700', fontSize: '25px', margin: '1rem 0' }}>Agrega tus Datos Personales</h1>}
         {step === 1 && <h1 style={{ textAlign: 'center', fontWeight: '700', fontSize: '25px', margin: '1rem 0' }}>Agrega tu Zona de Trabajo</h1>}
         {step === 2 && <h1 style={{ textAlign: 'center', fontWeight: '700', fontSize: '25px', margin: '1rem 0' }}>Selecciona tus Especialidades</h1>}
         {step === 3 && <h1 style={{ textAlign: 'center', fontWeight: '700', fontSize: '25px', margin: '1rem 0' }}>Sube una Foto Tuya</h1>}
+      </Box>
         {step < 4 && <Stepper step={step} />}
         {/* {steps[step]} */}
         {step < 4 && pasos[step] && (
