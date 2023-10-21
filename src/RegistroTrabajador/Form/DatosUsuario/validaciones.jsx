@@ -1,3 +1,4 @@
+
 export const validarEmail = (email) => {
   // Expresión regular para validar direcciones de correo electrónico
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -18,7 +19,7 @@ export function validarPassword(password) {
   }
 }
 
-export function validarDelegacion(delegacion){
+export function validarDelegacion(delegacion) {
   const length = delegacion.length;
   if (length >= 3 && length < 20) {
     return true;

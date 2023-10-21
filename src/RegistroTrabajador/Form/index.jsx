@@ -7,7 +7,7 @@ import DatosEntrega from "./DatosEntrega";
 import Complete from "./Complete";
 import Stepper from "../Stepper";
 import Step from "./Step";
-import db from '../../Firebase/credenciales';
+import { db } from '../../Firebase/credenciales';
 import back from '/assets/backsvg 1.svg';
 import './index.css';
 //Validaciones
@@ -19,12 +19,23 @@ import {
 } from "./DatosPersonales/validaciones";
 import { addDoc, collection } from "@firebase/firestore";
 import { Link } from "react-router-dom";
+import { imagenUsuarios } from "../../Firebase/imagenes";
+import app from "../../Firebase/credenciales";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getStorage, ref, getDownloadURL } from "firebase/storage";
+
+
 const Form = () => {
+  
+  //Obtencion de img de usuario
+  const storage = getStorage(app);
+
   const [construccion] = useState([]);
   const [remodelacion] = useState([]);
   const [step, setStep] = useState(0);
   const [datos] = useState([])
-  const previousStep = (e,step) => {
+  const [error, setError] = useState('');
+  const previousStep = (e, step) => {
     e.preventDefault();
     let newStep = step - 1;
     setStep(newStep);
@@ -60,12 +71,34 @@ const Form = () => {
           });
         }
       }
-      const enviar = collection(db,'prueba2');
-      const construct = construccion.join(', ');
-      const remo = remodelacion.join(', ');
-      console.log(construct);
-      addDoc(enviar,{nombre:datos[0], apellidos:datos[1],correo:datos[2],telefono:datos[3],municipio:datos[4],
-        distancia:datos[5],password:datos[6],construccion:construct,remodelacion:remo});
+      const auth = getAuth(app);
+      const email = datos[2];
+      const password = datos[6];
+      let dato;
+      if (datos[datos.length - 1].name != '') {
+        (async () => {
+          const url = await imagenUsuarios(datos[datos.length - 1]);
+          dato = url;
+          const enviar = collection(db, 'prueba3');
+          const construct = construccion.join(', ');
+          const remo = remodelacion.join(', ');
+          createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+              // Signed in 
+              const id = userCredential.user.uid;
+              addDoc(enviar, { id: id, nombre: datos[0], apellidos: datos[1], telefono: datos[3], municipio: datos[4], distancia: datos[5], construccion: construct, remodelacion: remo, url: dato });
+            })
+            .catch(() => {
+              setError('El email ya esta registrado, vuelve a registrarte');
+            });
+            const httpsReference = ref(storage, url);
+            getDownloadURL(httpsReference)
+            .then((referencia)=>{
+              const img = document.getElementById('fotoPerfil');
+              img.setAttribute('src', url);
+            })
+        })();
+      }
     }
 
   };
@@ -78,19 +111,15 @@ const Form = () => {
     if (currentStep === 2) {
       if (element.target.value) {
         value = element.target.name;
-        if(position >= 9){
+        if (position >= 9) {
           remodelacion.push(value);
-        }else{
+        } else {
           construccion.push(value);
         }
       }
     } else if (currentStep === 3) {
       if (element.target.files[0]) {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          value = e.target.result;
-        };
-        reader.readAsDataURL(element.target.files[0]);
+        value = element.target.files[0];
       }
     } else {
       value = element.target.value;
@@ -305,21 +334,21 @@ const Form = () => {
       }}
     >
       <FormSpace>
-      <Box display='flex' alignItems='center'>
-      <Link to='/Login' sx={{ textAlign: 'start' }}>
-            <img className="volver" src={back} style={{ width: '50px'}}></img>
+        <Box display='flex' alignItems='center'>
+          <Link to='/Login' sx={{ textAlign: 'start' }}>
+            <img className="volver" src={back} style={{ width: '50px' }}></img>
           </Link>
-        {step === 0 && <h1 style={{ textAlign: 'center', fontWeight: '700', fontSize: '25px', margin: '1rem 0' }}>Agrega tus Datos Personales</h1>}
-        {step === 1 && <h1 style={{ textAlign: 'center', fontWeight: '700', fontSize: '25px', margin: '1rem 0' }}>Agrega tu Zona de Trabajo</h1>}
-        {step === 2 && <h1 style={{ textAlign: 'center', fontWeight: '700', fontSize: '25px', margin: '1rem 0' }}>Selecciona tus Especialidades</h1>}
-        {step === 3 && <h1 style={{ textAlign: 'center', fontWeight: '700', fontSize: '25px', margin: '1rem 0' }}>Sube una Foto Tuya</h1>}
-      </Box>
+          {step === 0 && <h1 style={{ textAlign: 'center', fontWeight: '700', fontSize: '25px', margin: '1rem 0' }}>Agrega tus Datos Personales</h1>}
+          {step === 1 && <h1 style={{ textAlign: 'center', fontWeight: '700', fontSize: '25px', margin: '1rem 0' }}>Agrega tu Zona de Trabajo</h1>}
+          {step === 2 && <h1 style={{ textAlign: 'center', fontWeight: '700', fontSize: '25px', margin: '1rem 0' }}>Selecciona tus Especialidades</h1>}
+          {step === 3 && <h1 style={{ textAlign: 'center', fontWeight: '700', fontSize: '25px', margin: '1rem 0' }}>Sube una Foto Tuya</h1>}
+        </Box>
         {step < 4 && <Stepper step={step} />}
         {/* {steps[step]} */}
         {step < 4 && pasos[step] && (
           <Step data={pasos[step]} step={step} pasos={pasos} />
         )}
-        {step === 4 && <Complete nombre={datos[0]} />}
+        {step === 4 && <Complete nombre={datos[0]} error={error} />}
       </FormSpace>
     </Box>
   );
