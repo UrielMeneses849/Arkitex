@@ -6,6 +6,9 @@ import { useState } from 'react';
 // Componentes del formulario de registro
 import EscogerTrabajo from './EscogerTrabajo';
 import AreaTrabajo from './AreaTrabajo';
+import DetallesTrabajo from './DetallesTrabajo';
+import CompletaInformacion from './CompletaInformacion';
+import Complete from './Complete';
 //Iconos
 import usuario from '/assets/Group 162.svg';
 import localizacion from '/assets/Group 126.svg';
@@ -15,6 +18,7 @@ import comprobacion from '/assets/comprobacion.svg';
 import Ubicacion from '/assets/ubicacion.svg';
 import Lapiz2 from '/assets/lapiz2.svg';
 import Img2 from '/assets/img2.svg';
+import { Link } from 'react-router-dom';
 //Personalizacion del stepper
 const QontoConnector = styled(StepConnector)(() => ({
   [`& .${stepConnectorClasses.line}`]: {
@@ -86,7 +90,7 @@ export default function RegistroTrabajador() {
 const [activeStep, setActiveStep] = useState(0);
 // Funcion para avanzar de paso
 const nextStep = () => {
-    if(activeStep < 3) 
+    if(activeStep < 4) 
         setActiveStep(currentStep => currentStep + 1);
 }
 // Funcion para retroceder de paso
@@ -98,6 +102,7 @@ const previousStep = () => {
 const [valorConstruccion, setValorConstruccion] = useState('Construccion');
 const handleChangeConstruccion = (event) => {
     setValorConstruccion(event.target.value);
+    console.log(valorConstruccion);
   };
 // ------------------------------------------------------Funciones de Manuel para Firebase
 
@@ -118,8 +123,8 @@ const handleChangeConstruccion = (event) => {
     {/* Textos de ayuda dependiendo del paso en el que este */}
           {activeStep === 0 && <h4 style={{color: "#888888"}}>Escoge que tipo de trabajo necesitas</h4>}
           {activeStep === 1 && <h4 style={{color: "#888888"}}>¿Que area se va a trabajar?</h4> }
-          {activeStep === 2 && <h4 style={{color: "#888888"}}>Texto 3</h4> }
-          {activeStep === 3 && <h4 style={{color: "#888888"}}>Texto 4</h4> }
+          {activeStep === 2 && <h4 style={{color: "#888888"}}>Detalles del trabajo a realizar</h4> }
+          {activeStep === 3 && <h4 style={{color: "#888888"}}>Texto 4</h4> }  
 
 
           <Box sx={{ width: '100%', marginTop: '2rem' }} margin='0'>
@@ -151,15 +156,21 @@ const handleChangeConstruccion = (event) => {
 
           {activeStep == 0 && <EscogerTrabajo valorConstruccion={valorConstruccion} handleChangeConstruccion={handleChangeConstruccion}/>}
           {activeStep == 1 && <AreaTrabajo valorConstruccion={valorConstruccion}/>}
-          {activeStep == 2 && <h2>Hola3</h2>}
-          {activeStep == 3 && <h2>Hola4</h2>}
+          {activeStep == 2 && <DetallesTrabajo />}
+          {activeStep == 3 && <CompletaInformacion />}
+          {activeStep == 4 && <Complete />}
           
         </Box>
           <Box display={"flex"} justifyContent={"space-around"} margin={"10px auto 0"}>
           {/* Botones de pasos */}
-            <Button variant='outlined' onClick={() => previousStep()}> Atras </Button>
-            <Button variant='contained' onClick={() => nextStep()}> {activeStep === 3 ? "Terminar" : "Siguiente"} </Button>
+            { activeStep < 4 && <Button variant='outlined' onClick={() => previousStep()}> Atras </Button>}
+            {activeStep < 4 && <Button variant='contained' onClick={() => nextStep()}> {activeStep === 3 ? "Terminar" : "Siguiente"} </Button>}
           </Box>
+          { activeStep == 4 &&      
+          <Link to="/Inicio">
+          <Button variant='contained'> Ir al inicio</Button>
+          </Link>   
+          }
           </Box>
         </Grid>
       </Grid>

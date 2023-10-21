@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { TextField, Button, Box } from "@mui/material";
 import { validarEmail, validarPassword } from "./validaciones";
 
+// eslint-disable-next-line react/prop-types
 const DatosUsuario = ({ updateStep }) => {
   const [email, setEmail] = useState({
     value: "",

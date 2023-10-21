@@ -14,9 +14,9 @@ const Step = ({ data, step, pasos }) => {
   // Manejo de input file
   const inputFileRef = useRef(null);
   // Función para abrir el input file cuando se haga clic en el label
-  const handleLabelClick = () => {
-    inputFileRef.current.click();
-  };
+    const handleLabelClick = () => {
+      inputFileRef.current.click();
+    };
 
 
   const isSmallScreen = useMediaQuery('(max-width: 600px)');
@@ -189,6 +189,7 @@ const sliderWidth = isSmallScreen ? '200px' : '350px';
             </>
           ) :
             (
+              // Input de imagen
               <>
                 <legend style={{ textAlign: 'center', fontSize: '15px', color: '#888', marginTop: '1rem' }}>Completa tu información</legend>
                 <div className="field-group" style={{ minHeight: '300px', borderRadius: '25px', margin: '0 3rem',display:'flex',alignItems:'center' }}>
