@@ -2,7 +2,7 @@ import heart from '/assets/heart.svg';
 import usuario from '/assets/usuario.svg';
 import { Box } from '@mui/material';
 import './Navegacion.css';
-function Navegacion() {
+function Navegacion(Props) {
   return (
     <Box padding={{xs:'2rem 1rem 1.2rem 1rem',sm:'2rem 3rem 1.2rem 3rem'}} >
         <Box display='flex' justifyContent='space-between' paddingBottom='1rem' flexDirection={{xs:'column',sm:'row'}} alignItems={{xs:'center'}}>
@@ -13,6 +13,7 @@ function Navegacion() {
                 <p>|</p>
                 <p>Contactanos |</p>
                 <img style={{width:'25px'}} src={usuario}></img>
+                <p>{Props.nombre}</p>
             </Box>
         </Box>
         <hr style={{backgroundColor:'#767474'}}></hr>

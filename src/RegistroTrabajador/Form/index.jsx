@@ -18,15 +18,18 @@ import {
   validarTelefono,
 } from "./DatosPersonales/validaciones";
 import { addDoc, collection } from "@firebase/firestore";
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { imagenUsuarios } from "../../Firebase/imagenes";
 import app from "../../Firebase/credenciales";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
+//Redireccion
+import { useNavigate } from "react-router-dom";
 
 
 const Form = () => {
-  
+  const navigate = useNavigate();
+
   //Obtencion de img de usuario
   const storage = getStorage(app);
 
@@ -82,10 +85,11 @@ const Form = () => {
           const enviar = collection(db, 'prueba3');
           const construct = construccion.join(', ');
           const remo = remodelacion.join(', ');
+          let id;
           createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
               // Signed in 
-              const id = userCredential.user.uid;
+              id = userCredential.user.uid;
               addDoc(enviar, { id: id, nombre: datos[0], apellidos: datos[1], telefono: datos[3], municipio: datos[4], distancia: datos[5], construccion: construct, remodelacion: remo, url: dato });
             })
             .catch(() => {
@@ -93,10 +97,15 @@ const Form = () => {
             });
             const httpsReference = ref(storage, url);
             getDownloadURL(httpsReference)
-            .then((referencia)=>{
+            .then(()=>{
               const img = document.getElementById('fotoPerfil');
               img.setAttribute('src', url);
             })
+            setTimeout(() => {
+              navigate('/Arkitex/InicioTrabajador',{
+                state: { id: id, logged: true, user: auth }
+              });
+            }, 1000);
         })();
       }
     }

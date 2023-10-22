@@ -10,6 +10,7 @@ import Inicio from "./Inicio"
 // import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { createHashRouter, RouterProvider } from 'react-router-dom'
 import { createTheme } from "@mui/material";
+import { PrivateRoute } from "./PrivateRoute";
 // import RegistroEmpleador2 from "./RegistroEmpleador/RegistroEmpleador2";
 
 const theme = createTheme({
@@ -40,7 +41,9 @@ const router = createHashRouter([
     },
     {
         path: '/Arkitex/InicioTrabajador',
-        element:<InicioTrabajador/>
+        element:<PrivateRoute>
+            <InicioTrabajador />
+        </PrivateRoute>
     }
     ,
     {
