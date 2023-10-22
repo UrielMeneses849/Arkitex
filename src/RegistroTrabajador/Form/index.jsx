@@ -103,7 +103,7 @@ const Form = () => {
             })
             setTimeout(() => {
               navigate('/Arkitex/InicioTrabajador',{
-                state: { id: id, logged: true, user: auth }
+                state: { id: id, logged: true}
               });
             }, 1000);
         })();
