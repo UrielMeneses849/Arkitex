@@ -1,7 +1,45 @@
 import { Box, Button, Grid, TextField} from "@mui/material";
 import './IniciarSesion.css';
+//Firebase
+import app from "../../Firebase/credenciales";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { useState } from "react";
+import { validarEmail, validarPassword } from "../../RegistroTrabajador/Form/DatosUsuario/validaciones";
+import { useNavigate } from "react-router-dom";
 
 export default function IniciarSesion() {
+    const navigate = useNavigate();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [errorEmail, setErrorEmail] = useState(false);
+    const [error, setError] = useState('');
+    const handleEmailChange = (e)=>{
+        if(validarEmail(e.target.value)){
+            setEmail(e.target.value);
+            setErrorEmail(false);
+        }else{
+            setErrorEmail(true);
+        }
+    }
+    const handlePasswordChange = (e)=>{
+        setPassword(e.target.value);
+    }
+    const validarCredenciales= (e)=>{
+        e.preventDefault();
+        const auth = getAuth(app);
+        signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            console.log(userCredential.user.uid)
+            setTimeout(() => {
+                navigate('/Arkitex/InicioTrabajador',{
+                  state: { id: userCredential.user.uid, logged: true}
+                });
+              }, 500);
+        })
+        .catch(() => {
+            setError('Credenciales incorrectas. Por favor, intenta denuevo');
+        });
+    }
     return (
         <Grid item xs={1} height='100%'>
             <Grid boxShadow={"0px 31px 68px 0px rgba(0, 0, 0, 0.10), 0px 124px 124px 0px rgba(0, 0, 0, 0.09), 0px 279px 167px 0px rgba(0, 0, 0, 0.05), 0px 496px 198px 0px rgba(0, 0, 0, 0.01), 0px 774px 217px 0px rgba(0, 0, 0, 0.00)"} borderRadius={"50px"} display={"flex"}
@@ -21,11 +59,16 @@ export default function IniciarSesion() {
                 display={"flex"}
                 flexDirection={"column"}
                 alignItems={'center'}
+                onSubmit={validarCredenciales}
                 >
-                    <TextField  sx={{width:{md:'300px'}}}  aria-label='#FF9500' id="correo" label="Correo" variant="outlined" type='text'/>
-                    <TextField sx={{width:{md:'300px'}}} id="password" label="Contraseña" variant="outlined" type='password'/>
+                    <TextField onChange={handleEmailChange} helperText={errorEmail?'Email Invalido':''}
+                    error={errorEmail?true:false} sx={{width:{md:'300px'}}}  aria-label='#FF9500' id="correo"
+                    label="Correo" variant="outlined" type='text'
+                    />
+                    <TextField onChange={handlePasswordChange} sx={{width:{md:'300px'}}} id="password" label="Contraseña" variant="outlined" type='password'/>
+                    <Button type="submit" variant="contained" sx={{borderRadius:'30px', padding:'1rem 3rem', color:'#fff'}}>Iniciar Sesión</Button>
+                    {error?<p style={{color:'#D40505', fontWeight:'500',margin:'0'}}>{error}</p>:<></>}
                 </Box>
-                <Button variant="contained" sx={{borderRadius:'30px', padding:'1rem 3rem', color:'#fff'}}>Iniciar Sesión</Button>
                 <hr className="hr"/>
                 <p className="soloDarUnVistazo">¿Solo quieres dar un vistazo?</p>
                 <Button variant="contained" sx={{borderRadius:'30px', padding:'1rem 3rem', color:'#fff'}}>Visitar Sitio</Button>

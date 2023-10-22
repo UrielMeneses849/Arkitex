@@ -7,7 +7,6 @@ import DatosEntrega from "./DatosEntrega";
 import Complete from "./Complete";
 import Stepper from "../Stepper";
 import Step from "./Step";
-import { db } from '../../Firebase/credenciales';
 import back from '/assets/backsvg 1.svg';
 import './index.css';
 //Validaciones
@@ -17,6 +16,8 @@ import {
   validarApellidos,
   validarTelefono,
 } from "./DatosPersonales/validaciones";
+//Importaciones de firebase
+import { db } from '../../Firebase/credenciales';
 import { addDoc, collection } from "@firebase/firestore";
 import { Link} from "react-router-dom";
 import { imagenUsuarios } from "../../Firebase/imagenes";
@@ -28,6 +29,7 @@ import { useNavigate } from "react-router-dom";
 
 
 const Form = () => {
+  //Variable para redireccionar
   const navigate = useNavigate();
 
   //Obtencion de img de usuario
@@ -62,6 +64,7 @@ const Form = () => {
     e.preventDefault();
     let newStep = step + 1;
     setStep(newStep);
+    //Codigo que se ejecuta cuando se finaliza el registro
     if (newStep === 4) {
       // Inicializa un array para almacenar los valores
       for (const pasoKey in pasos) {
@@ -69,7 +72,7 @@ const Form = () => {
         if (paso.inputs) {
           paso.inputs.forEach(input => {
             if (input.value !== false) {
-              datos.push(input.value); // Agrega el valor al array
+              datos.push(input.value); // Agrega los datos del usuario al array datos
             }
           });
         }
@@ -77,11 +80,14 @@ const Form = () => {
       const auth = getAuth(app);
       const email = datos[2];
       const password = datos[6];
-      let dato;
-      if (datos[datos.length - 1].name != '') {
+      let dato ='';
+      //Verifica si se inserto una imagen
+      let url ='';
         (async () => {
-          const url = await imagenUsuarios(datos[datos.length - 1]);
-          dato = url;
+          if (datos[datos.length - 1].name != '') {
+            url = await imagenUsuarios(datos[datos.length - 1]);
+            dato = url;
+          }
           const enviar = collection(db, 'prueba3');
           const construct = construccion.join(', ');
           const remo = remodelacion.join(', ');
@@ -107,7 +113,7 @@ const Form = () => {
               });
             }, 1000);
         })();
-      }
+      
     }
 
   };
