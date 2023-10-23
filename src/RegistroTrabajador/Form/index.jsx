@@ -111,7 +111,7 @@ const Form = () => {
               navigate('/Arkitex/InicioTrabajador',{
                 state: { id: id, logged: true}
               });
-            }, 1000);
+            }, 2000);
         })();
       
     }

@@ -4,7 +4,7 @@ import './IniciarSesion.css';
 import app from "../../Firebase/credenciales";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
-import { validarEmail, validarPassword } from "../../RegistroTrabajador/Form/DatosUsuario/validaciones";
+import { validarEmail} from "../../RegistroTrabajador/Form/DatosUsuario/validaciones";
 import { useNavigate } from "react-router-dom";
 
 export default function IniciarSesion() {

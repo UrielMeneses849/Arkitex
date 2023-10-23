@@ -1,3 +1,4 @@
+
 .navInicioTrabajador p, .navInicioTrabajador img{
     cursor: pointer;
 }
@@ -8,4 +9,10 @@
 
 .heart:hover path {
     fill: black;
+}
+.perfil{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    text-decoration: none;
 }
