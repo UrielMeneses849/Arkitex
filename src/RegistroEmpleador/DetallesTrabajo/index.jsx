@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import '../../RegistroTrabajador/Form/Step/file.css';
 
-export default function DetallesTrabajo(){
+export default function DetallesTrabajo(props){
     const inputFileRef = useRef(null);
     const handleLabelClick = () => {
         inputFileRef.current.click();
@@ -14,12 +14,12 @@ return(
 
       <label onClick={handleLabelClick} form="file" className="file-label border">
       <span>Sube una foto del área de trabajo (opcional)</span>
-      <input type="file" ref={inputFileRef} accept='.jpg, .png'  />
+      <input type="file" ref={inputFileRef} accept='.jpg, .png' onChange={(e)=>props.handleChangeFotos(e)} />
       </label>
 
       <legend style={{  fontSize: '15px', color: '#888', margin: '1rem auto' }}>Agrega una descripcion con más detalle</legend>
-      <input ref={inputFileRef} type='text' className="file-label2 border2" onChange={console.log("xd")} style={{backgroundColor: "transparent"
-    , maxHeight: "150px"}}></input>
+      <input  ref={inputFileRef} type='text' className="file-label2 border2"  style={{backgroundColor: "transparent"
+    , maxHeight: "150px"}} onChange={(e)=>props.handleChangeDescripcion(e)}></input>
       
     </div>
     

@@ -7,8 +7,6 @@ import remodelacion from '/assets/Remodelacion.svg';
 // fUNCION PRINCIPAL
 export default function EscogerTrabajo(props){
 // Variable para enviar al backend
-    
-      
 
 return(
 
@@ -20,7 +18,7 @@ return(
     <Grid item xs={1} bgcolor='#F1C27B' display={"flex"} flexDirection={"column"} sx={{width: "50%", height: "100%"}}>
     <h3 style={{ margin: "30px auto", fontSize: "22px"}}>Construcción</h3>
     <img src={construccion} alt="Construccion" style={{width: "60%", margin: "30px auto"}}/>
-    <Radio value="Remodelacion" sx={{
+    <Radio value="Construcción" sx={{
     color: "#121212",
     '&.Mui-checked': {
       color: "#121212",
@@ -31,7 +29,7 @@ return(
     <Grid item xs={1} bgcolor={'#F97B22'} display={"flex"} flexDirection={"column"} sx={{width: "50%", height: "100%"}}>
     <h3 style={{ margin: "30px auto", fontSize: "22px"}}>Remodelación</h3>
     <img src={remodelacion} alt="Remodelacion" style={{width: "60%", margin: "30px auto"}}/>
-    <Radio value="Construccion" 
+    <Radio value="Remodelación"
   sx={{
     color: "#121212",
     '&.Mui-checked': {

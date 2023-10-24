@@ -10,7 +10,7 @@ import {
 
 
 // eslint-disable-next-line react/prop-types
-const CompletaInformacion = ({ updateStep }) => {
+const CompletaInformacion = (props) => {
   const [email, setEmail] = useState({
     value: "",
     valid: null,
@@ -22,24 +22,24 @@ const CompletaInformacion = ({ updateStep }) => {
 
   return (
     <Box
-      component="form"
-      autocomplete="off"
+      // component="form"
+      // autocomplete="off"
       sx={{
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         flexDirection: "column",
       }}
-      onSubmit={(e) => {
-        e.preventDefault();
-        if (email.valid && password.valid) {
-          console.log("Siguiente formulario");
-          console.log(email, password);
-          updateStep(1);
-        } else {
-          console.log("No hacer nada");
-        }
-      }}
+      // onSubmit={(e) => {
+      //   e.preventDefault();
+      //   if (email.valid && password.valid) {
+      //     console.log("Siguiente formulario");
+      //     console.log(email, password);
+      //     updateStep(1);
+      //   } else {
+      //     console.log("No hacer nada");
+      //   }
+      // }}
     >
 
         {/* iNPUTS*/}
@@ -51,11 +51,14 @@ const CompletaInformacion = ({ updateStep }) => {
         margin="dense"
         type="text"
         value={name.value}
+        name="nombre"
         onChange={(input) => {
           const value = input.target.value;
           const valid = validarNombre(value);
           setName({ value, valid });
+          props.handleChangeUsuario(input);
         }}
+        
         error={name.valid === false}
         helperText={
           name.valid === false &&
@@ -64,6 +67,7 @@ const CompletaInformacion = ({ updateStep }) => {
       />
       <TextField
         label="Apellidos"
+        name="apellidos"
         variant="outlined"
         fullWidth
         margin="dense"
@@ -73,6 +77,7 @@ const CompletaInformacion = ({ updateStep }) => {
           const value = input.target.value;
           const valid = validarApellidos(value);
           setLastName({ value, valid });
+          props.handleChangeUsuario(input);
         }}
         error={lastName.valid === false}
         helperText={
@@ -82,6 +87,7 @@ const CompletaInformacion = ({ updateStep }) => {
       />
       <TextField
         label="Número telefónico"
+        name="numero"
         variant="outlined"
         fullWidth
         margin="dense"
@@ -92,6 +98,7 @@ const CompletaInformacion = ({ updateStep }) => {
           const value = input.target.value;
           const valid = validarTelefono(value);
           setPhone({ value, valid });
+          props.handleChangeUsuario(input);
         }}
         error={phone.valid === false}
         helperText={
@@ -104,6 +111,7 @@ const CompletaInformacion = ({ updateStep }) => {
 
       <TextField
         label="Correo electrónico"
+        name="correo"
         variant="outlined"
         fullWidth
         margin="dense"
@@ -117,10 +125,12 @@ const CompletaInformacion = ({ updateStep }) => {
           const email = input.target.value;
           const valido = validarEmail(email);
           setEmail({ value: email, valid: valido });
+          props.handleChangeUsuario(input);
         }}
       />
       <TextField
         label="Contraseña"
+        name="password"
         variant="outlined"
         fullWidth
         margin="dense"
@@ -134,9 +144,9 @@ const CompletaInformacion = ({ updateStep }) => {
         onChange={(input) => {
           const password = input.target.value;
           setPassword({ value: password, valid: validarPassword(password) });
+          props.handleChangeUsuario(input);
         }}
       />
-      
     </Box>
   );
 };
