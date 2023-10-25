@@ -98,6 +98,7 @@ function QontoStepIcon(props) {
 }
 // --------------------------------------------------------Funcion principal----------------------------------------------------------------------------------------------------------------------
 export default function RegistroTrabajador() {
+  const navigate = useNavigate();
   const auth = getAuth(app);
   const storage = getStorage(app);
   //  Estado que al(maceba la posicion del stepper
@@ -205,12 +206,16 @@ export default function RegistroTrabajador() {
           .then((userCredential) => {
             // Signed in
             id = userCredential.user.uid;
-            addDoc(enviar, { id: id, nombre: datosUsuario.nombre, apellidos: datosUsuario.apellidos, telefono: datosUsuario.numero, area: areaResultado, url: url, decoracionConstruccion:valorConstruccion ,rol: 'Empleador' });
+            addDoc(enviar, { id: id, nombre: datosUsuario.nombre, apellidos: datosUsuario.apellidos, telefono: datosUsuario.numero, area: areaResultado, url: url, decoracionConstruccion:valorConstruccion ,rol: 'empleador' });
           })
           .catch(() => {
             setError('El email ya esta registrado, vuelve a registrarte');
           });
-      
+          setTimeout(() => {
+            navigate('/Arkitex/InicioEmpleador',{
+              state: { id: id, logged: true}
+            });
+          }, 2000);
     })();
     setActiveStep(currentStep => currentStep + 1);
   }

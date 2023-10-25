@@ -1,6 +1,6 @@
-import Navegacion from './Navegacion/Navegacion'
-import Header from './Header/Header';
-import Publicaciones from './Publicaciones/Publicaciones';
+import Navegacion from '../InicioTrabajador/Navegacion/Navegacion';
+import Header from '../InicioTrabajador/Header/Header';
+import Publicaciones from '../InicioTrabajador/Publicaciones/Publicaciones';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import app from '../Firebase/credenciales';
 import { collection, getDocs, query, where } from "firebase/firestore";
@@ -11,20 +11,26 @@ import Plus from '/assets/plus-circle-svgrepo-com 1.svg';
 const Icono = ()=>{
   return <img src={Plus} style={{height:'2rem'}}></img>
 }
-function InicioTrabajador() {
+function InicioEmpleador() {
   const navigate = useNavigate();
   const [nombre, setNombre] = useState('');
   const [img, setImg] = useState('');
   const { state } = useLocation();
   const { id } = state;
+  const cambio = ()=>{
+    setTimeout(() => {
+      navigate('CrearPublicacion',{
+        state: { id: id, logged: true}
+      });
+    }, 0);
+  }
   const db = getFirestore(app);
   window.onpopstate = function (event) {
     navigate('/Login', {
     });
   };
   const docRef = collection(db, "prueba3");
-  const q = query(docRef, where('id', '==', id)); // Reemplaza 'campo_uid' con el nombre real del campo que contiene el UID
-  // Utiliza async/await
+  const q = query(docRef, where('id', '==', id))
   getDocs(q)
     .then((querySnapshot) => {
       if (!querySnapshot.empty) {
@@ -35,18 +41,11 @@ function InicioTrabajador() {
         });
       }
     });
-    const cambio = ()=>{
-      setTimeout(() => {
-        navigate('CrearPublicacion',{
-          state: { id: id, logged: true}
-        });
-      }, 0);
-    }
-  const titulo = "Busca alguna obra, postúlate y aumenta tus oportunidades";
+  const titulo = "Explora perfiles y trabajos y encuentra un profesional";
   return (
     <>
       <Navegacion nombre={nombre} img={img} id={id} />
-      <Header titulo={titulo} />
+      <Header titulo={titulo}/>
       <Box className='filtros'>
         <li>Recomendado</li>
         <li>Pared</li>
@@ -58,13 +57,14 @@ function InicioTrabajador() {
         <li>Construcciones mayores</li>
       </Box>
       <Box display='flex' margin='3rem 0 3rem 6rem'>
-          <Button onClick={cambio} variant="contained" sx={{ color: '#fff', padding: '1rem 1rem' }} endIcon={<Icono />}>
+          <Button onClick={cambio} variant="contained" sx={{color:'#fff',padding:'1rem 1rem'}} endIcon={<Icono/>}>
             Publicar Trabajo
           </Button>
       </Box>
       <Publicaciones />
     </>
+
   )
 }
 
-export default InicioTrabajador
+export default InicioEmpleador

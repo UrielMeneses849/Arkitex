@@ -12,6 +12,8 @@ import Inicio from "./Inicio"
 import { createHashRouter, RouterProvider } from 'react-router-dom'
 import { createTheme } from "@mui/material";
 import { PrivateRoute } from "./PrivateRoute";
+import InicioEmpleador from "./InicioEmpleador/InicioEmpleador";
+import PublicacionEmpleador from "./PublicacionEmpleador/PublicacionEmpleador";
 // import RegistroEmpleador2 from "./RegistroEmpleador/RegistroEmpleador2";
 
 const theme = createTheme({
@@ -56,7 +58,18 @@ const router = createHashRouter([
         element: (<PrivateRoute>
             <PerfilTrabajador/>
             </PrivateRoute>)
-        
+    },
+    {
+        path:'Arkitex/InicioEmpleador',
+        element:(<PrivateRoute>
+            <InicioEmpleador/>
+        </PrivateRoute>)
+    },
+    {
+        path:'Arkitex/InicioEmpleador/CrearPublicacion',
+        element:(<PrivateRoute>
+            <PublicacionEmpleador/>
+        </PrivateRoute>)
     }
 ])
 
