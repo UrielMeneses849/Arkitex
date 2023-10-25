@@ -29,33 +29,34 @@ const router = createHashRouter([
         element: <Landing />
     },
     {
-        path: '/Login',
+        path: 'Login',
         element: <Login />
     },
     {
-        path: '/Arkitex/RegistroEmpleador',
+        path: 'Arkitex/RegistroEmpleador',
         element: <RegistroEmpleador />
     },
     {
-        path: '/Arkitex/RegistroTrabajador',
+        path: 'Arkitex/RegistroTrabajador',
         element: <RegistroTrabajador />
     },
     {
-        path: '/Arkitex/InicioTrabajador',
-        element:<PrivateRoute>
+        path: 'Arkitex/InicioTrabajador',
+        element:(<PrivateRoute>
             <InicioTrabajador />
-        </PrivateRoute>
+            </PrivateRoute>)
     }
     ,
     {
-        path: '/Inicio',
+        path: 'Inicio',
         element: <Inicio />
     },
     {
-        path:'/Arkitex/InicioTrabajador/PerfilTrabajador',
-        element: <PrivateRoute>
+        path:'Arkitex/InicioTrabajador/PerfilTrabajador',
+        element: (<PrivateRoute>
             <PerfilTrabajador/>
-        </PrivateRoute>
+            </PrivateRoute>)
+        
     }
 ])
 

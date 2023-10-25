@@ -7,7 +7,7 @@ function Navegacion(Props) {
   const navigate = useNavigate();
   const cambio = ()=>{
     setTimeout(() => {
-      navigate('/Arkitex/InicioTrabajador/PerfilTrabajador',{
+      navigate('Arkitex/InicioTrabajador/PerfilTrabajador',{
         state: { id: Props.id, logged: true}
       });
     }, );
