@@ -34,7 +34,7 @@ export default function IniciarSesion() {
                 navigate('/Arkitex/InicioTrabajador',{
                   state: { id: userCredential.user.uid, logged: true}
                 });
-              }, 500);
+              }, 1);
         })
         .catch(() => {
             setError('Credenciales incorrectas. Por favor, intenta denuevo');

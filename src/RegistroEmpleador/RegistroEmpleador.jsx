@@ -21,6 +21,16 @@ import Img2 from '/assets/img2.svg';
 import { Link } from 'react-router-dom';
 import { validarApellidos, validarNombre, validarTelefono } from '../RegistroTrabajador/Form/DatosPersonales/validaciones';
 import { validarEmail, validarPassword } from '../RegistroTrabajador/Form/DatosUsuario/validaciones';
+//Firebase
+import { db } from '../Firebase/credenciales';
+import { imagenUsuarios } from '../Firebase/imagenes';
+import app from '../Firebase/credenciales';
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getStorage, ref, getDownloadURL } from "firebase/storage";
+//Redireccion
+import { useNavigate } from "react-router-dom";
+import { addDoc, collection } from 'firebase/firestore';
+
 //Personalizacion del stepper
 const QontoConnector = styled(StepConnector)(() => ({
   [`& .${stepConnectorClasses.line}`]: {
@@ -88,6 +98,8 @@ function QontoStepIcon(props) {
 }
 // --------------------------------------------------------Funcion principal----------------------------------------------------------------------------------------------------------------------
 export default function RegistroTrabajador() {
+  const auth = getAuth(app);
+  const storage = getStorage(app);
   //  Estado que al(maceba la posicion del stepper
   const [activeStep, setActiveStep] = useState(0);
   // Funcion para avanzar de paso
@@ -112,74 +124,95 @@ export default function RegistroTrabajador() {
     }
   };
   const [foto, setFoto] = useState({});
-  const handleChangeFoto = (e)=>{
+  const handleChangeFoto = (e) => {
     if (e.target.files[0]) {
       setFoto(e.target.files[0])
     }
   }
-  const [descripcion, setDescripcion]=useState('');
-  const handleChangeDescripcion = (e)=>{
+  const [descripcion, setDescripcion] = useState('');
+  const handleChangeDescripcion = (e) => {
     setDescripcion(e.target.value);
   }
   const [datosUsuario] = useState({
-    nombre:'',
-    apellidos:'',
-    numero:'',
-    correo:'',
-    password:''
+    nombre: '',
+    apellidos: '',
+    numero: '',
+    correo: '',
+    password: ''
   });
   const [validacion, setValidacion] = useState(true);
-  function validacionUsuario(){
-    console.log(validacion);
-    console.log(datosUsuario);
-    if(datosUsuario.nombre != '' && datosUsuario.apellidos != '' && datosUsuario.numero != '' && datosUsuario.correo != '' && datosUsuario.password != ''){
+  function validacionUsuario() {
+    if (datosUsuario.nombre != '' && datosUsuario.apellidos != '' && datosUsuario.numero != '' && datosUsuario.correo != '' && datosUsuario.password != '') {
       return false;
-    }else{
+    } else {
       return true;
     }
   }
-  const handleChangeUsuario = (e)=>{
-    if(e.target.name === 'nombre'){
-      if(e.target.value != '' && validarNombre(e.target.value)){
+  const handleChangeUsuario = (e) => {
+    if (e.target.name === 'nombre') {
+      if (e.target.value != '' && validarNombre(e.target.value)) {
         datosUsuario.nombre = e.target.value;
-      }else{
-        datosUsuario.nombre ='';
+      } else {
+        datosUsuario.nombre = '';
       }
-    }else if(e.target.name === 'apellidos'){
-      if(e.target.value != '' && validarApellidos(e.target.value)){
+    } else if (e.target.name === 'apellidos') {
+      if (e.target.value != '' && validarApellidos(e.target.value)) {
         datosUsuario.apellidos = e.target.value;
-      }else{
+      } else {
         datosUsuario.apellidos = '';
       }
-    }else if(e.target.name === 'numero'){
-      if(e.target.value != '' && validarTelefono(e.target.value)){
+    } else if (e.target.name === 'numero') {
+      if (e.target.value != '' && validarTelefono(e.target.value)) {
         datosUsuario.numero = e.target.value;
-      }else{
+      } else {
         datosUsuario.numero = ''
       }
-    }else if(e.target.name === 'correo'){
-      if(e.target.value != '' && validarEmail(e.target.value)){
+    } else if (e.target.name === 'correo') {
+      if (e.target.value != '' && validarEmail(e.target.value)) {
         datosUsuario.correo = e.target.value;
-      }else{
+      } else {
         datosUsuario.correo = '';
       }
-    }else{
-      if(e.target.value != '' && validarPassword(e.target.value)){
+    } else {
+      if (e.target.value != '' && validarPassword(e.target.value)) {
         datosUsuario.password = e.target.value;
-      }else{
+      } else {
         datosUsuario.password = '';
       }
     }
     setValidacion(validacionUsuario);
   }
+  const [datos] = useState([])
   {/*Obtencion de datos por Jose Luis, comente tambien los form de cada formulario que tenias para hacer uno global */ }
+  let [url] = useState('');
+  let [id] = useState('');
+  const [error, setError] = useState('');
   const obtenerDatos = (e) => {
     e.preventDefault();
-    console.log(valorConstruccion);
-    console.log(area);
-    console.log(foto);
-    console.log(descripcion);
-    console.log(datosUsuario);
+    const areaDC = area.filter((valor, indice, self) => {
+      return self.indexOf(valor) === indice;
+    });
+    const areaResultado = areaDC.join(', ');
+
+    (async () => {
+      console.log(foto.name)
+      if (foto.name != '') {
+        url = await imagenUsuarios(foto);
+      }
+        const enviar = collection(db, 'prueba3');
+        //Creacion de usuario
+        createUserWithEmailAndPassword(auth, datosUsuario.correo, datosUsuario.password)
+          .then((userCredential) => {
+            // Signed in
+            id = userCredential.user.uid;
+            addDoc(enviar, { id: id, nombre: datosUsuario.nombre, apellidos: datosUsuario.apellidos, telefono: datosUsuario.numero, area: areaResultado, url: url, decoracionConstruccion:valorConstruccion ,rol: 'Empleador' });
+          })
+          .catch(() => {
+            setError('El email ya esta registrado, vuelve a registrarte');
+          });
+      
+    })();
+    setActiveStep(currentStep => currentStep + 1);
   }
   // ------------------------------------------------------Funciones de Manuel para Firebase
 
@@ -240,15 +273,15 @@ export default function RegistroTrabajador() {
 
               {activeStep == 0 && <EscogerTrabajo valorConstruccion={valorConstruccion} handleChangeConstruccion={handleChangeConstruccion} />}
               {activeStep == 1 && <AreaTrabajo valorConstruccion={valorConstruccion} handleChangeArea={handleChangeAreaTrabajo} />}
-              {activeStep == 2 && <DetallesTrabajo handleChangeFotos={handleChangeFoto} handleChangeDescripcion={handleChangeDescripcion}/>}
-              {activeStep == 3 && <CompletaInformacion handleChangeUsuario={handleChangeUsuario}/>}
-              {activeStep == 4 && <Complete />}
+              {activeStep == 2 && <DetallesTrabajo handleChangeFotos={handleChangeFoto} handleChangeDescripcion={handleChangeDescripcion} />}
+              {activeStep == 3 && <CompletaInformacion handleChangeUsuario={handleChangeUsuario} />}
+              {activeStep == 4 && <Complete nombre={datosUsuario.nombre}/>}
 
               <Box display={"flex"} justifyContent={"space-around"} margin={"10px auto 0"}>
                 {/* Botones de pasos codigo agregado por mi. xd */}
                 {activeStep < 4 && <Button variant='outlined' onClick={() => previousStep()}> Atras </Button>}
                 {activeStep < 4 && <Button sx={{ display: activeStep === 3 ? "none" : "block" }} variant='contained' onClick={() => nextStep()}> Siguiente </Button>}
-                {activeStep === 3 && <Button disabled={validacion?true:false} variant='contained' sx={{ color: '#fff' }} type='submit'>Terminar</Button>}
+                {activeStep === 3 && <Button disabled={validacion ? true : false} variant='contained' sx={{ color: '#fff' }} type='submit'>Terminar</Button>}
               </Box>
             </Box>
             {/* <Box display={"flex"} justifyContent={"space-around"} margin={"10px auto 0"}>

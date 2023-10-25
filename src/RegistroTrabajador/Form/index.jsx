@@ -96,7 +96,7 @@ const Form = () => {
             .then((userCredential) => {
               // Signed in 
               id = userCredential.user.uid;
-              addDoc(enviar, { id: id, nombre: datos[0], apellidos: datos[1], telefono: datos[3], municipio: datos[4], distancia: datos[5], construccion: construct, remodelacion: remo, url: dato });
+              addDoc(enviar, { id: id, nombre: datos[0], apellidos: datos[1], telefono: datos[3], municipio: datos[4], distancia: datos[5], construccion: construct, remodelacion: remo, url: dato, rol:'Trabajador' });
             })
             .catch(() => {
               setError('El email ya esta registrado, vuelve a registrarte');
