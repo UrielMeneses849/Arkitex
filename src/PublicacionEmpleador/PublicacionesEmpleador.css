@@ -1,0 +1,16 @@
+.fondoElipses2{
+    background-image: url('/assets/fondoElipses.png') !important;
+    background-size: cover !important;
+    background-position: center center !important;
+    background: 15px;
+}
+
+.label-crear{
+    color: #989898;
+    text-align: start;
+    font-weight: 600;
+    margin: 1rem 0;
+}
+.css-1d6wzja-MuiButton-startIcon{
+    margin: 0 !important;
+}

@@ -8,11 +8,11 @@ import usuario from '/assets/usuario.svg';
 import { Box, Grid } from "@mui/material";
 import casa from '/assets/Group 68.svg';
 import Navegacion from "../InicioTrabajador/Navegacion/Navegacion";
-function PerfilTrabajador(props) {
+function PerfilTrabajador() {
   const { state } = useLocation();
   const { id } = state;
   const navigate = useNavigate();
-  window.onpopstate = function (event) {
+  window.onpopstate = function () {
     navigate('/Arkitex/InicioTrabajador', {
       state: { id: id, logged: true }
     });
@@ -47,7 +47,6 @@ function PerfilTrabajador(props) {
         onAuthStateChanged(auth, (user) => {
           setEmail(user.email);
         });
-
       }
     });
   // Accede al correo electrónico del usuario

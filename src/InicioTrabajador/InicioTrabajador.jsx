@@ -62,7 +62,7 @@ function InicioTrabajador() {
             Publicar Trabajo
           </Button>
       </Box>
-      <Publicaciones />
+      <Publicaciones/>
     </>
   )
 }

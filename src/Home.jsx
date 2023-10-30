@@ -14,6 +14,8 @@ import { createTheme } from "@mui/material";
 import { PrivateRoute } from "./PrivateRoute";
 import InicioEmpleador from "./InicioEmpleador/InicioEmpleador";
 import PublicacionEmpleador from "./PublicacionEmpleador/PublicacionEmpleador";
+import PerfilEmpleador from "./PerfilEmpleador/PerfilEmpleador";
+import PublicacionTrabajador from "./PublicacionTrabajador/PublicacionTrabajador";
 // import RegistroEmpleador2 from "./RegistroEmpleador/RegistroEmpleador2";
 
 const theme = createTheme({
@@ -21,6 +23,15 @@ const theme = createTheme({
         primary: {
             main: '#FF9500',
             blanco: '#FFF'
+        }
+    },
+    components: {
+        MuiFormHelperText: {
+            styleOverrides: {
+                root: {
+                    color: "#FF9500"
+                }
+            }
         }
     }
 });
@@ -47,6 +58,12 @@ const router = createHashRouter([
         element:(<PrivateRoute>
             <InicioTrabajador />
             </PrivateRoute>)
+    },
+    {
+        path: 'Arkitex/InicioTrabajador/CrearPublicacion',
+        element:(<PrivateRoute>
+            <PublicacionTrabajador/>
+        </PrivateRoute>)
     }
     ,
     {
@@ -63,6 +80,12 @@ const router = createHashRouter([
         path:'Arkitex/InicioEmpleador',
         element:(<PrivateRoute>
             <InicioEmpleador/>
+        </PrivateRoute>)
+    },
+    {
+        path:'Arkitex/InicioEmpleador/PerfilEmpleador',
+        element:(<PrivateRoute>
+            <PerfilEmpleador/>
         </PrivateRoute>)
     },
     {
