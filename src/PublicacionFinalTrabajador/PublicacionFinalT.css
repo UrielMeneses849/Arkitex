@@ -1,0 +1,13 @@
+.iconosTrabajador{
+    width:15px;
+}
+.iconosTrabajador:hover,.iconosTrabajador2:hover{
+    cursor: pointer;
+}
+.iconosTrabajador2 img{
+    width: 50px;
+}
+.iconosTrabajador2 span{
+    text-align: center;
+    font-size: 8px;
+}

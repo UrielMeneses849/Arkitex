@@ -45,7 +45,7 @@ function InicioTrabajador() {
   const titulo = "Busca alguna obra, postúlate y aumenta tus oportunidades";
   return (
     <>
-      <Navegacion nombre={nombre} img={img} id={id} />
+      <Navegacion nombre={nombre} img={img} id={id} ruta='InicioTrabajador/PerfilTrabajador'/>
       <Header titulo={titulo} />
       <Box className='filtros'>
         <li>Recomendado</li>

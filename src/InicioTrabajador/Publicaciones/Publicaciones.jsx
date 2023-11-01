@@ -37,7 +37,7 @@ export default function Publicaciones() {
             border: '1px solid #FF9500', borderRadius: '20px', padding: '1rem 2rem', textAlign: 'start',
             boxShadow: '4px 4px 4px 0px rgba(0, 0, 0, 0.25)', maxWidth: '350px', '&:hover': { cursor: 'pointer' }
           }}>
-          <p style={{color:'#FF9500'}}>{datos[claveExterna].titulo}</p>
+          <p style={{color:'#FF9500'}}>Realice - {datos[claveExterna].titulo}</p>
           <p>Presupuesto de: ${datos[claveExterna].presupuestoMin}</p>
           <p>A: ${datos[claveExterna].presupuestoMax}</p>
           <img style={{height:'300px'}} src={datos[claveExterna].fotos}></img>
