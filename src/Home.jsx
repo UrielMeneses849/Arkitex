@@ -6,7 +6,7 @@ import RegistroTrabajador from "./RegistroTrabajador/RegistroTrabajador";
 import InicioTrabajador from "./InicioTrabajador/InicioTrabajador";
 import PerfilTrabajador from "./PerfilTrabajador/PerfilTrabajador";
 // Inicio con feed
-import Inicio from "./Inicio"
+
 
 // import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { createHashRouter, RouterProvider } from 'react-router-dom'
@@ -66,10 +66,7 @@ const router = createHashRouter([
         </PrivateRoute>)
     }
     ,
-    {
-        path: 'Inicio',
-        element: <Inicio />
-    },
+   
     {
         path:'Arkitex/InicioTrabajador/PerfilTrabajador',
         element: (<PrivateRoute>
