@@ -26,7 +26,6 @@ const QontoConnector = styled(StepConnector)(() => ({
     // backgroundSize: '10px 3x',
     // backgroundRepeat: 'repeat-x',
     // backgroundImage: 'linear-gradient(to right, black 33%, rgba(255,255,255,0) 0%)'
-
   },
 }));
 {/*Iconos activos e inactivos*/ }

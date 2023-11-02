@@ -10,12 +10,18 @@ import casa from '/assets/Group 68.svg';
 import Navegacion from "../InicioTrabajador/Navegacion/Navegacion";
 function PerfilTrabajador() {
   const { state } = useLocation();
-  const { id } = state;
+  const { id, empleador } = state;
   const navigate = useNavigate();
   window.onpopstate = function () {
-    navigate('/Arkitex/InicioTrabajador', {
-      state: { id: id, logged: true }
-    });
+    if(empleador){
+      navigate('/Arkitex/InicioEmpleador', {
+        state: { id: id, logged: true }
+      });
+    }else{
+      navigate('/Arkitex/InicioTrabajador', {
+        state: { id: id, logged: true }
+      });
+    }
   };
   const auth = getAuth(app);
   const db = getFirestore(app);
@@ -53,17 +59,8 @@ function PerfilTrabajador() {
   //setDatos({correo:userRecord.email});
   return (
     <div>
-      <Navegacion nombre={datos.nombre} img={datos.url} id ={id}/>
+      <Navegacion nombre={datos.nombre} img={datos.url} id ={id} ruta={empleador?'InicioEmpleador/PerfilEmpleador':'InicioTrabajador/PerfilTrabajador'}/>
       <img src={datos.url ? datos.url : usuario} style={{ width: '150px', borderRadius: '50%' }}></img>
-      {/*datos.url*/}
-      {/* <p>{datos.nombre}</p>
-      <p>{datos.apellidos}</p>
-      <p>{email}</p>
-      <p>{datos.telefono}</p>
-      <p>{datos.municipio}</p>
-      <p>{datos.distancia}</p>
-      <p>{datos.construccion}</p>
-      <p>{datos.remodelacion}</p> */}
 
       <p style={{ fontSize: '20px', fontWeight: '500' }}>{datos.nombre + ' ' + datos.apellidos}</p>
       <Grid container columns={3} sx={{ margin: '3rem 0', display: 'flex', gap: '3rem', justifyContent: 'center' }}>

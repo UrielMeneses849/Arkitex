@@ -18,7 +18,6 @@ function InicioEmpleador() {
   const { state } = useLocation();
   const { id } = state;
   const cambio = () => {
-    console.log(id);
     setTimeout(() => {
       navigate('CrearPublicacion', {
         state: { id: id, logged: true }
@@ -51,7 +50,7 @@ function InicioEmpleador() {
   const titulo = "Explora perfiles y trabajos y encuentra un profesional";
   return (
     <>
-      <Navegacion nombre={nombre} img={img} id={id} />
+      <Navegacion nombre={nombre} img={img} id={id} ruta='InicioEmpleador/PerfilEmpleador'/>
       <Header titulo={titulo} />
       <Box className='filtros'>
         <li>Recomendado</li>
