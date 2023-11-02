@@ -11,7 +11,7 @@ import dinero from '/assets/dinero.svg';
 import styled from "styled-components";
 import { imagenPublicacionEmpleador } from "../Firebase/imagenes";
 import back from '/assets/backsvg 1.svg';
-import { validarDescripcion, validarFoto, validarPresupuestoMax, validarPresupuestoMin, validarTitulo } from "../Firebase/validaciones";
+import { validarDescripcion, validarFoto, validarPresupuestoMax, validarPresupuestoMin, validarTitulo, validarUbicacion } from "../Firebase/validaciones";
 const Icono = () => {
   return <img src={camara} ></img>
 }
@@ -33,19 +33,19 @@ function PublicacionEmpleador() {
   const { state } = useLocation();
   const { id } = state;
   const navigate = useNavigate();
-  const cambio = ()=>{
+  const cambio = () => {
     setTimeout(() => {
-      navigate('/Arkitex/InicioEmpleador/PerfilEmpleador',{
-        state: { id: id, logged: true}
+      navigate('/Arkitex/InicioEmpleador/PerfilEmpleador', {
+        state: { id: id, logged: true }
       });
-    }, );
+    },);
   }
-  const cambio2 = ()=>{
+  const cambio2 = () => {
     setTimeout(() => {
-      navigate('/Arkitex/InicioEmpleador',{
-        state: { id: id, logged: true}
+      navigate('/Arkitex/InicioEmpleador', {
+        state: { id: id, logged: true }
       });
-    }, );
+    },);
   }
   window.onpopstate = function () {
     localStorage.setItem("popstateExecuted", "true");
@@ -80,25 +80,26 @@ function PublicacionEmpleador() {
   });
   const [validacion, setValidacion] = useState(false);
   const [errores, setErrores] = useState({
-    titulo:false,
-    descripcion:false,
-    foto:false,
-    presupuestoMin:false,
-    presupuestoMax:false
+    titulo: false,
+    descripcion: false,
+    foto: false,
+    presupuestoMin: false,
+    presupuestoMax: false
   });
-  function validacionPublicacion(){
+  function validacionPublicacion() {
     setErrores((prevState) => ({
       ...prevState, // Clonamos el objeto previo
       ['titulo']: validarTitulo(datosPublicacion.titulo),   // Actualizamos el valor específico basado en el 'id'
-      ['descripcion']:validarDescripcion(datosPublicacion.descripcion),
-      ['foto']:validarFoto(datosPublicacion.foto),
-      ['presupuestoMin']:validarPresupuestoMin(datosPublicacion.presupuestoMin),
-      ['presupuestoMax']:validarPresupuestoMax(datosPublicacion.presupuestoMax)
+      ['descripcion']: validarDescripcion(datosPublicacion.descripcion),
+      ['ubicacion']:validarUbicacion(datosPublicacion.ubicacion),
+      ['foto']: validarFoto(datosPublicacion.foto),
+      ['presupuestoMin']: validarPresupuestoMin(datosPublicacion.presupuestoMin),
+      ['presupuestoMax']: validarPresupuestoMax(datosPublicacion.presupuestoMax)
     }))
-    if(datosPublicacion.titulo != '' && datosPublicacion.descripcion != '' && datosPublicacion.foto[0] != null
-    && datosPublicacion.presupuestoMin != '' && datosPublicacion.presupuestoMax != ''){
+    if (datosPublicacion.titulo != '' && datosPublicacion.descripcion != '' && datosPublicacion.foto[0] != null
+      && datosPublicacion.presupuestoMin != '' && datosPublicacion.presupuestoMax != '') {
       return true
-    }else{
+    } else {
       return false;
     }
   }
@@ -132,7 +133,7 @@ function PublicacionEmpleador() {
       const enviar = collection(db, 'publicacionesEmpleador');
       addDoc(enviar, {
         id: datosPublicacion.usuario, titulo: datosPublicacion.titulo,
-        descripcion: datosPublicacion.descripcion, fotos: cadenaFotos, presupuestoMin: datosPublicacion.presupuestoMin,
+        descripcion: datosPublicacion.descripcion,ubicacion:datosPublicacion.ubicacion, fotos: cadenaFotos, presupuestoMin: datosPublicacion.presupuestoMin,
         presupuestoMax: datosPublicacion.presupuestoMax
       });
       navigate('/Arkitex/InicioEmpleador', {
@@ -140,18 +141,18 @@ function PublicacionEmpleador() {
       });
     })();
   }
-  useEffect(()=>{
+  useEffect(() => {
     setValidacion(validacionPublicacion);
-  },[datosPublicacion])
+  }, [datosPublicacion])
   return (
     <>
       <Box padding={{ xs: '2rem 1rem 0.5rem 1rem', sm: '1rem 3rem 0.5rem 3rem' }} >
         <Box display='flex' justifyContent='space-between' paddingBottom='1rem' flexDirection={{ xs: 'column', sm: 'row' }} alignItems={{ xs: 'center' }}>
           <Box display='flex' alignItems='center' gap='1rem'>
-          <Button onClick={cambio2} sx={{ textAlign: 'start' }}>
-            <img src={back} style={{ width: '50px' }}></img>
-          </Button>
-          <h2 style={{ fontSize: '1.8rem', fontWeight: '500' }}>ARKITEX |</h2>
+            <Button onClick={cambio2} sx={{ textAlign: 'start' }}>
+              <img src={back} style={{ width: '50px' }}></img>
+            </Button>
+            <h2 style={{ fontSize: '1.8rem', fontWeight: '500' }}>ARKITEX |</h2>
           </Box>
           <Box display='flex' alignItems='center' gap={{ xs: '0.4rem', sm: '0.8rem' }} className='navInicioTrabajador'>
             <p>Favoritos </p>
@@ -176,12 +177,19 @@ function PublicacionEmpleador() {
               <Grid item sx={{ display: 'flex', flexDirection: 'column', gap: '7rem' }}>
                 <Box>
                   <p className="label-crear">Titulo del trabajo</p>
-                  <TextField error={errores.titulo?true:false} id='titulo' variant="standard" label='Titulo' helperText='Ejemplo: Construcción medio baño' fullWidth
+                  <TextField error={errores.titulo ? true : false} id='titulo' variant="standard" label='Titulo' helperText='Ejemplo: Construcción medio baño' fullWidth
                     onChange={handleChangeDatos}></TextField>
                 </Box>
                 <Box>
+                  <p className="label-crear">Ubicación</p>
+                  <TextField error={errores.ubicacion ? true : false} id='ubicacion' fullWidth variant="standard" type="text" label='Ubicación'
+                    helperText={errores.ubicacion ? 'La ubicación al menos debe tener 6 caracteres' : 'Tlalpan Centro I, Ciudad de México, CDMX'}
+                    onChange={handleChangeDatos}
+                  ></TextField>
+                </Box>
+                <Box>
                   <p className="label-crear">Descripción del trabajo</p>
-                  <TextField error={errores.descripcion?true:false} id='descripcion' size="medium" variant="outlined" type="text" label='Descripción'
+                  <TextField error={errores.descripcion ? true : false} id='descripcion' size="medium" variant="outlined" type="text" label='Descripción'
                     helperText='Ejemplo: Se trabajo un piso de 3m x 5m para colocar loceta decorativa antiderrapante.'
                     multiline rows={5}
                     onChange={handleChangeDatos}
@@ -200,7 +208,7 @@ function PublicacionEmpleador() {
                 <Box display='flex' flexDirection='column' gap='3rem'>
                   <Box>
                     <p className="label-crear" style={{ textAlign: 'center' }}>Añade un presupuesto estimado</p>
-                    <TextField error={errores.presupuestoMin?true:false} id='presupuestoMin' type='number' InputProps={{
+                    <TextField error={errores.presupuestoMin ? true : false} id='presupuestoMin' type='number' InputProps={{
                       startAdornment: (
                         <InputAdornment position="start">
                           <DineroIcon />
@@ -209,7 +217,7 @@ function PublicacionEmpleador() {
                     }} label='Presupuesto de: ' onChange={handleChangeDatos}></TextField>
                   </Box>
                   <Box>
-                    <TextField error={errores.presupuestoMax?true:false} id='presupuestoMax' type='number' InputProps={{
+                    <TextField error={errores.presupuestoMax ? true : false} id='presupuestoMax' type='number' InputProps={{
                       startAdornment: (
                         <InputAdornment position="start">
                           <DineroIcon />
@@ -220,7 +228,7 @@ function PublicacionEmpleador() {
                 </Box>
               </Grid>
             </Grid>
-            <Button disabled={validacion?false:true} type="submit" variant="contained" sx={{ margin: '3rem', color: '#fff', padding: '0.8rem 2rem', borderRadius: '10px' }}>Crear Publicación</Button>
+            <Button disabled={validacion ? false : true} type="submit" variant="contained" sx={{ margin: '3rem', color: '#fff', padding: '0.8rem 2rem', borderRadius: '10px' }}>Crear Publicación</Button>
           </Box>
         </Box>
       </Box>

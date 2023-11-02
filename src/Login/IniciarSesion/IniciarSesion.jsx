@@ -31,7 +31,6 @@ export default function IniciarSesion() {
         const auth = getAuth(app);
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                console.log(userCredential.user.uid)
                 const docRef = collection(db, "prueba3");
                 const q = query(docRef, where('id', '==', userCredential.user.uid)); // Reemplaza 'campo_uid' con el nombre real del campo que contiene el UID
                 // Utiliza async/await
@@ -50,6 +49,12 @@ export default function IniciarSesion() {
                                 } else if(doc.data().rol === 'empleador') {
                                     setTimeout(() => {
                                         navigate('/Arkitex/InicioEmpleador', {
+                                            state: { id: userCredential.user.uid, logged: true }
+                                        });
+                                    },);
+                                }else{
+                                    setTimeout(() => {
+                                        navigate('/Arkitex/InicioAdmin', {
                                             state: { id: userCredential.user.uid, logged: true }
                                         });
                                     },);
@@ -88,7 +93,7 @@ export default function IniciarSesion() {
                             error={errorEmail ? true : false} sx={{ width: { md: '300px' } }} aria-label='#FF9500' id="correo"
                             label="Correo" variant="outlined" type='text'
                         />
-                        <TextField onChange={handlePasswordChange} sx={{ width: { md: '300px' } }} id="password" label="Contraseña" variant="outlined" type='password' />
+                        <TextField autoComplete="" onChange={handlePasswordChange} sx={{ width: { md: '300px' } }} id="password" label="Contraseña" variant="outlined" type='password' />
                         <Button type="submit" variant="contained" sx={{ borderRadius: '30px', padding: '1rem 3rem', color: '#fff' }}>Iniciar Sesión</Button>
                         {error ? <p style={{ color: '#D40505', fontWeight: '500', margin: '0' }}>{error}</p> : <></>}
                     </Box>

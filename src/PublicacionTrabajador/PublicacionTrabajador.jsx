@@ -12,7 +12,7 @@ import styled from "styled-components";
 import add from '/assets/add.svg';
 import { imagenPublicacionEmpleador, imagenPublicacionTrabajador } from "../Firebase/imagenes";
 import back from '/assets/backsvg 1.svg';
-import { validarDescripcion, validarFoto, validarTitulo } from "../Firebase/validaciones";
+import { validarDescripcion, validarFoto, validarTitulo, validarUbicacion } from "../Firebase/validaciones";
 const Icono = () => {
     return <img src={camara} ></img>
 }
@@ -75,22 +75,24 @@ function PublicacionTrabajador() {
         });
     const [datosPublicacion, setDatosPublicacion] = useState({
         titulo: '',
+        ubicacion:'',
         descripcion: '',
         foto: [],
         materiales1: '',
-        materiales2:'',
-        materiales3:'',
-        materiales4:'',
-        presupuestoMateriales1:'',
-        presupuestoMateriales2:'',
-        presupuestoMateriales3:'',
-        presupuestoMateriales4:'',
+        materiales2: '',
+        materiales3: '',
+        materiales4: '',
+        presupuestoMateriales1: '',
+        presupuestoMateriales2: '',
+        presupuestoMateriales3: '',
+        presupuestoMateriales4: '',
         usuario: id
     });
     const [validacion, setValidacion] = useState(false);
     const [errores, setErrores] = useState({
         titulo: false,
         descripcion: false,
+        ubicacion:false,
         foto: false,
         material: false,
         presupuesto: false
@@ -98,11 +100,13 @@ function PublicacionTrabajador() {
     function validacionPublicacion() {
         setErrores((prevState) => ({
             ...prevState, // Clonamos el objeto previo
-            ['titulo']: validarTitulo(datosPublicacion.titulo),   // Actualizamos el valor específico basado en el 'id'
+            ['titulo']: validarTitulo(datosPublicacion.titulo),
+            ['ubicacion']:validarUbicacion(datosPublicacion.ubicacion),
             ['descripcion']: validarDescripcion(datosPublicacion.descripcion),
-            ['foto']: validarFoto(datosPublicacion.foto),
+            ['foto']: validarFoto(datosPublicacion.foto)
         }))
-        if (datosPublicacion.titulo != '' && datosPublicacion.descripcion != '' && datosPublicacion.foto[0] != null) {
+        if (datosPublicacion.titulo != '' && datosPublicacion.descripcion != '' && 
+        datosPublicacion.foto[0] != null && datosPublicacion.ubicacion != '') {
             return true
         } else {
             return false;
@@ -118,7 +122,7 @@ function PublicacionTrabajador() {
             const parrafo = document.createElement('P');
             parrafo.textContent = e.target.files[0].name;
             fotos.appendChild(parrafo);
-        }else{
+        } else {
             value = e.target.value;
         }
 
@@ -139,10 +143,10 @@ function PublicacionTrabajador() {
             const enviar = collection(db, 'publicacionesTrabajador');
             addDoc(enviar, {
                 id: datosPublicacion.usuario, titulo: datosPublicacion.titulo,
-                descripcion: datosPublicacion.descripcion, fotos: cadenaFotos,materiales1:datosPublicacion.materiales1,
-                materiales2:datosPublicacion.materiales2,materiales3:datosPublicacion.materiales3,materiales4:datosPublicacion.materiales4,
-                presupuestoMateriales1:datosPublicacion.presupuestoMateriales1,presupuestoMateriales2:datosPublicacion.presupuestoMateriales2,
-                presupuestoMateriales3:datosPublicacion.presupuestoMateriales3,presupuestoMateriales4:datosPublicacion.presupuestoMateriales4
+                descripcion: datosPublicacion.descripcion,ubicacion:datosPublicacion.ubicacion, fotos: cadenaFotos, materiales1: datosPublicacion.materiales1,
+                materiales2: datosPublicacion.materiales2, materiales3: datosPublicacion.materiales3, materiales4: datosPublicacion.materiales4,
+                presupuestoMateriales1: datosPublicacion.presupuestoMateriales1, presupuestoMateriales2: datosPublicacion.presupuestoMateriales2,
+                presupuestoMateriales3: datosPublicacion.presupuestoMateriales3, presupuestoMateriales4: datosPublicacion.presupuestoMateriales4
             });
             navigate('/Arkitex/InicioTrabajador', {
                 state: { id: id, logged: true }
@@ -202,11 +206,18 @@ function PublicacionTrabajador() {
                     <h1 style={{ margin: '3rem 2rem 2rem 2rem' }}>Crea una publicación mostrando lo que necesitas</h1>
                     <Box component='form' autoComplete="off" padding='2rem 3rem' onSubmit={almacenarDatos}>
                         <Grid container display='flex' gap="4rem" wrap="nowrap" flexDirection={{ md: 'row', xs: 'column' }}>
-                            <Grid item sx={{ display: 'flex', flexDirection: 'column', gap: '7rem' }}>
+                            <Grid item sx={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
                                 <Box>
                                     <p className="label-crear">Titulo del trabajo</p>
                                     <TextField error={errores.titulo ? true : false} id='titulo' variant="standard" label='Titulo' helperText={errores.titulo ? 'El título al menos debe tener 8 caracteres' : 'Ejemplo: Construcción medio baño'} fullWidth
                                         onChange={handleChangeDatos}></TextField>
+                                </Box>
+                                <Box>
+                                    <p className="label-crear">Ubicación</p>
+                                    <TextField error={errores.ubicacion ? true : false} id='ubicacion' fullWidth variant="standard" type="text" label='Ubicación'
+                                        helperText={errores.ubicacion ? 'La ubicación al menos debe tener 6 caracteres' : 'Tlalpan Centro I, Ciudad de México, CDMX'}
+                                        onChange={handleChangeDatos}
+                                    ></TextField>
                                 </Box>
                                 <Box>
                                     <p className="label-crear">Descripción del trabajo</p>
