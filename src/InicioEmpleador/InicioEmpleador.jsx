@@ -22,7 +22,7 @@ function InicioEmpleador() {
       navigate('CrearPublicacion', {
         state: { id: id, logged: true }
       });
-    }, 0);
+    });
   }
   const db = getFirestore(app);
   const docRef = collection(db, "prueba3");

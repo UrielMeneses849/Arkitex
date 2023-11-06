@@ -6,11 +6,13 @@ export function validarTitulo (titulo)  {
     return length > 7 && length < 30 ? false : true;
 }
 export function validarUbicacion (titulo)  {
-    const length = titulo.length;
+    if(titulo){
+        const length = titulo.length;
     if(length === 0){
         return false;
     }
     return length > 5 && length < 30 ? false : true;
+    }
 }
 export function validarDescripcion(desc){
     const length = desc.length;

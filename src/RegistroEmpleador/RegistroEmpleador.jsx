@@ -206,7 +206,7 @@ export default function RegistroTrabajador() {
           .then((userCredential) => {
             // Signed in
             id = userCredential.user.uid;
-            addDoc(enviar, { id: id, nombre: datosUsuario.nombre, apellidos: datosUsuario.apellidos, telefono: datosUsuario.numero, area: areaResultado, url: url, decoracionConstruccion:valorConstruccion ,rol: 'empleador' });
+            addDoc(enviar, { id: id, nombre: datosUsuario.nombre, apellidos: datosUsuario.apellidos, telefono: datosUsuario.numero, area: areaResultado, url: url, decoracionConstruccion:valorConstruccion,correo:datosUsuario.correo ,rol: 'empleador' });
           })
           .catch(() => {
             setError('El email ya esta registrado, vuelve a registrarte');

@@ -94,7 +94,7 @@ function PresupuestoPT() {
     };
     const perfil = (trabajador) => {
         navigate('/Arkitex/InicioTrabajador/PerfilTrabajador', {
-            state: { id: trabajador, logged: true, empleador: true }
+            state: { id: trabajador, logged: true, empleador: true, idEmpleador:id }
         });
     }
     const presupuesto = () => {

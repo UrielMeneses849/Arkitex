@@ -40,7 +40,7 @@ function PublicacionTrabajador() {
     const navigate = useNavigate();
     const cambio = () => {
         setTimeout(() => {
-            navigate('/Arkitex/Trabajador/PerfilTrabajador', {
+            navigate('/Arkitex/InicioTrabajador/PerfilTrabajador', {
                 state: { id: id, logged: true }
             });
         },);
@@ -53,10 +53,13 @@ function PublicacionTrabajador() {
         },);
     }
     window.onpopstate = function () {
-        localStorage.setItem("popstateExecuted", "true");
-        navigate('/Arkitex/InicioTrabajador', {
-            state: { id: id, logged: true }
-        });
+        const currentPath = window.location.pathname;
+        if (currentPath === '/Arkitex/InicioTrabajador') {
+            localStorage.setItem("popstateExecuted", "false");
+            navigate('/Arkitex/InicioTrabajador', {
+                state: { id: id, logged: true }
+            });
+        }
     };
     const [nombre, setNombre] = useState('');
     const [img, setImg] = useState('');
@@ -75,7 +78,7 @@ function PublicacionTrabajador() {
         });
     const [datosPublicacion, setDatosPublicacion] = useState({
         titulo: '',
-        ubicacion:'',
+        ubicacion: '',
         descripcion: '',
         foto: [],
         materiales1: '',
@@ -92,7 +95,7 @@ function PublicacionTrabajador() {
     const [errores, setErrores] = useState({
         titulo: false,
         descripcion: false,
-        ubicacion:false,
+        ubicacion: false,
         foto: false,
         material: false,
         presupuesto: false
@@ -101,12 +104,12 @@ function PublicacionTrabajador() {
         setErrores((prevState) => ({
             ...prevState, // Clonamos el objeto previo
             ['titulo']: validarTitulo(datosPublicacion.titulo),
-            ['ubicacion']:validarUbicacion(datosPublicacion.ubicacion),
+            ['ubicacion']: validarUbicacion(datosPublicacion.ubicacion),
             ['descripcion']: validarDescripcion(datosPublicacion.descripcion),
             ['foto']: validarFoto(datosPublicacion.foto)
         }))
-        if (datosPublicacion.titulo != '' && datosPublicacion.descripcion != '' && 
-        datosPublicacion.foto[0] != null && datosPublicacion.ubicacion != '') {
+        if (datosPublicacion.titulo != '' && datosPublicacion.descripcion != '' &&
+            datosPublicacion.foto[0] != null && datosPublicacion.ubicacion != '') {
             return true
         } else {
             return false;
@@ -143,7 +146,7 @@ function PublicacionTrabajador() {
             const enviar = collection(db, 'publicacionesTrabajador');
             addDoc(enviar, {
                 id: datosPublicacion.usuario, titulo: datosPublicacion.titulo,
-                descripcion: datosPublicacion.descripcion,ubicacion:datosPublicacion.ubicacion, fotos: cadenaFotos, materiales1: datosPublicacion.materiales1,
+                descripcion: datosPublicacion.descripcion, ubicacion: datosPublicacion.ubicacion, fotos: cadenaFotos, materiales1: datosPublicacion.materiales1,
                 materiales2: datosPublicacion.materiales2, materiales3: datosPublicacion.materiales3, materiales4: datosPublicacion.materiales4,
                 presupuestoMateriales1: datosPublicacion.presupuestoMateriales1, presupuestoMateriales2: datosPublicacion.presupuestoMateriales2,
                 presupuestoMateriales3: datosPublicacion.presupuestoMateriales3, presupuestoMateriales4: datosPublicacion.presupuestoMateriales4
@@ -203,7 +206,7 @@ function PublicacionTrabajador() {
                 alignItems: 'center', justifyContent: 'center', padding: '7rem 0'
             }}>
                 <Box sx={{ backgroundColor: '#FEFEFE', borderRadius: '20px', margin: { xs: '0 3rem', md: '0 8rem' }, width: '100%' }}>
-                    <h1 style={{ margin: '3rem 2rem 2rem 2rem' }}>Crea una publicación mostrando lo que necesitas</h1>
+                    <h1 style={{ margin: '3rem 2rem 2rem 2rem' }}>Crea una publicación mostrando lo que realizaste</h1>
                     <Box component='form' autoComplete="off" padding='2rem 3rem' onSubmit={almacenarDatos}>
                         <Grid container display='flex' gap="4rem" wrap="nowrap" flexDirection={{ md: 'row', xs: 'column' }}>
                             <Grid item sx={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
@@ -238,7 +241,7 @@ function PublicacionTrabajador() {
                                 </Box>
 
                                 <Box display='flex' flexDirection='column' gap='1rem'>
-                                    <p className="label-crear" style={{ textAlign: 'center' }}>Añade un presupuesto estimado (opcional)</p>
+                                    <p className="label-crear" style={{ textAlign: 'center' }}>Añade un presupuesto estimado de los materiales que utilizaste (opcional)</p>
                                     <Box display='flex' flexDirection='column' gap='2rem' className='materiales'>
                                         <Box display='flex' gap='1rem'>
                                             <Box>

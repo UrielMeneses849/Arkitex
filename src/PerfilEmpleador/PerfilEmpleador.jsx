@@ -31,6 +31,7 @@ function PerfilEmpleador() {
     decoracionConstruccion: '',
     telefono: '',
     img: '',
+    correo:''
   });
   useEffect(() => {
     getDocs(q)
@@ -40,7 +41,8 @@ function PerfilEmpleador() {
           querySnapshot.forEach((doc) => {
             setDatos({
               nombre: doc.data().nombre, apellidos: doc.data().apellidos, area: doc.data().area,
-              decoracionConstruccion: doc.data().decoracionConstruccion, telefono: doc.data().telefono, img: doc.data().url
+              decoracionConstruccion: doc.data().decoracionConstruccion, telefono: doc.data().telefono, img: doc.data().url,
+              correo:doc.data().correo
             });
           });
           onAuthStateChanged(auth, (user) => {
@@ -61,7 +63,7 @@ function PerfilEmpleador() {
         <p><span style={{fontWeight:'bold'}}>Tipo de trabajo que necesito: </span>{datos.decoracionConstruccion}</p>
         <p><span style={{fontWeight:'bold'}}>En el área de: </span>{datos.area}</p>
         <p><span style={{fontWeight:'bold'}}>Telefono de contacto: </span>{datos.telefono}</p>
-        <p><span style={{fontWeight:'bold'}}>Correo: </span>{email}</p>
+        <p><span style={{fontWeight:'bold'}}>Correo: </span>{datos.correo}</p>
         </Box>
       </Box>
     </>

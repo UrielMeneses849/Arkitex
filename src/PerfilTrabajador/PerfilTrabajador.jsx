@@ -2,7 +2,7 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import { getFirestore } from "firebase/firestore";
 import app from "../Firebase/credenciales";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import usuario from '/assets/usuario.svg';
 import { Box, Grid } from "@mui/material";
@@ -10,14 +10,14 @@ import casa from '/assets/Group 68.svg';
 import Navegacion from "../InicioTrabajador/Navegacion/Navegacion";
 function PerfilTrabajador() {
   const { state } = useLocation();
-  const { id, empleador } = state;
+  const { id, empleador, idEmpleador } = state;
   const navigate = useNavigate();
   window.onpopstate = function () {
-    if(empleador){
+    if (empleador) {
       navigate('/Arkitex/InicioEmpleador', {
-        state: { id: id, logged: true }
+        state: { id: idEmpleador, logged: true }
       });
-    }else{
+    } else {
       navigate('/Arkitex/InicioTrabajador', {
         state: { id: id, logged: true }
       });
@@ -39,7 +39,8 @@ function PerfilTrabajador() {
     remodelacion: '',
     correo: ''
   });
-  getDocs(q)
+  useEffect(()=>{
+    getDocs(q)
     .then((querySnapshot) => {
       if (!querySnapshot.empty) {
         // Encontraste documentos que coinciden con el UID
@@ -47,7 +48,8 @@ function PerfilTrabajador() {
           setDatos({
             telefono: doc.data().telefono, url: doc.data().url, apellidos: doc.data().apellidos,
             distancia: doc.data().distancia, construccion: Array.from(doc.data().construccion.split(',').map(item => item.trim())), municipio: doc.data().municipio,
-            nombre: doc.data().nombre, remodelacion: doc.data().remodelacion.split(',').map(item => item.trim())
+            nombre: doc.data().nombre, remodelacion: doc.data().remodelacion.split(',').map(item => item.trim()),
+            correo: doc.data().correo
           });
         });
         onAuthStateChanged(auth, (user) => {
@@ -55,12 +57,13 @@ function PerfilTrabajador() {
         });
       }
     });
+  },[])
   // Accede al correo electrónico del usuario
   //setDatos({correo:userRecord.email});
   return (
     <div>
-      <Navegacion nombre={datos.nombre} img={datos.url} id ={id} ruta={empleador?'InicioEmpleador/PerfilEmpleador':'InicioTrabajador/PerfilTrabajador'}/>
-      <img src={datos.url ? datos.url : usuario} style={{ width: '150px', borderRadius: '50%' }}></img>
+      {empleador?<></>:<Navegacion nombre={datos.nombre} img={datos.url} id={id} ruta={empleador ? 'InicioEmpleador/PerfilEmpleador' : 'InicioTrabajador/PerfilTrabajador'} />}
+      <img src={datos.url ? datos.url : usuario} style={{ width: '150px', borderRadius: '50%',marginTop:empleador?'4rem':'' }}></img>
 
       <p style={{ fontSize: '20px', fontWeight: '500' }}>{datos.nombre + ' ' + datos.apellidos}</p>
       <Grid container columns={3} sx={{ margin: '3rem 0', display: 'flex', gap: '3rem', justifyContent: 'center' }}>
@@ -71,7 +74,7 @@ function PerfilTrabajador() {
           <h3>Informacion de contacto</h3>
           <Box>
             <h3>Correo Electrónico</h3>
-            <p>{email}</p>
+            <p>{datos.correo}</p>
           </Box>
           <Box>
             <h3>Número de teléfono</h3>
