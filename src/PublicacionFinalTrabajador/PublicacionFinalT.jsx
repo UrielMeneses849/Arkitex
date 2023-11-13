@@ -78,7 +78,6 @@ function PublicacionFinalT() {
             const coleccion = collection(db, "prueba3");
             const q = query(coleccion, where("id", "==", nuevosDatos.id));
 
-            console.log(nuevosDatos.id);
             const querySnapshot2 = await getDocs(q);
             querySnapshot2.forEach((doc) => {
                 setNombre(doc.data().nombre);

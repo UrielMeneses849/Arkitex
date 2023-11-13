@@ -20,6 +20,8 @@ import PublicacionFinalT from "./PublicacionFinalTrabajador/PublicacionFinalT";
 import PresupuestoPT from "./PresupuestoPT/PresupuestoPT.JSX";
 import PublicacionFinalE from "./PublicacionFinalE/PublicacionFinalE";
 import InicioAdmin from "./InicioAdmin/InicioAdmin";
+import PublicacionPE from "./PerfilEmpleador/Publicacion/Publicacion";
+import Postulaciones from "./InicioTrabajador/Postulaciones/Postulaciones";
 // import RegistroEmpleador2 from "./RegistroEmpleador/RegistroEmpleador2";
 
 const theme = createTheme({
@@ -64,6 +66,12 @@ const router = createHashRouter([
             </PrivateRoute>)
     },
     {
+        path:'Arkitex/InicioTrabajador/Postulaciones',
+        element:(<PrivateRoute>
+            <Postulaciones/>
+        </PrivateRoute>)
+    },
+    {
         path: 'Arkitex/InicioTrabajador/CrearPublicacion',
         element:(<PrivateRoute>
             <PublicacionTrabajador/>
@@ -90,7 +98,6 @@ const router = createHashRouter([
         )
     }
     ,
-   
     {
         path:'Arkitex/InicioTrabajador/PerfilTrabajador',
         element: (<PrivateRoute>
@@ -107,6 +114,12 @@ const router = createHashRouter([
         path:'Arkitex/InicioEmpleador/PerfilEmpleador',
         element:(<PrivateRoute>
             <PerfilEmpleador/>
+        </PrivateRoute>)
+    },
+    {
+        path:'Arkitex/PerfilEmpleador/Publicacion',
+        element:(<PrivateRoute>
+            <PublicacionPE/>
         </PrivateRoute>)
     },
     {

@@ -45,6 +45,11 @@ function InicioTrabajador() {
       });
     }, 0);
   }
+  const postulaciones = ()=>{
+    navigate('/Arkitex/InicioTrabajador/Postulaciones', {
+      state: { id: id, logged: true,nombre1:nombre,imagen:img } //Manda id del trabajador
+    });
+  }
   const titulo = "Busca alguna obra, postúlate y aumenta tus oportunidades";
   return (
     <>
@@ -60,9 +65,12 @@ function InicioTrabajador() {
         <li>Decoración</li>
         <li>Construcciones mayores</li>
       </Box>
-      <Box display='flex' margin='3rem 0 3rem 6rem'>
+      <Box display='flex' margin='3rem 0 3rem 6rem' gap='2rem'>
         <Button onClick={cambio} variant="contained" sx={{ color: '#fff', padding: '1rem 1rem' }} endIcon={<Icono />}>
           Publicar Trabajo
+        </Button>
+        <Button onClick={postulaciones} variant="contained" sx={{ color: '#fff', padding: '1rem 1rem' }} endIcon={<Icono />}>
+          Ver Mis Postulaciones
         </Button>
       </Box>
       <Publicaciones />

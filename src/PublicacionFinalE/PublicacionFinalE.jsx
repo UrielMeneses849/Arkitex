@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
 import { db } from '../Firebase/credenciales';
-import { collection, deleteDoc, doc, getDocs, getFirestore, query, where } from 'firebase/firestore';
+import { addDoc, collection, deleteDoc, doc, getDocs, getFirestore, query, setDoc, where } from 'firebase/firestore';
 import { Box, Button, Step, StepButton, Stepper } from '@mui/material';
 import img from '/assets/Group 157.svg';
 import casa from '/assets/Group 68.svg';
@@ -22,14 +22,16 @@ import app from '../Firebase/credenciales';
 import heart from '/assets/heart.svg';
 function PublicacionFinalE() {
     const { state } = useLocation();
-    const { id, idPublicacion, admin } = state;
+    const { id, idPublicacion, admin, estadoP, emp,post } = state; //id del trabajador, id de la publicacion
     const [datos, setDatos] = useState({})
     const [activeStep, setActiveStep] = useState(0);
     const [activo, setActivo] = useState(elipse13);
     const [inactivo, setInactivo] = useState(elipse14);
     const [indice, setIndice] = useState(0);
     const [nombre, setNombre] = useState('');
+    const [nombreTrabajador,setNombreTrabajador]=useState('');
     const [usuario, setUsuario] = useState({ nombre: '', img: '' })
+    const [postulado, setPostulado] = useState(false);
     const steps = [];
     const navigate = useNavigate();
     const db = getFirestore(app);
@@ -62,7 +64,7 @@ function PublicacionFinalE() {
                     nuevosDatos.ubicacion = doc.data().ubicacion;
                     nuevosDatos.presupuestoMax = doc.data().presupuestoMax;
                     nuevosDatos.presupuestoMin = doc.data().presupuestoMin;
-                    nuevosDatos.id = doc.data().id;
+                    nuevosDatos.id = doc.data().id; //Id de quien realizo la publicacion
                 }
             });
 
@@ -70,12 +72,28 @@ function PublicacionFinalE() {
             const coleccion = collection(db, "prueba3");
             const q = query(coleccion, where("id", "==", nuevosDatos.id));
 
-            console.log(nuevosDatos.id);
             const querySnapshot2 = await getDocs(q);
             querySnapshot2.forEach((doc) => {
                 setNombre(doc.data().nombre);
             });
+            const queryTrabajador = query(coleccion, where("id","==",id));
+            const snapShotTrabajador = await getDocs(queryTrabajador);
+            snapShotTrabajador.forEach((doc)=>{
+                setNombreTrabajador(doc.data().nombre);
+            })
         };
+        const getPostulaciones = async ()=>{
+            const postulaciones = collection(db,'postulaciones');
+            const snapShotPostulaciones = await getDocs(postulaciones);
+            snapShotPostulaciones.forEach((doc)=>{
+                if(doc.data().id_publicacion == idPublicacion && doc.data().id_trabajador == id){
+                    setPostulado(true);
+                }else{
+                    setPostulado(false);
+                }
+            })
+        }
+        getPostulaciones();
         fetchData();
         setActiveStep(0);
         setIndice(0);
@@ -83,9 +101,19 @@ function PublicacionFinalE() {
     const handleStep = (step) => () => {
         setActiveStep(step);
     };
-    const perfil = (trabajador) => {
-        navigate('/Arkitex/InicioEmpleador/PerfilEmpleador', {
-            state: { id: trabajador, logged: true, empleador: true }
+    const procesarPostulaciones = async (empleador) => {
+        const trabajador = id;
+        const publicacion = idPublicacion;
+        addDoc(collection(db,'postulaciones'),{
+            id_trabajador:trabajador,
+            id_empleador:empleador,
+            id_publicacion:publicacion,
+            nombre_trabajador:nombreTrabajador,
+            nombre_empleador:nombre,
+            estado:"Esperando"
+        })
+        navigate('/Arkitex/InicioTrabajador', {
+            state: { id: id, logged:true }
         });
     }
     const Eliminar = () => {
@@ -95,6 +123,11 @@ function PublicacionFinalE() {
         fetchData();
         navigate('/Arkitex/InicioAdmin', {
             state: { id: id, logged:true }
+        });
+    }
+    const perfil = (emp) => {
+        navigate('/Arkitex/InicioEmpleador/PerfilEmpleador', {
+            state: { id: emp, logged: true, empleador: true, idEmpleador:id,postulado: post}
         });
     }
     return (
@@ -176,8 +209,12 @@ function PublicacionFinalE() {
                     <p style={{ textAlign: 'start', maxWidth: '25rem' }}>A: ${datos.presupuestoMax}</p>
                     <h3 style={{ textAlign: 'start', fontWeight: '500', fontSize: '1.5rem' }}>Descripción</h3>
                     <p style={{ textAlign: 'start', maxWidth: '30rem' }}>{datos.descripcion}</p>
-                    <Button disabled={admin} onClick={() => perfil(datos.id)} variant='contained' sx={{ width: '150px', borderRadius: '25px', display: 'flex', gap: '1rem'
-                    ,color:'#fff' }}>Postularse</Button>
+                    {estadoP?<></>:<Button disabled={postulado?true:false} onClick={() => procesarPostulaciones(datos.id,id,idPublicacion)} variant='contained' sx={{ width: '150px', borderRadius: '25px', display: 'flex', gap: '1rem'
+                    ,color:'#fff' }}>Postularse</Button>}
+
+                    {estadoP == "Aceptado"?<p style={{color:'green'}}>El empleador acepto que trabajes para el, ahora puedes visualizar su perfil y contactar con el.</p>:<></>}
+                    {estadoP == "Aceptado"?<Button disabled={admin} onClick={() => perfil(emp)} variant='outlined' sx={{ width: '150px', borderRadius: '25px', display: 'flex', gap: '1rem' }}>
+                        <img src={userOrange} style={{ width: '20px' }}></img>{nombre}</Button>:<p style={{color:'red',display:postulado?'block':'none'}}>Esperando</p>}
                     {admin && <Button onClick={Eliminar} variant='contained' sx={{ width: '150px', borderRadius: '25px', display: 'flex', gap: '1rem', backgroundColor: 'red', color: '#fff' }}>Eliminar</Button>}
                 </Box>
             </Box>
