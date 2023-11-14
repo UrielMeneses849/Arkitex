@@ -12,12 +12,12 @@ import './RegistroTrabajador.css'
 export default function RegistroTrabajador() {
 
   return (
-    <Box bgcolor={"#DEF1FF"} component={'main'} padding={'1rem'} height='100vh' sx={{
+    <Box component={'main'} padding={'1rem'} height='100vh' sx={{
       boxSizing: 'border-box',
       display: 'flex', flexDirection: 'column'
     }}>
       <Grid container columns={{xs:1,sm:2}} height='100vh' bgcolor='#F0F0F0' borderRadius='20px' margin='auto'>
-        <Grid item xs={1} height='100%' width='50%' className='frame' display={{sm:'block',xs:'none'}}>
+        <Grid item xs={1} height='100%' width='50%' className='frame' display={{sm:'flex',xs:'none'}}>
           <Link to='/Login' sx={{ textAlign: 'start' }}>
             <img src={back} style={{ width: '50px' }}></img>
           </Link>

@@ -8,17 +8,17 @@ return(
          */}
         {props.valorConstruccion === 'Construcción' && <div>
           <h2 style={{ fontSize: '27px', fontWeight: 'bold', margin: "10px auto 30px" }}>Construcción</h2>
-          <div style={{ display: 'flex' }}>
+          <div style={{ display: 'flex', padding:'0 2rem' }}>
             <FormControlLabel control={<Checkbox onChange={(e)=>props.handleChangeArea(e)} name="Colado y Loza"/>} label="Colado y Loza" />
             <FormControlLabel control={<Checkbox onChange={(e)=>props.handleChangeArea(e)} name="Tercer Piso"/>} label="Tercer Piso" />
             <FormControlLabel control={<Checkbox onChange={(e)=>props.handleChangeArea(e)} name="Construcción Cocina"/>} label="Construcción Cocina " />
           </div>
-          <div style={{ display: 'flex' }}>
+          <div style={{ display: 'flex', padding:'0 2rem'  }}>
             <FormControlLabel control={<Checkbox onChange={(e)=>{props.handleChangeArea(e)}} name="Baño completo"/>} label="Baño completo" />
             <FormControlLabel control={<Checkbox onChange={(e)=>{props.handleChangeArea(e)}} name="Medio Baño"/>} label="Medio Baño" />
             <FormControlLabel control={<Checkbox onChange={(e)=>{props.handleChangeArea(e)}} name="Escaleras"/>} label="Escaleras" />
           </div>
-          <div style={{ display: 'flex' }}>
+          <div style={{ display: 'flex', padding:'0 2rem'  }}>
             <FormControlLabel control={<Checkbox onChange={(e)=>{props.handleChangeArea(e)}} name="Colocación de azulejo"/>} label="Colocación de azulejo" />
             <FormControlLabel control={<Checkbox onChange={(e)=>{props.handleChangeArea(e)}} name="Patios"/>} label="Patios" />
             <FormControlLabel control={<Checkbox onChange={(e)=>{props.handleChangeArea(e)}} name="Bardas / paredes"/>} label="Bardas / paredes" />

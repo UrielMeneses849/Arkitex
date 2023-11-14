@@ -65,11 +65,11 @@ function InicioTrabajador() {
         <li>Decoración</li>
         <li>Construcciones mayores</li>
       </Box>
-      <Box display='flex' margin='3rem 0 3rem 6rem' gap='2rem'>
+      <Box display='flex' gap='2rem' sx={{margin:{xs:'2rem 0',sm:'3rem 0 3rem 6rem'}, padding:'1rem'}} justifyContent={{xs:'center',sm:'start'}}>
         <Button onClick={cambio} variant="contained" sx={{ color: '#fff', padding: '1rem 1rem' }} endIcon={<Icono />}>
           Publicar Trabajo
         </Button>
-        <Button onClick={postulaciones} variant="contained" sx={{ color: '#fff', padding: '1rem 1rem' }} endIcon={<Icono />}>
+        <Button onClick={postulaciones} variant="outlined" sx={{ color: 'primary', padding: '1rem 1rem' }}>
           Ver Mis Postulaciones
         </Button>
       </Box>

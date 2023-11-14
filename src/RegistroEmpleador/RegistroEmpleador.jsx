@@ -30,7 +30,7 @@ import { getStorage, ref, getDownloadURL } from "firebase/storage";
 //Redireccion
 import { useNavigate } from "react-router-dom";
 import { addDoc, collection } from 'firebase/firestore';
-
+import back from '/assets/backsvg 1.svg';
 //Personalizacion del stepper
 const QontoConnector = styled(StepConnector)(() => ({
   [`& .${stepConnectorClasses.line}`]: {
@@ -227,19 +227,20 @@ export default function RegistroTrabajador() {
   return (
     // Contenedor principal
     <Box bgcolor={"#fafafa"} component={'main'} padding={'2rem 1rem'} height='100vh' sx={{ boxSizing: 'border-box' }}>
-      <Grid container columns={2} height='100%' bgcolor='#F0F0F0' borderRadius={'30px'}>
-        <Grid item xs={1} height='100%' width='50%'>
-          {/* Imagen izquierda del login */}
-          <img src={frame} alt='frame' style={{ maxHeight: '100%', minWidth: '100%' }}></img>
+      <Grid container columns={{xs:1,md:2}} height='100%' bgcolor='#F0F0F0' borderRadius={'30px'}>
+      <Grid item xs={1} height='100%' width='50%' className='frame' display={{md:'flex',xs:'none'}}>
+          <Link to='/Login' sx={{ textAlign: 'start' }}>
+            <img src={back} style={{ width: '50px' }}></img>
+          </Link>
         </Grid>
-        <Grid item component={'div'} xs={1} width='50%' height='100%' padding='1rem 0'
+        <Grid item component={'div'} xs={1} width={{md:'100%',xl:'50%'}} height='100%' padding='1rem 0'
           display='flex' flexDirection='column'>
-          <h1 style={{ textAlign: 'center', fontWeight: '700', fontSize: '40px', margin: '4rem 0 2rem' }}>Registrate como empleador</h1>
+          <h1 style={{ textAlign: 'center', fontWeight: '700', fontSize: '25px', margin: '1rem 0 1rem' }}>Registrate como empleador</h1>
           {/* Textos de ayuda dependiendo del paso en el que este */}
-          {activeStep === 0 && <h4 style={{ color: "#888888" }}>Escoge que tipo de trabajo necesitas</h4>}
-          {activeStep === 1 && <h4 style={{ color: "#888888" }}>¿Que area se va a trabajar?</h4>}
-          {activeStep === 2 && <h4 style={{ color: "#888888" }}>Detalles del trabajo a realizar</h4>}
-          {activeStep === 3 && <h4 style={{ color: "#888888" }}>Texto 4</h4>}
+          {activeStep === 0 && <h4 style={{ color: "#888888",fontSize:'15px' }}>Escoge que tipo de trabajo necesitas</h4>}
+          {activeStep === 1 && <h4 style={{ color: "#888888",fontSize:'15px' }}>¿Que area se va a trabajar?</h4>}
+          {activeStep === 2 && <h4 style={{ color: "#888888",fontSize:'15px' }}>Detalles del trabajo a realizar</h4>}
+          {activeStep === 3 && <h4 style={{ color: "#888888",fontSize:'15px' }}>Completa tu Registro</h4>}
 
 
           <Box sx={{ width: '100%', marginTop: '2rem' }} margin='0'>
@@ -269,7 +270,7 @@ export default function RegistroTrabajador() {
             {/* Contenido de cada paso */}
             {/*Box para de component=form?*/}
             {/*Codigo Jose Luis agregando*/}
-            <Box margin={"30px auto"} style={{ height: "85%" }}
+            <Box margin={"30px auto"} style={{height: "100%" }}
 
               component='form'
               autoComplete="off"

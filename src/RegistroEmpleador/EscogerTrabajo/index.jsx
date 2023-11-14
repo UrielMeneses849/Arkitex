@@ -12,12 +12,12 @@ return(
 
 
 
-<RadioGroup row aria-label="ESCOGE" value={props.valorConstruccion} onChange={props.handleChangeConstruccion} width={"100%"}>
-<Grid container columns={2} bgcolor='#552525' >
+<RadioGroup row aria-label="ESCOGE" value={props.valorConstruccion} onChange={props.handleChangeConstruccion} padding='5rem' width={"50%"}>
+<Grid container columns={2} >
 
-    <Grid item xs={1} bgcolor='#F1C27B' display={"flex"} flexDirection={"column"} sx={{width: "50%", height: "100%"}}>
+    <Grid item xs={1} bgcolor='#F1C27B' display={"flex"} flexDirection={"column"} sx={{width: "50%", height: "75%"}}>
     <h3 style={{ margin: "30px auto", fontSize: "22px"}}>Construcción</h3>
-    <img src={construccion} alt="Construccion" style={{width: "60%", margin: "30px auto"}}/>
+    <img src={construccion} alt="Construccion" style={{width: "60%", margin: "0 auto", height:'8rem'}}/>
     <Radio value="Construcción" sx={{
     color: "#121212",
     '&.Mui-checked': {
@@ -26,15 +26,16 @@ return(
   }}/>
     </Grid>
 
-    <Grid item xs={1} bgcolor={'#F97B22'} display={"flex"} flexDirection={"column"} sx={{width: "50%", height: "100%"}}>
+    <Grid item xs={1} bgcolor={'#F97B22'} display={"flex"} flexDirection={"column"} sx={{width: "50%", height: "75%"}}>
     <h3 style={{ margin: "30px auto", fontSize: "22px"}}>Remodelación</h3>
-    <img src={remodelacion} alt="Remodelacion" style={{width: "60%", margin: "30px auto"}}/>
+    <img src={remodelacion} alt="Remodelacion" style={{width: "60%", margin: "0 auto", height:'8rem'}}/>
     <Radio value="Remodelación"
   sx={{
     color: "#121212",
     '&.Mui-checked': {
       color: "#121212",
     },
+    marginBottom:'5rem'
   }}
 />
     </Grid>

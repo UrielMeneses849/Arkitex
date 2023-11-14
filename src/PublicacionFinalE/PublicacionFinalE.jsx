@@ -85,11 +85,16 @@ function PublicacionFinalE() {
         const getPostulaciones = async ()=>{
             const postulaciones = collection(db,'postulaciones');
             const snapShotPostulaciones = await getDocs(postulaciones);
+            let encontrado = false;
             snapShotPostulaciones.forEach((doc)=>{
-                if(doc.data().id_publicacion == idPublicacion && doc.data().id_trabajador == id){
-                    setPostulado(true);
-                }else{
-                    setPostulado(false);
+                console.log(doc.data().id_publicacion == idPublicacion && doc.data().id_trabajador == id);
+                if(!encontrado){
+                    if(doc.data().id_publicacion == idPublicacion && doc.data().id_trabajador == id){
+                        encontrado=true;
+                        setPostulado(true);
+                    }else{
+                        setPostulado(false);
+                    }
                 }
             })
         }

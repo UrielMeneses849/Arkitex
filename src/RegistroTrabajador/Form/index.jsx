@@ -349,7 +349,7 @@ const Form = () => {
       }}
     >
       <FormSpace>
-        <Box display='flex' alignItems='center'>
+        <Box display='flex' alignItems='center' justifyContent='center'>
           <Link to='/Login' sx={{ textAlign: 'start' }}>
             <img className="volver" src={back} style={{ width: '50px' }}></img>
           </Link>

@@ -29,6 +29,7 @@ const CompletaInformacion = (props) => {
         alignItems: "center",
         justifyContent: "center",
         flexDirection: "column",
+        padding:'0 3rem'
       }}
       // onSubmit={(e) => {
       //   e.preventDefault();

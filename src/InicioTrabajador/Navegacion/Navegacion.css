@@ -1,6 +1,12 @@
 
 .navInicioTrabajador p, .navInicioTrabajador img{
     cursor: pointer;
+    font-size: 1rem;
+}
+@media(max-width:400px){
+    .navInicioTrabajador p{
+        font-size: 0.8rem;
+    }
 }
 .heart path {
     fill: white;

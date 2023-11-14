@@ -21,6 +21,7 @@ import '../../PublicacionFinalTrabajador/PublicacionFinalT.css'
 import app from '../../Firebase/credenciales';
 import heart from '/assets/heart.svg';
 import aceptar from '/assets/aceptar.svg';
+import rechazar from '/assets/rechazar.png'
 function Publicacion() {
   const { state } = useLocation();
   const { id, idPublicacion, admin } = state; //id del emplador, id de la publicacion
@@ -231,7 +232,7 @@ function Publicacion() {
                   <img src={aceptar}></img>
                 </Button>
                 <Button onClick={()=>EliminarPostulacion(postulados[claveExterna].id_postulacion)} sx={{height:'100%',width:'1px',borderRadius:'50%'}} variant='contained'>
-                  <img src={aceptar}></img>
+                  <img src={rechazar}></img>
                 </Button>
               </Box>
             </Box>
