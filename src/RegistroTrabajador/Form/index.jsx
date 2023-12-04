@@ -88,7 +88,7 @@ const Form = () => {
             url = await imagenUsuarios(datos[datos.length - 1]);
             dato = url;
           }
-          const enviar = collection(db, 'prueba3');
+          const enviar = collection(db, 'Usuarios');
           const construct = construccion.join(', ');
           const remo = remodelacion.join(', ');
           let id;

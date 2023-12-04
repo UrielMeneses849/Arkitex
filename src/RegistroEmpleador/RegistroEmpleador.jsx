@@ -26,7 +26,7 @@ import { db } from '../Firebase/credenciales';
 import { imagenUsuarios } from '../Firebase/imagenes';
 import app from '../Firebase/credenciales';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { getStorage, ref, getDownloadURL } from "firebase/storage";
+import { getStorage } from "firebase/storage";
 //Redireccion
 import { useNavigate } from "react-router-dom";
 import { addDoc, collection } from 'firebase/firestore';
@@ -105,7 +105,7 @@ export default function RegistroTrabajador() {
   const [activeStep, setActiveStep] = useState(0);
   // Funcion para avanzar de paso
   const nextStep = () => {
-    if (activeStep < 4)
+    if (activeStep < 4)``
       setActiveStep(currentStep => currentStep + 1);
   }
   // Funcion para retroceder de paso
@@ -200,7 +200,7 @@ export default function RegistroTrabajador() {
       if (foto.name != '') {
         url = await imagenUsuarios(foto);
       }
-        const enviar = collection(db, 'prueba3');
+        const enviar = collection(db, 'Usuarios');
         //Creacion de usuario
         createUserWithEmailAndPassword(auth, datosUsuario.correo, datosUsuario.password)
           .then((userCredential) => {

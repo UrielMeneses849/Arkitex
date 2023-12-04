@@ -9,6 +9,7 @@ export async function imagenUsuarios(file){
   const url = await getDownloadURL(storageRef);
   return url;
 }
+
 export async function imagenPublicacionEmpleador(file){
   const storageRef = ref(storage,'PublicacionEmpleador/'+v4());
   await uploadBytes(storageRef, file);

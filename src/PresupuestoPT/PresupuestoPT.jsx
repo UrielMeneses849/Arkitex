@@ -1,14 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
-import { db } from '../Firebase/credenciales';
 import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore';
 import { Box, Button, Grid, Step, StepButton, Stepper } from '@mui/material';
-import img from '/assets/Group 157.svg';
-import casa from '/assets/Group 68.svg';
 import elipse13 from '/assets/Ellipse 13.svg';
 import elipse14 from '/assets/Ellipse 14.svg';
-import prueba from '/assets/casaPrueba.jpg';
-import descarga from '/assets/prueba2.png';
 import Navegacion from '../InicioTrabajador/Navegacion/Navegacion';
 import guardar from '/assets/guardar.svg';
 import corazon from '/assets/corazon.svg';
@@ -16,7 +11,6 @@ import icono1 from '/assets/Group 87.svg';
 import icono2 from '/assets/Group 65.svg';
 import icono3 from '/assets/Group 66.svg';
 import icono4 from '/assets/Group 18.svg';
-import userOrange from '/assets/userOrange.svg'
 import '../PublicacionFinalTrabajador/PublicacionFinalT.css'
 import app from '../Firebase/credenciales';
 function PresupuestoPT() {
@@ -32,7 +26,7 @@ function PresupuestoPT() {
     const steps = [];
     const navigate = useNavigate();
     const db = getFirestore(app);
-    const docRef = collection(db, "prueba3");
+    const docRef = collection(db, "Usuarios");
     const q = query(docRef, where('id', '==', id))
     getDocs(q)
         .then((querySnapshot) => {
@@ -76,7 +70,7 @@ function PresupuestoPT() {
             });
 
             setDatos(nuevosDatos);
-            const coleccion = collection(db, "prueba3");
+            const coleccion = collection(db, "Usuarios");
             const q = query(coleccion, where("id", "==", nuevosDatos.id));
 
             console.log(nuevosDatos.id);

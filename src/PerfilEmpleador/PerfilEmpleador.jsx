@@ -8,7 +8,6 @@ import { useEffect, useState } from "react";
 import { getAuth } from 'firebase/auth';
 import usuario from '/assets/usuario.svg';
 import { Box, Button, Grid } from "@mui/material";
-import casa from '/assets/Group 68.svg';
 import Navegacion from "../InicioTrabajador/Navegacion/Navegacion";
 function PerfilEmpleador() {
   const { state } = useLocation();
@@ -27,7 +26,7 @@ function PerfilEmpleador() {
   };
   const auth = getAuth(app);
   const db = getFirestore(app);
-  const docRef = collection(db, "prueba3");
+  const docRef = collection(db, "Usuarios");
   const q = query(docRef, where('id', '==', id));
   const [publicaciones, setPublicaciones ] = useState({});
   const [email, setEmail] = useState('');

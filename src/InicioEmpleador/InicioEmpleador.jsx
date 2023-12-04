@@ -1,6 +1,6 @@
 import Navegacion from '../InicioTrabajador/Navegacion/Navegacion';
 import Header from '../InicioTrabajador/Header/Header';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import app from '../Firebase/credenciales';
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { getFirestore } from "firebase/firestore";
@@ -25,7 +25,7 @@ function InicioEmpleador() {
     });
   }
   const db = getFirestore(app);
-  const docRef = collection(db, "prueba3");
+  const docRef = collection(db, "Usuarios");
   const q = query(docRef, where('id', '==', id))
   getDocs(q)
     .then((querySnapshot) => {
@@ -37,7 +37,7 @@ function InicioEmpleador() {
         });
       }
     });
-  window.onpopstate = function (event) {
+  window.onpopstate = function () {
     const popstateExecuted = localStorage.getItem("popstateExecuted");
     if (!popstateExecuted) {
       localStorage.setItem("popstateExecuted", "true");

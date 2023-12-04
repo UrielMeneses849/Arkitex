@@ -1,23 +1,18 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
-
-
-// TODO: Replace the following with your app's Firebase project configuration
-// See: https://support.google.com/firebase/answer/7015592
+//Credenciales de la base de datos
 const firebaseConfig = {
-  apiKey: "AIzaSyD8t4fH8FPDoyEFJvq8RzlyGVrKujdfLf0",
-  authDomain: "prueba-397707.firebaseapp.com",
-  projectId: "prueba-397707",
-  storageBucket: "prueba-397707.appspot.com",
-  messagingSenderId: "460458976459",
-  appId: "1:460458976459:web:96f91e83e3c56cd1ac674e"
+  apiKey: "AIzaSyCWQfJ8yvCmzuns2vuX72_wQZUH1X-4kBs",
+  authDomain: "networking-97389.firebaseapp.com",
+  projectId: "networking-97389",
+  storageBucket: "networking-97389.appspot.com",
+  messagingSenderId: "281906087662",
+  appId: "1:281906087662:web:75bd1d1484108f9851d5ff"
 };
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
-// Initialize Cloud Firestore and get a reference to the service
+// Incializamos Cloud Firestore
 export const db = getFirestore(app);
-
+// Exportamos la inicializacion
 export default app;

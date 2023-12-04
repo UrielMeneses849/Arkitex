@@ -1,7 +1,7 @@
 import Navegacion from './Navegacion/Navegacion'
 import Header from './Header/Header';
 import Publicaciones from './Publicaciones/Publicaciones';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import app from '../Firebase/credenciales';
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { getFirestore } from "firebase/firestore";
@@ -20,12 +20,12 @@ function InicioTrabajador() {
   const db = getFirestore(app);
   const currentPath = window.location.pathname;
   if (currentPath === '/Login') {
-    window.onpopstate = function (event) {
+    window.onpopstate = function () {
       navigate('/Login', {
       });
     };
   }
-  const docRef = collection(db, "prueba3");
+  const docRef = collection(db, "Usuarios");
   const q = query(docRef, where('id', '==', id)); // Reemplaza 'campo_uid' con el nombre real del campo que contiene el UID
   // Utiliza async/await
   getDocs(q)
