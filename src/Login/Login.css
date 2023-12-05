@@ -10,5 +10,10 @@
     .cont{
         height: auto;
         max-height: 100vh;
+        width: 100%;
+        padding: 0;
+    }
+    .loging{
+        background-color: rgb(56, 65, 65);
     }
 }

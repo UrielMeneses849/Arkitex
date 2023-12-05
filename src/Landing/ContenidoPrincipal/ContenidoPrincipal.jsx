@@ -12,7 +12,7 @@ export default function ContenidoPrincipal() {
             <p className='indexP4'>Arkitex, la plataforma diseñada para conectar empleador y trabajador para realizar una remodelación, por favor comparte tu trabajo aqui.</p>
             <div>
                 <Button variant="contained" sx={{padding:'0.8rem 3rem',
-                borderRadius:'25px', color:'#FFF'}}>
+                borderRadius:'25px', color:'#FFF', marginBottom: "20px"}}>
                 Explora Nuestra Pagina Web
                 </Button>
             </div>

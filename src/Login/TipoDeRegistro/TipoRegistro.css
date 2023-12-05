@@ -53,6 +53,7 @@
         max-height: 190px;
     }
 }
+
 @media screen and (max-width:900px){
     .opcionRegistro-p{
         max-width: none;
@@ -64,6 +65,13 @@
     }
     .imgTrabajador, .imgEmpleador{
         width: 100%;
+    }
+    .opcionRegistro-h2{
+        font-size: 38px;
+        font-weight: 600;
+    }
+    .opcionRegistro-h3{
+        font-size: 28px;
     }
 }
 

@@ -23,3 +23,15 @@
         width: 200px;
     }
 }
+
+@media screen and (max-width: 900px){
+    .imgEmpleadorLanding{
+        width: 400px;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .imgEmpleadorLanding{
+        width: 300px;
+    }
+}

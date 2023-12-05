@@ -4,11 +4,12 @@ import Anchor from './Anchor/Anchor';
 import { Link } from 'react-router-dom';
 
 
+
 export default function Navbar() {
-  function menu() {
-    const navegacion = document.querySelector('.navegacion');
-    navegacion.classList.toggle('mostrar');
-  }
+  // function menu() {
+  //   const navegacion = document.querySelector('.navegacion');
+  //   navegacion.classList.toggle('mostrar');
+  // }
   return (
     <div className='navbar'>
       {/*Icono de menu para celulares*/}
@@ -16,9 +17,9 @@ export default function Navbar() {
         <img src='./assets/Frame.svg' style={{ width: '60px' }} />
         <h2 className='Arkitex'>ARKITEX</h2>
       </div>
-      <Grid justifyContent={"center"} display={{ xs: "flex", md: "none" }}>
+      {/* <Grid justifyContent={"center"} display={{ xs: "flex", md: "none" }}>
         <img src={'/assets/menu1.svg'} className='menu' onClick={menu}></img>
-      </Grid>
+      </Grid> */}
       {/*Enlaces de la barra de navegacion*/}
       <Grid className='navegacion' component={"nav"} maxHeight={{ md: "200px" }} display={"flex"}
         flexDirection={{ xs: "column", md: "row" }} gap={"2rem"} marginBottom={{xs:'1rem',md:'0'}}>
@@ -34,8 +35,8 @@ export default function Navbar() {
           '&:hover': {
             backgroundColor: "#da7110"
           }, color: '#FFF',
-          padding:{xl:'auto',xs:'0.8rem 3rem'},
-        }}> Iniciar Sesion </Button>
+          padding:{xl:'auto',xs:'0.1rem 3rem'},
+        }} className='botonL1'> Iniciar Sesion </Button>
       </Link>
     </div>
   )

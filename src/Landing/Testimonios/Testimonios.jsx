@@ -8,12 +8,12 @@ function Testimonios() {
         <>
             {/*Testimonios*/}
             <Box width={'100%'} position={'relative'}>
-                <Box bgcolor={'#D9D9D9'} padding={'3rem'} top={{ xs: '20rem', sm: '21rem' }}>
+                <Box bgcolor={'#D9D9D9'} padding={'3rem'} top={{ xs: '20rem', sm: '21rem'}}>
                     <Typography variant='h2' fontSize={'2.4rem'} fontWeight={'bold'} >
                         Testimonios
                     </Typography>
-                    <Grid container columns={{ xs: 1, md: 2.5 }} marginTop={'1.5rem'} gap={'4rem'} flexWrap={'nowrap'}
-                        flexDirection={{ xs: 'column', md: 'row' }} >
+                    <Grid container columns={{ xs: 1, md: 2.5, sm: 2 }} marginTop={'1.5rem'} gap={'4rem'} flexWrap={'nowrap'}
+                        flexDirection={{ xs: 'column', md: 'row' }} sx={{alignItems: "center"}}>
                         <Grid item xs={0.8} bgcolor={'#FAFAFA'} padding={'2rem'} boxShadow={"4px 7px 17px 0px rgba(0, 0, 0, 0.10), 16px 26px 31px 0px rgba(0, 0, 0, 0.09), 36px 59px 42px 0px rgba(0, 0, 0, 0.05), 64px 105px 49px 0px rgba(0, 0, 0, 0.01), 101px 164px 54px 0px rgba(0, 0, 0, 0.00);"} 
                             borderRadius={'5px'} height={'420px'} display={'flex'} flexDirection={'column'} justifyContent={'space-between'} >
                             <Box >

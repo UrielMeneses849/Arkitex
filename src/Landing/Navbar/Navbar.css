@@ -25,17 +25,34 @@
     justify-content: space-between;
     padding: 0 150px;
 }
-@media (max-width:900px){
-    .navbar{
-        flex-direction: column;
-        align-items: center;
-    }
-}
+
 @media (max-width:1400px){
     .navbar{
         padding: 0 40px;
     }
+    .Arkitex{
+        font-size: 20px;
+    }
 }
+
+@media (max-width:900px){
+    .navbar{
+        flex-direction: row;
+        align-items: center;
+    }
+    .Arkitex{
+        font-size: 24px;
+    }
+}
+
+
+/* Telefonos */
+@media (max-width:600px){
+    .navbar{
+        padding: 0 20px;
+    }
+}
+
 .icono{
     display: flex;
     align-items: center;
@@ -44,11 +61,7 @@
 .Arkitex{
     color: var(--color-principal);
     margin-left: 20px;
-    font-size: 30px;
+    font-size: 20px;
     font-weight: 700;
 }
-@media (max-width:1400px){
-    .Arkitex{
-        font-size: 20px;
-    }
-}
+

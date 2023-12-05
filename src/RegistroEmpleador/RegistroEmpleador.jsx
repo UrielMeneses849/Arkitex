@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import Box from '@mui/material/Box';
 import { Button, Grid, Step, StepConnector, StepLabel, Stepper, stepConnectorClasses, styled } from '@mui/material';
-import frame from '/assets/Group 161.png';
+// import frame from '/assets/Group 161.png';
 import { useState } from 'react';
 // Componentes del formulario de registro
 import EscogerTrabajo from './EscogerTrabajo';
@@ -31,6 +31,8 @@ import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { useNavigate } from "react-router-dom";
 import { addDoc, collection } from 'firebase/firestore';
 import back from '/assets/backsvg 1.svg';
+
+import './EscogerTrabajo/RegistroEmpleador.css';
 //Personalizacion del stepper
 const QontoConnector = styled(StepConnector)(() => ({
   [`& .${stepConnectorClasses.line}`]: {
@@ -237,34 +239,34 @@ export default function RegistroTrabajador() {
           display='flex' flexDirection='column'>
           <h1 style={{ textAlign: 'center', fontWeight: '700', fontSize: '25px', margin: '1rem 0 1rem' }}>Registrate como empleador</h1>
           {/* Textos de ayuda dependiendo del paso en el que este */}
-          {activeStep === 0 && <h4 style={{ color: "#888888",fontSize:'15px' }}>Escoge que tipo de trabajo necesitas</h4>}
-          {activeStep === 1 && <h4 style={{ color: "#888888",fontSize:'15px' }}>¿Que area se va a trabajar?</h4>}
-          {activeStep === 2 && <h4 style={{ color: "#888888",fontSize:'15px' }}>Detalles del trabajo a realizar</h4>}
-          {activeStep === 3 && <h4 style={{ color: "#888888",fontSize:'15px' }}>Completa tu Registro</h4>}
+          {activeStep === 0 && <h4  style={{ color: "#888888",fontSize:'15px' }}>Escoge que tipo de trabajo necesitas</h4>}
+          {activeStep === 1 && <h4  style={{ color: "#888888",fontSize:'15px' }}>¿Que area se va a trabajar?</h4>}
+          {activeStep === 2 && <h4  style={{ color: "#888888",fontSize:'15px' }}>Detalles del trabajo a realizar</h4>}
+          {activeStep === 3 && <h4  style={{ color: "#888888",fontSize:'15px' }}>Completa tu Registro</h4>}
 
 
           <Box sx={{ width: '100%', marginTop: '2rem' }} margin='0'>
 
             <Stepper activeStep={activeStep} connector={<QontoConnector />}>
-              <Step>
+              <Step> 
                 <StepLabel StepIconComponent={(stepProps) => (
                   <QontoStepIcon {...stepProps} index={0} />
-                )}>Elige</StepLabel>
+                )}> <h4 className='Empleador_h4'>Elige</h4></StepLabel>
               </Step>
               <Step>
                 <StepLabel StepIconComponent={(stepProps) => (
                   <QontoStepIcon {...stepProps} index={1} />
-                )}>Area de trabajo </StepLabel>
+                )} > <h4 className='Empleador_h4'>Area de trabajo </h4></StepLabel>
               </Step>
               <Step>
                 <StepLabel StepIconComponent={(stepProps) => (
                   <QontoStepIcon {...stepProps} index={2} />
-                )}>Detalles</StepLabel>
+                )}> <h4 className='Empleador_h4'>Detalles</h4></StepLabel>
               </Step>
               <Step>
                 <StepLabel StepIconComponent={(stepProps) => (
                   <QontoStepIcon {...stepProps} index={3} />
-                )}>Informacion Personal </StepLabel>
+                )}> <h4 className='Empleador_h4'>Informacion Personal </h4> </StepLabel>
               </Step>
             </Stepper>
             {/* Contenido de cada paso */}

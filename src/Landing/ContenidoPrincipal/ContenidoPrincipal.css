@@ -50,3 +50,51 @@
     }
 
 }
+
+@media screen and (max-width:900px){
+    .indexH1{
+        font-size: 65px;
+        margin: 10px auto 20px;
+        
+    }
+
+}
+
+@media screen and (max-width:600px){
+    .indexH1{
+        font-size: 50px;
+        margin: -30px auto 20px;
+        padding: 0 20px;
+    }
+    .indexP1{
+font-size: 22px;
+padding: 0 10px;
+    }
+    .indexP3{
+        padding: 0 15px;
+    }
+    .indexP4{
+        padding: 0 15px;
+        text-align: justify;
+    }
+}
+
+@media screen and (max-width:375px){
+    .indexH1{
+        font-size: 40px;
+        margin: -30px auto 20px;
+        padding: 0 20px;
+    }
+    .indexP1{
+font-size: 18px;
+padding: 0 20px;
+    }
+    .indexP3{
+        font-size: 18px;
+        padding: 0 20px;
+    }
+    .indexP4{
+        padding: 0 20px;
+        text-align: justify;
+    }
+}

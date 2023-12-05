@@ -70,9 +70,9 @@ export default function IniciarSesion() {
     }
     return (
         <Grid item xs={1} height='100%'>
-            <Grid boxShadow={"0px 31px 68px 0px rgba(0, 0, 0, 0.10), 0px 124px 124px 0px rgba(0, 0, 0, 0.09), 0px 279px 167px 0px rgba(0, 0, 0, 0.05), 0px 496px 198px 0px rgba(0, 0, 0, 0.01), 0px 774px 217px 0px rgba(0, 0, 0, 0.00)"} borderRadius={"50px"} display={"flex"}
-                justifyContent={"center"} alignItems={"center"} flexDirection={"column"} p={3}
-                height='100%'>
+            <Grid boxShadow={"0px 31px 68px 0px rgba(0, 0, 0, 0.10), 0px 124px 124px 0px rgba(0, 0, 0, 0.09), 0px 279px 167px 0px rgba(0, 0, 0, 0.05), 0px 496px 198px 0px rgba(0, 0, 0, 0.01), 0px 774px 217px 0px rgba(0, 0, 0, 0.00)"} borderRadius={"30px"} display={"flex"}
+                justifyContent={"center"} alignItems={"center"} flexDirection={"column"} p={2}
+                height='88vh'>
                 <div className="login">
                     <h2 className="login__h2" style={{ color: '#FF9500' }}>Bienvenido a Arkitex</h2>
                     <h3 className="login__h3">Iniciar Sesion</h3>
