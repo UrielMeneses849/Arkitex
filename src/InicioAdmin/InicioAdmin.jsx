@@ -11,7 +11,7 @@ function InicioAdmin() {
     const { state } = useLocation();
     const { id } = state;
     const db = getFirestore(app);
-    const docRef = collection(db, "prueba3");
+    const docRef = collection(db, "Usuarios");
     const q = query(docRef, where('id', '==', id))
     getDocs(q)
         .then((querySnapshot) => {
@@ -34,13 +34,11 @@ function InicioAdmin() {
         }
     };
     const goPublicacion = (id2) => {
-        localStorage.setItem("popstateExecuted", "true");
         navigate('/Arkitex/InicioEmpleador/PublicacionT', {
             state: { id: id, logged: true, idPublicacion: id2, admin: true }
         });
     };
     const goPublicacion2 = (id2) => {
-        localStorage.setItem("popstateExecuted", "true");
         navigate('/Arkitex/InicioTrabajador/PublicacionE', {
             state: { id: id, logged: true, idPublicacion: id2, admin:true }
         });
@@ -74,7 +72,6 @@ function InicioAdmin() {
                 const querySnapshot = await getDocs(collection(db, "publicacionesEmpleador"));
                 const nuevosDatos = [];
                 querySnapshot.forEach((doc, index) => {
-                    console.log(doc.data().fotos);
                     nuevosDatos.push({
                         titulo: doc.data().titulo,
                         descripcion: doc.data().descripcion,

@@ -25,7 +25,7 @@ function PerfilTrabajador() {
   };
   const auth = getAuth(app);
   const db = getFirestore(app);
-  const docRef = collection(db, "prueba3");
+  const docRef = collection(db, "Usuarios");
   const q = query(docRef, where('id', '==', id));
   const [email, setEmail] = useState('');
   const [datos, setDatos] = useState({

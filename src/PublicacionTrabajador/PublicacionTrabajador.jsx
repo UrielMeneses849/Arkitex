@@ -9,15 +9,11 @@ import './PublicacionesTrabajador.css';
 import camara from '/assets/camara.svg';
 import dinero from '/assets/dinero.svg';
 import styled from "styled-components";
-import add from '/assets/add.svg';
-import { imagenPublicacionEmpleador, imagenPublicacionTrabajador } from "../Firebase/imagenes";
+import {imagenPublicacionTrabajador } from "../Firebase/imagenes";
 import back from '/assets/backsvg 1.svg';
 import { validarDescripcion, validarFoto, validarTitulo, validarUbicacion } from "../Firebase/validaciones";
 const Icono = () => {
     return <img src={camara} ></img>
-}
-const AddIcon = () => {
-    return <img src={add}></img>
 }
 const DineroIcon = () => {
     return <img src={dinero}></img>
@@ -64,7 +60,7 @@ function PublicacionTrabajador() {
     const [nombre, setNombre] = useState('');
     const [img, setImg] = useState('');
     const db = getFirestore(app);
-    const docRef = collection(db, "prueba3");
+    const docRef = collection(db, "Usuarios");
     const q = query(docRef, where('id', '==', id));
     getDocs(q)
         .then((querySnapshot) => {
@@ -159,26 +155,6 @@ function PublicacionTrabajador() {
     useEffect(() => {
         setValidacion(validacionPublicacion);
     }, [datosPublicacion])
-    // const [componentes, setComponentes] = useState([]);
-    // const agregarComponente = () => {
-
-    //     const nuevoComponente = <>
-    //         <Box>
-    //             <TextField id='materiales' type='text' InputProps={{
-    //             }} label='Presupuesto de: ' onChange={handleChangeDatos}></TextField>
-    //         </Box>
-    //         <Box>
-    //             <TextField id='presupuestoMateriales' type='number' InputProps={{
-    //                 startAdornment: (
-    //                     <InputAdornment position="start">
-    //                         <DineroIcon />
-    //                     </InputAdornment>
-    //                 ),
-    //             }} label='A: ' onChange={handleChangeDatos}></TextField>
-    //         </Box>
-    //     </>
-    //     setComponentes([...componentes, nuevoComponente]);
-    // };
     return (
         <>
             <Box padding={{ xs: '2rem 1rem 0.5rem 1rem', sm: '1rem 3rem 0.5rem 3rem' }} >

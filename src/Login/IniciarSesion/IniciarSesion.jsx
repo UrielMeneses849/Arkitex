@@ -31,7 +31,7 @@ export default function IniciarSesion() {
         const auth = getAuth(app);
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                const docRef = collection(db, "prueba3");
+                const docRef = collection(db, "Usuarios");
                 const q = query(docRef, where('id', '==', userCredential.user.uid)); // Reemplaza 'campo_uid' con el nombre real del campo que contiene el UID
                 // Utiliza async/await
                 getDocs(q)

@@ -1,11 +1,8 @@
 import { Button, Grid } from "@mui/material"
-
-import casa from '/assets/Group 68.svg';
 import { useEffect, useState } from "react";
-import { collection, getDocs, getFirestore, where } from "firebase/firestore";
-import { onAuthStateChanged } from "firebase/auth";
+import { collection, getDocs, getFirestore} from "firebase/firestore";
 import app from "../../Firebase/credenciales";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 
 function PublicacionesTrabajador() {

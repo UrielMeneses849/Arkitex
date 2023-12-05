@@ -56,7 +56,7 @@ function PublicacionEmpleador() {
   const [nombre, setNombre] = useState('');
   const [img, setImg] = useState('');
   const db = getFirestore(app);
-  const docRef = collection(db, "prueba3");
+  const docRef = collection(db, "Usuarios");
   const q = query(docRef, where('id', '==', id)); // Reemplaza 'campo_uid' con el nombre real del campo que contiene el UID
   // Utiliza async/await
 

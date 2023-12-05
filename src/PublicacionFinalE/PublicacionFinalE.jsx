@@ -1,14 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
-import { db } from '../Firebase/credenciales';
-import { addDoc, collection, deleteDoc, doc, getDocs, getFirestore, query, setDoc, where } from 'firebase/firestore';
+import { addDoc, collection, deleteDoc, doc, getDocs, getFirestore, query, where } from 'firebase/firestore';
 import { Box, Button, Step, StepButton, Stepper } from '@mui/material';
-import img from '/assets/Group 157.svg';
-import casa from '/assets/Group 68.svg';
 import elipse13 from '/assets/Ellipse 13.svg';
 import elipse14 from '/assets/Ellipse 14.svg';
-import prueba from '/assets/casaPrueba.jpg';
-import descarga from '/assets/prueba2.png';
 import Navegacion from '../InicioTrabajador/Navegacion/Navegacion';
 import guardar from '/assets/guardar.svg';
 import corazon from '/assets/corazon.svg';
@@ -35,7 +30,7 @@ function PublicacionFinalE() {
     const steps = [];
     const navigate = useNavigate();
     const db = getFirestore(app);
-    const docRef = collection(db, "prueba3");
+    const docRef = collection(db, "Usuarios");
     const q = query(docRef, where('id', '==', id))
     getDocs(q)
         .then((querySnapshot) => {
@@ -69,7 +64,7 @@ function PublicacionFinalE() {
             });
 
             setDatos(nuevosDatos);
-            const coleccion = collection(db, "prueba3");
+            const coleccion = collection(db, "Usuarios");
             const q = query(coleccion, where("id", "==", nuevosDatos.id));
 
             const querySnapshot2 = await getDocs(q);
@@ -156,7 +151,6 @@ function PublicacionFinalE() {
                 <hr style={{ backgroundColor: '#767474' }}></hr>
             </Box>:<Navegacion nombre={usuario.nombre} img={usuario.img} id={id} ruta='InicioTrabajador/PerfilTrabajador' />
             }
-            
             <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr', height: '100vh', padding: '0.5rem 5rem', gap: '3rem' }}>
                 <Box sx={{ width: '100%', height: '85%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
                     <Stepper nonLinear activeStep={activeStep} sx={{ display: 'none' }}>
@@ -214,7 +208,7 @@ function PublicacionFinalE() {
                     <p style={{ textAlign: 'start', maxWidth: '25rem' }}>A: ${datos.presupuestoMax}</p>
                     <h3 style={{ textAlign: 'start', fontWeight: '500', fontSize: '1.5rem' }}>Descripción</h3>
                     <p style={{ textAlign: 'start', maxWidth: '30rem' }}>{datos.descripcion}</p>
-                    {estadoP?<></>:<Button disabled={postulado?true:false} onClick={() => procesarPostulaciones(datos.id,id,idPublicacion)} variant='contained' sx={{ width: '150px', borderRadius: '25px', display: 'flex', gap: '1rem'
+                    {estadoP?<></>:<Button disabled={(postulado || admin)?true:false} onClick={() => procesarPostulaciones(datos.id,id,idPublicacion)} variant='contained' sx={{ width: '150px', borderRadius: '25px', display: 'flex', gap: '1rem'
                     ,color:'#fff' }}>Postularse</Button>}
 
                     {estadoP == "Aceptado"?<p style={{color:'green'}}>El empleador acepto que trabajes para el, ahora puedes visualizar su perfil y contactar con el.</p>:<></>}
