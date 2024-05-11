@@ -3,12 +3,12 @@ import { getFirestore } from "firebase/firestore";
 
 //Credenciales de la base de datos
 const firebaseConfig = {
-  apiKey: "AIzaSyCWQfJ8yvCmzuns2vuX72_wQZUH1X-4kBs",
-  authDomain: "networking-97389.firebaseapp.com",
-  projectId: "networking-97389",
-  storageBucket: "networking-97389.appspot.com",
-  messagingSenderId: "281906087662",
-  appId: "1:281906087662:web:75bd1d1484108f9851d5ff"
+  apiKey: "AIzaSyA_NSzUyddqqm4S0q2ieMUb9XTUgjlOWLY",
+  authDomain: "networking2-b7901.firebaseapp.com",
+  projectId: "networking2-b7901",
+  storageBucket: "networking2-b7901.appspot.com",
+  messagingSenderId: "54171644003",
+  appId: "1:54171644003:web:bc7c5d1eee13b9c9958856"
 };
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
